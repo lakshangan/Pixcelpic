@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Works - Pixel Pic Studio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #0c0f16;
+      color: #fff;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    /* Hero Section */
+    .portfolio-hero {
+      background: linear-gradient(135deg, #181d2a, #0c0f16);
+      padding: 100px 20px;
+      text-align: center;
+    }
+    .portfolio-hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #ff9f43;
+    }
+    .portfolio-hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #ddd;
+    }
+    /* Section */
+    .section {
+      padding: 60px 20px;
+    }
+    /* Filter Buttons */
+    .portfolio-filter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      background: #181d2a;
+      border: 1px solid #444;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: #ff9f43;
+      border-color: #ff9f43;
+      color: #000;
+    }
+    /* Portfolio Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .portfolio-item {
+      background: #181d2a;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+    }
+    .portfolio-item img {
+      width: 100%;
+      display: block;
+      height: 200px;
+      object-fit: cover;
+    }
+    .portfolio-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #fff;
+      transition: opacity 0.3s ease;
+    }
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+    .portfolio-content {
+      padding: 20px;
+    }
+    .portfolio-category {
+      font-size: 14px;
+      color: #ff9f43;
+      margin-bottom: 8px;
+    }
+    .portfolio-title {
+      font-size: 20px;
+      margin: 5px 0;
+    }
+    .portfolio-description {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .portfolio-meta span {
+      font-size: 12px;
+      margin-right: 10px;
+      color: #aaa;
+    }
+    /* Showcase */
+    .project-showcase .showcase-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .showcase-image {
+      flex: 1 1 45%;
+    }
+    .showcase-image img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .showcase-content {
+      flex: 1 1 45%;
+    }
+    .showcase-content h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #ff9f43;
+    }
+    .showcase-content p {
+      color: #ddd;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .showcase-tags {
+      margin-bottom: 20px;
+    }
+    .showcase-tag {
+      background: #181d2a;
+      border: 1px solid #444;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-right: 10px;
+      font-size: 12px;
+      color: #fff;
+    }
+    .button {
+      background: #ff9f43;
+      padding: 10px 22px;
+      border-radius: 25px;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background: #ffb766;
+    }
+    /* Stats */
+    .portfolio-stats {
+      background: #181d2a;
+      padding: 80px 20px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: #ff9f43;
+    }
+    .stat-label {
+      font-size: 16px;
+      color: #ddd;
+      margin-top: 10px;
+    }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: #0c0f16;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      letter-spacing: .5px;
+      gap: 12px;
+      font-size: 1.25rem;
+      color: #fff;
+    }
+    .brand img {
+      height: 50px;
+      width: auto;
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: middle;
+      border-radius: 8px;
+      background: #0d1320;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .nav-links {
+      display: none;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #fff;
+      opacity: 0.85;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 2px 4px;
+      position: relative;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus {
+      opacity: 1;
+    }
+    .nav-links a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #ff9f43;
+      transition: width 0.2s;
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus::after {
+      width: 100%;
+    }
+    .nav-links a.active {
+      color: #ff9f43;
+      opacity: 1;
+      font-weight: 600;
+    }
+    .nav-links a.active::after {
+      width: 100%;
+      background: #ff9f43;
+    }
+    .contact-btn {
+      background: #ff9f43;
+      color: #1b1205;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      box-shadow: 0 10px 25px rgba(255,159,67,0.09);
+      margin-left: 10px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .contact-btn:hover, .contact-btn:focus {
+      background: #ffb766;
+      color: #000;
+    }
+    .menu {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .hamburger {
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      position: relative;
+    }
+    .hamburger::before,
+    .hamburger::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: currentColor;
+    }
+    .hamburger::before { top: -6px; }
+    .hamburger::after { top: 6px; }
+    @media (min-width: 900px) {
+      .nav-links { display: flex; }
+      .menu { display: none; }
+    }
+
+    /* mobile drawer */
+    .drawer{ position:fixed; inset:0; background:rgba(0,0,0,.6); display:grid; place-items:end; opacity:0; pointer-events:none; transition:.25s ease opacity }
+    .drawer.open{opacity:1; pointer-events:auto}
+    .drawer-panel{ transform:translateX(8%); transition:.28s ease transform; }
+    .drawer.open .drawer-panel{ transform:translateX(0) }
+    .drawer-panel{ height:100%; width:min(88%, 360px); background:var(--card); padding:22px; display:flex; flex-direction:column; gap:14px; border-left:1px solid rgba(255,255,255,.08)}
+    .drawer a{padding:12px 10px; border-radius:10px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06)}
+
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="container nav-wrap">
+      <span class="brand">
+        <img src="PixelPix Studio.png" alt="PixelPic Studio Logo" style="height: 30px; width: auto; margin-right: 8px; display: inline-block;" />
+      </span>
+      <div class="nav-links" role="menubar" aria-label="Primary Navigation">
+        <a href="pixelpic.html" role="menuitem" class="nav-link">Home</a>
+        <!-- <a href="#about" role="menuitem" class="nav-link">About Us</a>
+        <a href="#services" role="menuitem" class="nav-link">Services</a>
+        <a href="our-work.html" role="menuitem" class="active nav-link">Our Works</a> -->
+        <a class="contact-btn" href="#contact" role="menuitem">Contact Us</a>
+      </div>
+      <button class="menu interactive-hover" id="openMenu" aria-label="Open menu" aria-haspopup="dialog" aria-controls="drawerPanel"><span class="hamburger"></span></button>
+    </div>
+  </nav>
+
+  <!-- mobile drawer -->
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+    <div class="drawer-panel" id="drawerPanel">
+      <button class="icon-btn" id="closeMenu" aria-label="Close menu">✕</button>
+      <a href="#home" data-d-close>Home</a>
+      <a href="#about" data-d-close>About Us</a>
+      <a href="#services" data-d-close>Services</a>
+      <!-- <a href="#pricing" data-d-close>Pricing</a>
+      <a href="#team" data-d-close>Team</a> -->
+      <a class="contact-btn" href="#contact" data-d-close>Contact Us</a>
+    </div>
+  </div>
+
+
+  <!-- ===================== OUR WORK PAGE ===================== -->
+    <section id="our-work" class="portfolio-hero">
+    <div class="container">
+      <div class="portfolio-hero-content fade-up">
+        <h1>Our Creative Portfolio</h1>
+        <p>Discover our collection of cinematic masterpieces, from stunning video reels to captivating short films, innovative logos, and eye-catching posters that tell compelling stories.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Category Filter -->
+      <div class="portfolio-filter fade-up">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="video">Video Reels</button>
+        <button class="filter-btn" data-filter="short-film">Short Films</button>
+        <button class="filter-btn" data-filter="logo">Logo Design</button>
+        <button class="filter-btn" data-filter="poster">Poster Design</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid" id="workGrid">
+        <!-- Video Reels -->
+        <div class="portfolio-item scale-in" data-category="video">
+          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1600&auto=format&fit=crop" alt="Cinematic Video Reel" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-play">▶</div>
+          </div>
+          <div class="portfolio-content">
+            <div class="portfolio-category">Video Reel</div>
+            <h3 class="portfolio-title">Cinematic Showreel 2024</h3>
+            <p class="portfolio-description">A stunning compilation of our best cinematic moments, showcasing our expertise in visual storytelling and post-production mastery.</p>
+            <div class="portfolio-meta">
+              <span>Duration: 3:45</span>
+              <span>4K Resolution</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Short Film -->
+        <div class="portfolio-item scale-in" data-category="short-film">
+          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&auto=format&fit=crop" alt="Short Film Production" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-play">▶</div>
+          </div>
+          <div class="portfolio-content">
+            <div class="portfolio-category">Short Film</div>
+            <h3 class="portfolio-title">The Silent Echo</h3>
+            <p class="portfolio-description">An award-winning short film exploring themes of connection and isolation in the modern digital age.</p>
+            <div class="portfolio-meta">
+              <span>Duration: 12:30</span>
+              <span>Festival Winner</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logo Design -->
+        <div class="portfolio-item scale-in" data-category="logo">
+          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=1600&auto=format&fit=crop" alt="Logo Design Collection" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-play">▶</div>
+          </div>
+          <div class="portfolio-content">
+            <div class="portfolio-category">Logo Design</div>
+            <h3 class="portfolio-title">TechStart Brand Identity</h3>
+            <p class="portfolio-description">Complete brand identity design including logo, color palette, and visual guidelines for a cutting-edge tech startup.</p>
+            <div class="portfolio-meta">
+              <span>Brand Identity</span>
+              <span>Vector Files</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Poster Design -->
+        <div class="portfolio-item scale-in" data-category="poster">
+          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1600&auto=format&fit=crop" alt="Movie Poster Design" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-play">▶</div>
+          </div>
+          <div class="portfolio-content">
+            <div class="portfolio-category">Poster Design</div>
+            <h3 class="portfolio-title">Summer Blockbuster Campaign</h3>
+            <p class="portfolio-description">Complete poster series for a major summer movie release, featuring dynamic typography and compelling visuals.</p>
+            <div class="portfolio-meta">
+              <span>Print Ready</span>
+              <span>Multiple Formats</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Branding -->
+        <div class="portfolio-item scale-in" data-category="branding">
+          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1600&auto=format&fit=crop" alt="Brand Identity Design" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-play">▶</div>
+          </div>
+          <div class="portfolio-content">
+            <div class="portfolio-category">Branding</div>
+            <h3 class="portfolio-title">EcoLife Complete Branding</h3>
+            <p class="portfolio-description">Comprehensive branding package for an eco-friendly lifestyle brand, including logo, packaging, and marketing materials.</p>
+            <div class="portfolio-meta">
+              <span>Full Package</span>
+              <span>Sustainable Design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Reel -->
+        <div class="portfolio-item scale-in" data-category="video">
+          <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1600&auto=format&fit=crop" alt="Corporate Video Reel" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-play">▶</div>
+          </div>
+          <div class="portfolio-content">
+            <div class="portfolio-category">Video Reel</div>
+            <h3 class="portfolio-title">Corporate Excellence Reel</h3>
+            <p class="portfolio-description">Professional corporate video showcasing company culture, achievements, and future vision with cinematic quality.</p>
+            <div class="portfolio-meta">
+              <span>Duration: 2:15</span>
+              <span>Corporate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Showcase -->
+  <section class="project-showcase">
+    <div class="container">
+      <div class="showcase-item">
+        <div class="showcase-image slide-in-left">
+          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1600&auto=format&fit=crop" alt="Featured Project" loading="lazy" />
+        </div>
+        <div class="showcase-content slide-in-right">
+          <h3>Featured Project: Cinematic Masterpiece</h3>
+          <p>Our latest cinematic project showcases the perfect blend of storytelling, visual effects, and post-production excellence. This project demonstrates our commitment to creating compelling narratives that resonate with audiences.</p>
+          <div class="showcase-tags">
+            <span class="showcase-tag">Cinematography</span>
+            <span class="showcase-tag">Color Grading</span>
+            <span class="showcase-tag">Sound Design</span>
+            <span class="showcase-tag">VFX</span>
+          </div>
+          <a href="#" class="button">View Full Project</a>
+        </div>
+      </div>
+
+      <div class="showcase-item">
+        <div class="showcase-image slide-in-right">
+          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=1600&auto=format&fit=crop" alt="Brand Identity Project" loading="lazy" />
+        </div>
+        <div class="showcase-content slide-in-left">
+          <h3>Brand Identity: Modern & Minimal</h3>
+          <p>A comprehensive brand identity project that redefines modern design principles. From logo creation to complete visual guidelines, this project exemplifies our approach to creating timeless brand experiences.</p>
+          <div class="showcase-tags">
+            <span class="showcase-tag">Logo Design</span>
+            <span class="showcase-tag">Typography</span>
+            <span class="showcase-tag">Color Theory</span>
+            <span class="showcase-tag">Brand Guidelines</span>
+          </div>
+          <a href="#" class="button">View Full Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+<script>
+// Drawer with focus trap
+const drawer = document.getElementById('drawer');
+const drawerPanel = document.getElementById('drawerPanel');
+const openMenu = document.getElementById('openMenu');
+const closeMenu = document.getElementById('closeMenu');
+const firstFocusable = () => drawerPanel.querySelector('button, a, [tabindex]');
+
+function toggleMenu(force){
+  const willOpen = force ?? !drawer.classList.contains('open');
+  drawer.classList.toggle('open', willOpen);
+  if(willOpen){
+    drawer.setAttribute('aria-hidden','false');
+    firstFocusable()?.focus();
+  } else {
+    drawer.setAttribute('aria-hidden','true');
+    openMenu.focus();
+  }
+}
+openMenu.addEventListener('click', () => toggleMenu(true));
+closeMenu.addEventListener('click', () => toggleMenu(false));
+drawer.addEventListener('click', e => { if(e.target === drawer) toggleMenu(false); });
+drawerPanel.querySelectorAll('[data-d-close]').forEach(a=> a.addEventListener('click', ()=> toggleMenu(false)));
+window.addEventListener('keydown', e => { if(e.key === 'Escape' && drawer.classList.contains('open')) toggleMenu(false); });
+
+// Smooth scroll for anchor links
+function smoothTo(id){ const el = document.getElementById(id); if(!el) return; window.scrollTo({top: el.offsetTop-64, behavior:'smooth'}); }
+Array.from(document.querySelectorAll('a[data-scroll], [data-d-close][href^="#"], .nav-links a[href^="#"]')).forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id = a.getAttribute('href')?.slice(1);
+    if(id){ e.preventDefault(); smoothTo(id); }
+  });
+});
+</script>
+</html>
