@@ -148,11 +148,11 @@
     @media (min-width: 900px){ .nav-links{display:flex} .menu{display:none} }
 
     /* mobile drawer */
-    .drawer{ position:fixed; inset:0; background:rgba(0,0,0,.6); display:grid; place-items:end; opacity:0; pointer-events:none; transition:.25s ease opacity }
+    .drawer{ position:fixed; inset:0; width:100vw; height:100vh; background:rgba(0,0,0,.6); display:grid; place-items:center; opacity:0; pointer-events:none; transition:.25s ease opacity; z-index:9999; }
     .drawer.open{opacity:1; pointer-events:auto}
     .drawer-panel{ transform:translateX(8%); transition:.28s ease transform; }
     .drawer.open .drawer-panel{ transform:translateX(0) }
-    .drawer-panel{ height:100%; width:min(88%, 360px); background:var(--card); padding:22px; display:flex; flex-direction:column; gap:14px; border-left:1px solid rgba(255,255,255,.08)}
+    .drawer-panel{ height:auto; min-height:220px; width:min(88%, 360px); background:var(--card); padding:22px; display:flex; flex-direction:column; gap:14px; border-radius:18px; box-shadow:0 8px 32px rgba(0,0,0,0.18); border-left:none; align-items:center; justify-content:center; }
     .drawer a{padding:12px 10px; border-radius:10px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06)}
 
     /* ---------------- HERO ---------------- */
