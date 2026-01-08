@@ -245,108 +245,136 @@
     }
 
     /* --- Navigation Upgrade --- */
+    /* --- Refined Professional Navigation --- */
     .nav {
       position: fixed;
       top: 32px;
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100% - (var(--container-px) * 2));
+      width: calc(100% - 48px);
       max-width: 1100px;
       z-index: 1000;
       background: rgba(3, 7, 18, 0.4);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-full);
-      padding: 12px 32px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      backdrop-filter: blur(30px) saturate(160%);
+      -webkit-backdrop-filter: blur(30px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      padding: 8px 32px;
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 20px 40px -8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      /* Top highlight */
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     .nav.scrolled {
       top: 16px;
-      background: rgba(3, 7, 18, 0.95);
-      padding: 8px 24px;
-      border-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      background: rgba(3, 7, 18, 0.85);
+      border-color: rgba(249, 115, 22, 0.2);
+      padding: 6px 20px;
+      max-width: 900px;
     }
 
     .nav-wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      padding: 0;
-      height: 48px;
+      height: 44px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      color: #fff;
-      padding-left: 12px;
+      gap: 12px;
       text-decoration: none;
+      transition: opacity 0.3s;
     }
 
-    .brand-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--brand);
-      display: grid;
-      place-items: center;
-      color: #fff;
+    .brand:hover {
+      opacity: 0.8;
     }
 
     .nav-links {
       display: none;
-      gap: 4px;
-      background: rgba(255, 255, 255, 0.05);
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.03);
       padding: 4px;
       border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
     }
 
     .nav-links a {
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 100px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--muted);
-      transition: all 0.3s;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: rgba(255, 255, 255, 0.1);
+    .nav-links a:hover {
       color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-links a.active {
+      background: #fff;
+      color: #000;
     }
 
     .contact-btn {
-      background: var(--brand);
+      background: linear-gradient(135deg, var(--brand) 0%, #ea580c 100%);
       color: #fff;
-      font-weight: 600;
-      padding: 10px 20px;
+      font-weight: 700;
+      padding: 10px 24px;
       border-radius: 100px;
-      font-size: 14px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       border: none;
-      transition: transform 0.2s;
+      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.25);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
     }
 
     .contact-btn:hover {
-      transform: scale(1.05);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(249, 115, 22, 0.4);
     }
 
     .menu {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+    }
+
+    .menu:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--brand);
+    }
+
+    /* Scroll Progress in Nav */
+    .nav-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 32px;
+      right: 32px;
+      height: 2px;
+      background: var(--brand);
+      width: 0%;
+      border-radius: 100px;
+      opacity: 0.4;
+      transition: width 0.1s linear;
     }
 
     @media (min-width: 768px) {
@@ -359,59 +387,72 @@
       }
     }
 
-    /* mobile drawer */
+    /* Refined Mobile Drawer */
     .drawer {
       position: fixed;
       inset: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, .6);
-      display: grid;
-      place-items: center;
+      z-index: 9999;
+      background: rgba(2, 6, 23, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       opacity: 0;
       pointer-events: none;
-      transition: .25s ease opacity;
-      z-index: 9999;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      display: grid;
+      place-items: center;
     }
 
     .drawer.open {
       opacity: 1;
-      pointer-events: auto
+      pointer-events: auto;
     }
 
     .drawer-panel {
-      transform: translateX(8%);
-      transition: .28s ease transform;
+      width: min(90%, 400px);
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 32px;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      transform: scale(0.9);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
     }
 
     .drawer.open .drawer-panel {
-      transform: translateX(0)
+      transform: scale(1);
     }
 
-    .drawer-panel {
-      height: auto;
-      min-height: 220px;
-      width: min(88%, 360px);
-      background: var(--card);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      border-radius: 18px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-      border-left: none;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .drawer a {
-      padding: 12px 10px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .04);
-      border: 1px solid rgba(255, 255, 255, .06);
+    .drawer-panel a {
+      font-size: 24px;
+      font-weight: 700;
       color: #fff;
-      font-weight: 600;
-      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .drawer-panel a:hover {
+      color: var(--brand);
+      transform: scale(1.05);
+    }
+
+    .drawer-panel .icon-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
     }
 
     /* ---------------- HERO ---------------- */
@@ -2076,33 +2117,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* Enhanced navigation */
-    .nav-enhanced {
-      backdrop-filter: blur(20px);
-      background: linear-gradient(180deg, rgba(12, 15, 22, .95), rgba(12, 15, 22, .85));
-    }
-
-    .nav-link {
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: var(--brand);
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 100%;
-    }
 
     /* Loading states */
     .loading {
@@ -2293,20 +2307,20 @@
   <!-- ===================== NAV ===================== -->
   <nav class="nav nav-enhanced" aria-label="Primary">
     <div class="container nav-wrap">
-      <span class="brand">
-        <img src="PixelPix_Studio.png" alt="PixelPic Studio Logo"
-          style="height: 30px; width: auto; margin-right: 8px; display: inline-block;" />
-      </span>
-      <div class="nav-links" role="menubar" aria-label="Primary Navigation">
+      <a href="#home" class="brand">
+        <img src="PixelPix_Studio.png" alt="PixelPic Studio" style="height: 32px; width: auto;" />
+      </a>
+      <div class="nav-links" role="menubar">
         <a href="#home" role="menuitem" class="active nav-link">Home</a>
-        <a href="#about" role="menuitem" class="nav-link">About Us</a>
+        <a href="#about" role="menuitem" class="nav-link">About</a>
         <a href="#services" role="menuitem" class="nav-link">Services</a>
-        <a href="our-work.html" role="menuitem" class="nav-link">Our Works</a>
-        <!-- <a href="#team" role="menuitem">Team</a> -->
-        <a class="contact-btn button-enhanced" href="#contact" role="menuitem">Contact Us</a>
+        <a href="our-work.html" role="menuitem" class="nav-link">Work</a>
+        <a class="contact-btn" href="#contact" role="menuitem">Contact</a>
       </div>
-      <button class="menu interactive-hover" id="openMenu" aria-label="Open menu" aria-haspopup="dialog"
-        aria-controls="drawerPanel"><span class="hamburger"></span></button>
+      <button class="menu interactive-hover" id="openMenu" aria-label="Open menu">
+        <span class="hamburger"></span>
+      </button>
+      <div class="nav-progress-bar"></div>
     </div>
   </nav>
 
@@ -4123,16 +4137,25 @@
 
 
 
-      // Navbar Scroll Effect
+      // Navbar Scroll & Progress Effect
       const nav = document.querySelector('.nav');
+      const progress = document.querySelector('.nav-progress-bar');
+
       if (nav) {
         window.addEventListener('scroll', () => {
+          // Scrolled State
           if (window.scrollY > 50) {
             nav.classList.add('scrolled');
           } else {
             nav.classList.remove('scrolled');
           }
-        });
+
+          // Progress Bar Calculation
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          if (progress) progress.style.width = scrolled + "%";
+        }, { passive: true });
       }
 
       // Reveal on Scroll
