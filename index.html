@@ -2893,7 +2893,7 @@
           </div>
         </div>
 
-        <div class="about-grid-modern mt-100">
+        <div class="about-grid-modern">
           <div class="about-info reveal">
             <div class="about-tagline">Elite Production Since 2020</div>
             <h3 class="about-headline">Crafting Stories for the Modern Era</h3>
@@ -2948,12 +2948,26 @@
           grid-template-columns: 1fr 1fr;
           gap: 100px;
           align-items: center;
+          margin-top: 100px;
         }
 
         @media (max-width: 991px) {
           .about-grid-modern {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 60px;
+            margin-top: 60px;
+            text-align: center;
+          }
+
+          .about-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .about-info .desc {
+            max-width: 500px;
+            margin-inline: auto;
           }
         }
 
