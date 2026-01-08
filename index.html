@@ -42,6 +42,8 @@
     /* Global Transitions & Smoothness */
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
     }
 
     body {
@@ -52,6 +54,10 @@
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+      width: 100%;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
 
     @keyframes fadeIn {
@@ -1793,6 +1799,12 @@
       opacity: 0;
     }
 
+    @media (max-width: 1024px) {
+      .custom-cursor {
+        display: none !important;
+      }
+    }
+
     .custom-cursor.active {
       transform: scale(2);
     }
@@ -2345,2091 +2357,2129 @@
     </div>
   </div>
 
-  <header id="home" class="hero-creative">
-    <div class="hero-video-bg">
-      <video autoplay loop muted playsinline class="bg-video">
-        <source src="bg.mp4" type="video/mp4">
-      </video>
-      <div class="video-overlay"></div>
-    </div>
-    <div class="container hero-layout-centered">
-      <div class="hero-content reveal">
-        <h1 class="hero-headline loading-fade delay-2">
-          Post-Production <br>
-          <span class="text-outline">Mastery.</span>
-        </h1>
+  <main id="main-content" style="overflow-x: hidden; width: 100%;">
+    <header id="home" class="hero-creative">
+      <div class="hero-video-bg">
+        <video autoplay loop muted playsinline class="bg-video">
+          <source src="bg.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+      </div>
+      <div class="container hero-layout-centered">
+        <div class="hero-content reveal">
+          <h1 class="hero-headline loading-fade delay-2">
+            Post-Production <br>
+            <span class="text-outline">Mastery.</span>
+          </h1>
 
-        <div class="hero-btns loading-fade delay-4">
-          <a href="#portfolio" class="btn-glow">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="5 3 19 12 5 21 5 3" />
-            </svg>
-            See Our Work
-          </a>
-          <a href="#contact" class="btn-glass">Get a Quote</a>
+          <div class="hero-btns loading-fade delay-4">
+            <a href="#portfolio" class="btn-glow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              See Our Work
+            </a>
+            <a href="#contact" class="btn-glass">Get a Quote</a>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <style>
-    .hero-creative {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 100px 0 60px;
-      z-index: 1;
-      overflow: hidden;
-    }
+    <style>
+      .hero-creative {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 100px 0 60px;
+        z-index: 1;
+        overflow: hidden;
+      }
 
-    .hero-video-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
+      .hero-video-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
 
-    .hero-video-bg .bg-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.8;
-    }
+      .hero-video-bg .bg-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+      }
 
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.8) 100%);
-    }
+      .video-overlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.8) 100%);
+      }
 
-    .hero-layout-centered {
-      width: 100%;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-    }
+      .hero-layout-centered {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+      }
 
-    .hero-content {
-      max-width: 900px;
-    }
+      .hero-content {
+        max-width: 900px;
+      }
 
-    .hero-headline {
-      font-size: clamp(48px, 8vw, 92px);
-      line-height: 0.95;
-      font-weight: 800;
-      margin-bottom: 24px;
-      letter-spacing: -3px;
-      background: linear-gradient(180deg, #fff 40%, rgba(255, 255, 255, 0.7) 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .text-outline {
-      display: block;
-      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 20px;
-      margin-top: 40px;
-      justify-content: center;
-    }
-
-    .btn-glow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--brand);
-      color: #000;
-      padding: 16px 36px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 16px;
-      box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .btn-glow:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 25px 50px rgba(249, 115, 22, 0.4);
-    }
-
-    .btn-glass {
-      padding: 16px 36px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      font-weight: 600;
-      font-size: 16px;
-      backdrop-filter: blur(10px);
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .btn-glass:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 768px) {
       .hero-headline {
-        font-size: clamp(40px, 12vw, 64px);
+        font-size: clamp(42px, 9vw, 92px);
+        line-height: 1.05;
+        font-weight: 800;
+        margin-bottom: 24px;
+        letter-spacing: -2px;
+        background: linear-gradient(180deg, #fff 40%, rgba(255, 255, 255, 0.7) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+
+      .text-outline {
+        display: block;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+        color: transparent;
+        -webkit-text-fill-color: transparent;
       }
 
       .hero-btns {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
-
-  <!-- ===================== CRAWLING TEXT (MARQUEE) ===================== -->
-  <div class="marquee-strip">
-    <div class="marquee-content">
-      <span>VIDEO EDITING</span> <span class="sep">•</span>
-      <span>COLOR GRADING</span> <span class="sep">•</span>
-      <span>VFX & MOTION</span> <span class="sep">•</span>
-      <span>SOUND DESIGN</span> <span class="sep">•</span>
-      <span>3D ANIMATION</span> <span class="sep">•</span>
-      <span>VIDEO EDITING</span> <span class="sep">•</span>
-      <span>COLOR GRADING</span> <span class="sep">•</span>
-      <span>VFX & MOTION</span> <span class="sep">•</span>
-      <span>SOUND DESIGN</span> <span class="sep">•</span>
-      <span>3D ANIMATION</span> <span class="sep">•</span>
-    </div>
-  </div>
-
-  <style>
-    .marquee-strip {
-      background: var(--brand);
-      padding: 24px 0;
-      overflow: hidden;
-      position: relative;
-      z-index: 10;
-      transform: rotate(-1.5deg) scale(1.05);
-      margin-top: -40px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    }
-
-    .marquee-content {
-      display: flex;
-      gap: 40px;
-      white-space: nowrap;
-      animation: marquee 20s linear infinite;
-      font-weight: 800;
-      font-size: 18px;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .sep {
-      opacity: 0.5;
-    }
-
-    @keyframes marquee {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-  </style>
-
-  <!-- ===================== SERVICES / ABOUT =========== -->
-  <!-- ===================== SERVICES SECTION =========== -->
-  <section id="services" class="section services-split">
-    <div class="container">
-      <div class="staging-header reveal">
-        <div class="center-stage">
-          <div class="eyebrow-container">
-            <span class="eyebrow-line"></span>
-            <span class="eyebrow-text">Our Expertise</span>
-            <span class="eyebrow-line"></span>
-          </div>
-          <h2 class="title stage-title">Services That Scale</h2>
-          <p class="stage-lead">Comprehensive production solutions for every stage of your brand's growth.</p>
-        </div>
-      </div>
-
-      <div class="split-wrapper">
-        <!-- Connecting Line -->
-        <div class="connector-line"></div>
-
-        <!-- Service 1: Ad Film Making -->
-        <div class="split-item reveal">
-          <div class="split-visual">
-            <div class="blob blob-1"></div>
-            <img src="Joyful Film Crew Simple Compose.png" alt="Ad Film Making" class="split-img">
-          </div>
-          <div class="split-text">
-            <div class="split-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M23 7l-7 5 7 5V7z" />
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-              </svg>
-            </div>
-            <h3>Ad Film Making</h3>
-            <p>We craft cinematic commercials that tell your brand's story with emotion and impact. From storyboard to
-              screen, we handle every detail to ensure your message cuts through the noise.</p>
-            <ul class="feature-list">
-              <li>Concept & Scripting</li>
-              <li>4K Cinematography</li>
-              <li>Professional Casting</li>
-            </ul>
-            <a href="#contact" class="learn-more">Get Started <span class="arrow">→</span></a>
-          </div>
-        </div>
-
-        <!-- Service 2: Post-Production -->
-        <div class="split-item reverse reveal">
-          <div class="split-visual">
-            <div class="blob blob-2"></div>
-            <img src="Cinematic Editing Studio Scene.png" alt="Post Production" class="split-img">
-          </div>
-          <div class="split-text">
-            <div class="split-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <polygon points="14 2 18 6 7 17 3 17 3 13 14 2" />
-                <line x1="3" y1="22" x2="21" y2="22" />
-              </svg>
-            </div>
-            <h3>Post-Production & VFX</h3>
-            <p>Turn raw footage into masterpieces. Our state-of-the-art editing suite and talented editors bring magic
-              to your visuals with advanced color grading and visual effects.</p>
-            <ul class="feature-list">
-              <li>Advanced Color Grading</li>
-              <li>Sound Design & Mixing</li>
-              <li>VFX & Motion Graphics</li>
-            </ul>
-            <a href="#contact" class="learn-more">Enhance Your Video <span class="arrow">→</span></a>
-          </div>
-        </div>
-
-        <!-- Service 3: Social & Branding -->
-        <div class="split-item reveal">
-          <div class="split-visual">
-            <div class="blob blob-3"></div>
-            <img src="Creative Team Unity Asset Aug 30 2025.png" alt="Social Media" class="split-img">
-          </div>
-          <div class="split-text">
-            <div class="split-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </div>
-            <h3>Social Media & Branding</h3>
-            <p>Dominate the feed. We create high-energy reels, stunning graphics, and cohesive brand identities that
-              resonate with your audience and drive engagement.</p>
-            <ul class="feature-list">
-              <li>Viral Reels & Shorts</li>
-              <li>Brand Identity Design</li>
-              <li>Social Media Strategy</li>
-            </ul>
-            <a href="#contact" class="learn-more">Grow Your Brand <span class="arrow">→</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <style>
-      .services-split {
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(180deg, var(--bg) 0%, #0b0f19 100%);
-      }
-
-      .split-wrapper {
-        position: relative;
         display: flex;
-        flex-direction: column;
-        gap: 100px;
-        margin-top: 60px;
+        gap: 20px;
+        margin-top: 40px;
+        justify-content: center;
       }
 
-      /* Dotted Connector Line */
-      .connector-line {
-        position: absolute;
-        top: 50px;
-        bottom: 50px;
-        left: 50%;
-        width: 2px;
-        background-image: linear-gradient(to bottom, var(--brand) 33%, rgba(255, 255, 255, 0.05) 0%);
-        background-position: right;
-        background-size: 2px 20px;
-        background-repeat: repeat-y;
-        transform: translateX(-50%);
-        z-index: 0;
-        opacity: 0.3;
-      }
-
-      @media (max-width: 900px) {
-        .connector-line {
-          left: 20px;
-          display: none;
-          /* Hide on mobile for cleaner look */
-        }
-      }
-
-      .split-item {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 40px;
-        align-items: center;
-        position: relative;
-        z-index: 1;
-      }
-
-      @media (min-width: 900px) {
-        .split-item {
-          grid-template-columns: 1fr 1fr;
-          gap: 80px;
-        }
-
-        .split-item.reverse {
-          direction: rtl;
-        }
-
-        .split-item.reverse .split-text {
-          direction: ltr;
-        }
-      }
-
-      .split-visual {
-        position: relative;
-        border-radius: 24px;
-        /* overflow: hidden; Removed to let blobs bleed out */
-      }
-
-      .split-img {
-        width: 100%;
-        border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        position: relative;
-        z-index: 2;
-        transition: transform 0.5s ease;
-      }
-
-      .split-item:hover .split-img {
-        transform: translateY(-10px);
-      }
-
-      /* Ambient Blobs */
-      .blob {
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.4;
-        z-index: 1;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      .blob-1 {
-        background: var(--brand);
-      }
-
-      .blob-2 {
-        background: #31c48d;
-      }
-
-      .blob-3 {
-        background: #3b82f6;
-      }
-
-      .split-text {
-        padding: 20px;
-      }
-
-      .split-icon {
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
-        display: grid;
-        place-items: center;
-        color: var(--brand);
-        margin-bottom: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .split-icon svg {
-        width: 24px;
-        height: 24px;
-      }
-
-      .split-text h3 {
-        font-size: clamp(28px, 4vw, 36px);
-        margin: 0 0 16px 0;
-        font-weight: 700;
-      }
-
-      .split-text p {
-        font-size: 16px;
-        color: var(--muted);
-        line-height: 1.7;
-        margin-bottom: 24px;
-      }
-
-      .feature-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 30px 0;
-        display: grid;
-        gap: 12px;
-      }
-
-      .feature-list li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: rgba(255, 255, 255, 0.9);
-        font-weight: 500;
-      }
-
-      .feature-list li::before {
-        content: '✓';
-        color: var(--brand);
-        font-weight: 800;
-      }
-
-      .learn-more {
+      .btn-glow {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        color: var(--brand);
-        font-weight: 600;
-        font-size: 15px;
-        transition: gap 0.3s;
-      }
-
-      .learn-more:hover {
         gap: 12px;
-        color: #fff;
-      }
-
-      .arrow {
-        transition: transform 0.3s;
-      }
-    </style>
-  </section>
-  <!-- ===================== ABOUT ===================== -->
-  <!-- ===================== ABOUT SECTION ===================== -->
-  <section id="about" class="section about-studio">
-    <div class="container">
-      <div class="about-hero-stage reveal">
-        <div class="center-content-balanced">
-          <div class="eyebrow-container center">
-            <span class="eyebrow-line"></span>
-            <span class="eyebrow-text">Heritage & Vision</span>
-            <span class="eyebrow-line"></span>
-          </div>
-          <h2 class="title glass-title">About Pixel Pic</h2>
-          <p class="lead center-max">We are a collective of digital craftsmen dedicated to elevating brands through
-            cinematic excellence.</p>
-        </div>
-      </div>
-
-      <div class="about-grid-modern mt-100">
-        <div class="about-info reveal">
-          <div class="about-tagline">Elite Production Since 2020</div>
-          <h3 class="about-headline">Crafting Stories for the Modern Era</h3>
-          <p class="desc">Based in the heart of Madurai, Pixel Pic Studio has grown into a powerhouse of creative
-            production. We specialize in transforming complex brand messages into visceral, cinematic experiences that
-            capture attention and drive results.</p>
-
-          <div class="stats-grid-v2">
-            <div class="s-card">
-              <span class="s-num">5+</span>
-              <span class="s-label">Years of Mastery</span>
-            </div>
-            <div class="s-card">
-              <span class="s-num">200+</span>
-              <span class="s-label">Production Clips</span>
-            </div>
-            <div class="s-card">
-              <span class="s-num">100%</span>
-              <span class="s-label">Client Success</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-visual-modern reveal">
-          <div class="visual-frame">
-            <img src="Editing_Workspace.png" alt="Edit Suite" />
-            <div class="frame-overlay"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <style>
-      .about-studio {
-        background: #030712;
-        padding: 140px 0;
-      }
-
-      .center-content-balanced {
-        text-align: center;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .center-max {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .about-grid-modern {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 100px;
-        align-items: center;
-      }
-
-      @media (max-width: 991px) {
-        .about-grid-modern {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-      }
-
-      .about-tagline {
-        color: var(--brand);
+        background: var(--brand);
+        color: #000;
+        padding: 16px 36px;
+        border-radius: 14px;
         font-weight: 700;
-        letter-spacing: 2px;
-        font-size: 13px;
-        margin-bottom: 12px;
-        text-transform: uppercase;
+        font-size: 16px;
+        box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       }
 
-      .about-headline {
-        font-size: clamp(32px, 4vw, 42px);
-        margin-bottom: 24px;
-        line-height: 1.1;
+      .btn-glow:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 25px 50px rgba(249, 115, 22, 0.4);
       }
 
-      .stats-grid-v2 {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        margin-top: 50px;
+      .btn-glass {
+        padding: 16px 36px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
       }
 
       @media (max-width: 768px) {
-        .stats-grid-v2 {
-          grid-template-columns: 1fr;
-          gap: 16px;
+        .hero-creative {
+          padding: 120px 0 80px;
+          min-height: auto;
         }
 
-        .s-card {
-          padding: 24px 20px;
+        .hero-headline {
+          font-size: clamp(36px, 11vw, 56px);
+          letter-spacing: -1px;
         }
-      }
 
-      .s-card {
-        padding: 40px 20px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        border-radius: 24px;
-        text-align: center;
-        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      }
+        .hero-btns {
+          flex-direction: column;
+          align-items: stretch;
+          max-width: 300px;
+          margin-inline: auto;
+        }
 
-      .s-card:hover {
-        transform: translateY(-10px);
-        background: rgba(255, 255, 255, 0.05);
-        border-color: var(--brand);
-      }
-
-      .s-num {
-        display: block;
-        font-size: 32px;
-        font-weight: 800;
-        color: var(--brand);
-        margin-bottom: 8px;
-      }
-
-      .s-label {
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--muted);
-        text-transform: uppercase;
-      }
-
-      .visual-frame {
-        border-radius: 40px;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
-      }
-
-      .visual-frame img {
-        width: 100%;
-        display: block;
-        transition: transform 1s ease;
-      }
-
-      .about-visual-modern:hover img {
-        transform: scale(1.05);
+        .btn-glow,
+        .btn-glass {
+          width: 100%;
+          justify-content: center;
+          padding: 14px 24px;
+        }
       }
     </style>
-    <!-- ===================== PORTFOLIO STAGE ===================== -->
-    <section id="portfolio" class="section portfolio-section">
-      <div class="portfolio-backdrop">
-        <div class="glow-orb glow-1"></div>
-        <div class="glow-orb glow-2"></div>
-      </div>
 
+    <!-- ===================== CRAWLING TEXT (MARQUEE) ===================== -->
+    <div class="marquee-strip">
+      <div class="marquee-content">
+        <span>VIDEO EDITING</span> <span class="sep">•</span>
+        <span>COLOR GRADING</span> <span class="sep">•</span>
+        <span>VFX & MOTION</span> <span class="sep">•</span>
+        <span>SOUND DESIGN</span> <span class="sep">•</span>
+        <span>3D ANIMATION</span> <span class="sep">•</span>
+        <span>VIDEO EDITING</span> <span class="sep">•</span>
+        <span>COLOR GRADING</span> <span class="sep">•</span>
+        <span>VFX & MOTION</span> <span class="sep">•</span>
+        <span>SOUND DESIGN</span> <span class="sep">•</span>
+        <span>3D ANIMATION</span> <span class="sep">•</span>
+      </div>
+    </div>
+
+    <style>
+      .marquee-strip {
+        background: var(--brand);
+        padding: 24px 0;
+        overflow: hidden;
+        position: relative;
+        z-index: 10;
+        transform: rotate(-1.5deg) scale(1.05);
+        margin-top: -40px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      }
+
+      .marquee-content {
+        display: flex;
+        gap: 40px;
+        white-space: nowrap;
+        animation: marquee 20s linear infinite;
+        font-weight: 800;
+        font-size: 18px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .sep {
+        opacity: 0.5;
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+
+    <!-- ===================== SERVICES / ABOUT =========== -->
+    <!-- ===================== SERVICES SECTION =========== -->
+    <section id="services" class="section services-split">
       <div class="container">
         <div class="staging-header reveal">
           <div class="center-stage">
             <div class="eyebrow-container">
               <span class="eyebrow-line"></span>
-              <span class="eyebrow-text">Our Masterpieces</span>
+              <span class="eyebrow-text">Our Expertise</span>
               <span class="eyebrow-line"></span>
             </div>
-            <h2 class="title stage-title">Featured Work</h2>
-            <p class="stage-lead">A collection of cinematic experiences crafted with precision and passion.</p>
-          </div>
-
-          <div class="filter-orchestra">
-            <button class="filter-tab active" data-cat="all">All Projects</button>
-            <button class="filter-tab" data-cat="ads">Ad Reels</button>
-            <button class="filter-tab" data-cat="corporate">Corporate</button>
-            <button class="filter-tab" data-cat="social">Social Media</button>
+            <h2 class="title stage-title">Services That Scale</h2>
+            <p class="stage-lead">Comprehensive production solutions for every stage of your brand's growth.</p>
           </div>
         </div>
 
-        <div class="portfolio-stage-grid" id="portfolioGrid">
-          <!-- Item 1: The Hero Feature -->
-          <a class="stage-card feature-hero reveal" href="#" data-cat="ads"
-            data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
-            <div class="stage-img">
-              <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1600&auto=format&fit=crop"
-                alt="Nike Air Max" loading="lazy" />
-            </div>
-            <div class="stage-overlay">
-              <div class="stage-tags">
-                <span class="tag-pill">Premium Ad</span>
-                <span class="tag-pill">4K UHD</span>
-              </div>
-              <div class="stage-info">
-                <h3>Nike Air Max Launch</h3>
-                <p>Redefining speed with high-energy cinematic visual storytelling.</p>
-              </div>
-              <div class="stage-action">
-                <div class="play-circle-large">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </a>
+        <div class="split-wrapper">
+          <!-- Connecting Line -->
+          <div class="connector-line"></div>
 
-          <!-- Item 2: Vertical Highlight -->
-          <a class="stage-card vertical-tile reveal" href="#" data-cat="social"
-            data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
-            <div class="stage-img">
-              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop"
-                alt="Fashion" loading="lazy" />
+          <!-- Service 1: Ad Film Making -->
+          <div class="split-item reveal">
+            <div class="split-visual">
+              <div class="blob blob-1"></div>
+              <img src="Joyful Film Crew Simple Compose.png" alt="Ad Film Making" class="split-img">
             </div>
-            <div class="stage-overlay compact">
-              <div class="stage-info">
-                <span class="cat-label">Social Media</span>
-                <h3>Fashion Week Highlights</h3>
+            <div class="split-text">
+              <div class="split-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M23 7l-7 5 7 5V7z" />
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                </svg>
               </div>
-              <div class="stage-action">
-                <div class="play-circle-sm">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
+              <h3>Ad Film Making</h3>
+              <p>We craft cinematic commercials that tell your brand's story with emotion and impact. From storyboard to
+                screen, we handle every detail to ensure your message cuts through the noise.</p>
+              <ul class="feature-list">
+                <li>Concept & Scripting</li>
+                <li>4K Cinematography</li>
+                <li>Professional Casting</li>
+              </ul>
+              <a href="#contact" class="learn-more">Get Started <span class="arrow">→</span></a>
             </div>
-          </a>
+          </div>
 
-          <!-- Item 3: Standard Card -->
-          <a class="stage-card standard-tile reveal" href="#" data-cat="corporate"
-            data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
-            <div class="stage-img">
-              <img src="https://images.unsplash.com/photo-1485217988980-11786ced9454?q=80&w=1600&auto=format&fit=crop"
-                alt="Tech" loading="lazy" />
+          <!-- Service 2: Post-Production -->
+          <div class="split-item reverse reveal">
+            <div class="split-visual">
+              <div class="blob blob-2"></div>
+              <img src="Cinematic Editing Studio Scene.png" alt="Post Production" class="split-img">
             </div>
-            <div class="stage-overlay compact">
-              <div class="stage-info">
-                <span class="cat-label">Corporate</span>
-                <h3>Global Tech Summit 2025</h3>
+            <div class="split-text">
+              <div class="split-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <polygon points="14 2 18 6 7 17 3 17 3 13 14 2" />
+                  <line x1="3" y1="22" x2="21" y2="22" />
+                </svg>
               </div>
-              <div class="stage-action">
-                <div class="play-circle-sm">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
+              <h3>Post-Production & VFX</h3>
+              <p>Turn raw footage into masterpieces. Our state-of-the-art editing suite and talented editors bring magic
+                to your visuals with advanced color grading and visual effects.</p>
+              <ul class="feature-list">
+                <li>Advanced Color Grading</li>
+                <li>Sound Design & Mixing</li>
+                <li>VFX & Motion Graphics</li>
+              </ul>
+              <a href="#contact" class="learn-more">Enhance Your Video <span class="arrow">→</span></a>
             </div>
-          </a>
+          </div>
 
-          <!-- Item 4: Wide Card -->
-          <a class="stage-card wide-tile reveal" href="#" data-cat="ads"
-            data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
-            <div class="stage-img">
-              <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1600&auto=format&fit=crop"
-                alt="Organic Tea" loading="lazy" />
+          <!-- Service 3: Social & Branding -->
+          <div class="split-item reveal">
+            <div class="split-visual">
+              <div class="blob blob-3"></div>
+              <img src="Creative Team Unity Asset Aug 30 2025.png" alt="Social Media" class="split-img">
             </div>
-            <div class="stage-overlay compact">
-              <div class="stage-info">
-                <span class="cat-label">Commercial</span>
-                <h3>Organic Tea Origins</h3>
+            <div class="split-text">
+              <div class="split-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
               </div>
-              <div class="stage-action">
-                <div class="play-circle-sm">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
+              <h3>Social Media & Branding</h3>
+              <p>Dominate the feed. We create high-energy reels, stunning graphics, and cohesive brand identities that
+                resonate with your audience and drive engagement.</p>
+              <ul class="feature-list">
+                <li>Viral Reels & Shorts</li>
+                <li>Brand Identity Design</li>
+                <li>Social Media Strategy</li>
+              </ul>
+              <a href="#contact" class="learn-more">Grow Your Brand <span class="arrow">→</span></a>
             </div>
-          </a>
+          </div>
         </div>
       </div>
 
       <style>
-        .portfolio-section {
-          background: #020617;
-          padding: 120px 0;
+        .services-split {
           position: relative;
           overflow: hidden;
+          background: linear-gradient(180deg, var(--bg) 0%, #0b0f19 100%);
         }
 
-        .portfolio-backdrop {
+        .split-wrapper {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 100px;
+          margin-top: 60px;
+        }
+
+        /* Dotted Connector Line */
+        .connector-line {
           position: absolute;
-          inset: 0;
-          pointer-events: none;
+          top: 50px;
+          bottom: 50px;
+          left: 50%;
+          width: 2px;
+          background-image: linear-gradient(to bottom, var(--brand) 33%, rgba(255, 255, 255, 0.05) 0%);
+          background-position: right;
+          background-size: 2px 20px;
+          background-repeat: repeat-y;
+          transform: translateX(-50%);
+          z-index: 0;
+          opacity: 0.3;
         }
 
-        .glow-orb {
-          position: absolute;
-          width: 800px;
-          height: 800px;
-          border-radius: 50%;
-          filter: blur(150px);
-          opacity: 0.12;
-        }
-
-        .glow-1 {
-          top: -20%;
-          left: -10%;
-          background: var(--brand);
-        }
-
-        .glow-2 {
-          bottom: -20%;
-          right: -10%;
-          background: var(--accent);
-        }
-
-        .staging-header {
-          text-align: center;
-          margin-bottom: 80px;
-        }
-
-        .center-stage {
-          max-width: 700px;
-          margin: 0 auto 40px;
-        }
-
-        .stage-title {
-          font-size: clamp(40px, 6vw, 64px);
-          font-weight: 800;
-          letter-spacing: -2px;
-          margin: 20px 0;
-          background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .stage-lead {
-          font-size: 18px;
-          color: var(--muted);
-        }
-
-        .filter-orchestra {
-          display: inline-flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 12px;
-          background: rgba(255, 255, 255, 0.03);
-          padding: 10px;
-          border-radius: 100px;
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          backdrop-filter: blur(20px);
-        }
-
-        .filter-tab {
-          background: transparent;
-          border: none;
-          padding: 12px 28px;
-          border-radius: 100px;
-          font-size: 14px;
-          font-weight: 600;
-          color: var(--muted);
-          cursor: pointer;
-          transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-          border: 1px solid transparent;
-        }
-
-        .filter-tab:hover {
-          color: #fff;
-          background: rgba(255, 255, 255, 0.05);
-        }
-
-        .filter-tab.active {
-          background: var(--brand);
-          color: #000;
-          box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
-        }
-
-        @media (max-width: 600px) {
-          .filter-orchestra {
-            border-radius: 24px;
-            padding: 8px;
-            width: 100%;
-            gap: 8px;
-          }
-
-          .filter-tab {
-            flex: 1 1 calc(50% - 8px);
-            padding: 8px 12px;
-            font-size: 11px;
-            text-align: center;
+        @media (max-width: 900px) {
+          .connector-line {
+            left: 20px;
+            display: none;
+            /* Hide on mobile for cleaner look */
           }
         }
 
-        .portfolio-stage-grid {
+        .split-item {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          grid-auto-rows: 240px;
-          gap: 30px;
-        }
-
-        .stage-card {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          align-items: center;
           position: relative;
-          border-radius: 32px;
-          overflow: hidden;
-          background: #0d121c;
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          text-decoration: none;
-          display: block;
-          transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          z-index: 1;
         }
 
-        /* Grid Varieties */
-        .feature-hero {
-          grid-column: span 2;
-          grid-row: span 2;
-        }
-
-        .vertical-tile {
-          grid-column: span 1;
-          grid-row: span 2;
-        }
-
-        .standard-tile {
-          grid-column: span 1;
-          grid-row: span 1;
-        }
-
-        .wide-tile {
-          grid-column: span 1;
-          grid-row: span 1;
-        }
-
-        @media (max-width: 1100px) {
-          .portfolio-stage-grid {
-            grid-template-columns: repeat(2, 1fr);
-            grid-auto-rows: 300px;
+        @media (min-width: 900px) {
+          .split-item {
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
           }
 
-          .feature-hero {
-            grid-column: span 2;
+          .split-item.reverse {
+            direction: rtl;
+          }
+
+          .split-item.reverse .split-text {
+            direction: ltr;
           }
         }
 
         @media (max-width: 768px) {
-          .portfolio-stage-grid {
-            grid-template-columns: 1fr;
-            grid-auto-rows: auto;
+          .split-wrapper {
+            gap: 60px;
           }
 
-          .stage-card {
-            aspect-ratio: 4/3;
-            grid-column: span 1 !important;
-            grid-row: span 1 !important;
+          .split-text {
+            padding: 10px 0;
+            text-align: center;
           }
 
-          .feature-hero {
-            aspect-ratio: 1;
+          .split-icon {
+            margin-inline: auto;
+          }
+
+          .feature-list li {
+            justify-content: center;
           }
         }
 
-        .stage-img {
-          width: 100%;
-          height: 100%;
-          transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .stage-card:hover .stage-img {
-          transform: scale(1.1) rotate(1deg);
-        }
-
-        .stage-img img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .stage-overlay {
-          position: absolute;
-          inset: 0;
-          padding: 40px;
-          background: linear-gradient(0deg, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.3) 50%, transparent 100%);
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-        }
-
-        .stage-overlay.compact {
-          padding: 30px;
-        }
-
-        .stage-tags {
-          display: flex;
-          gap: 10px;
-          margin-bottom: 20px;
-        }
-
-        .tag-pill {
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-          padding: 6px 16px;
-          border-radius: 100px;
-          font-size: 11px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: #fff;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .cat-label {
-          font-size: 11px;
-          font-weight: 800;
-          color: var(--brand);
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          margin-bottom: 8px;
-          display: block;
-        }
-
-        .stage-info h3 {
-          font-size: clamp(20px, 3vw, 28px);
-          margin: 0;
-          font-weight: 700;
-          color: #fff;
-        }
-
-        .stage-info p {
-          color: rgba(255, 255, 255, 0.6);
-          font-size: 15px;
-          margin-top: 12px;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.5s ease 0.1s;
-        }
-
-        .stage-card:hover .stage-info p {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .stage-action {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) scale(0.8);
-          opacity: 0;
-          transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .stage-card:hover .stage-action {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
-        }
-
-        .play-circle-large {
-          width: 100px;
-          height: 100px;
-          background: var(--brand);
-          border-radius: 50%;
-          display: grid;
-          place-items: center;
-          color: #000;
-          box-shadow: 0 0 50px var(--brand-glow);
-        }
-
-        .play-circle-sm {
-          width: 60px;
-          height: 60px;
-          background: #fff;
-          border-radius: 50%;
-          display: grid;
-          place-items: center;
-          color: #000;
-        }
-
-        .play-circle-large svg {
-          width: 40px;
-        }
-
-        .play-circle-sm svg {
-          width: 24px;
-        }
-      </style>
-    </section>
-
-    <!-- ===================== OUR WORK PAGE ===================== -->
-
-    <!-- Portfolio Stats -->
-
-    <!-- ===================== DRAWER (Mobile Menu) ===================== -->
-
-    <!-- ===================== PRICING ===================== -->
-    <section id="pricing" class="section pricing-section">
-      <div class="container">
-        <div class="center-content reveal">
-          <div class="eyebrow-container center">
-            <span class="eyebrow-line"></span>
-            <span class="eyebrow-text">Investment Plans</span>
-            <span class="eyebrow-line"></span>
-          </div>
-          <h2 class="title section-title center">Choose Your Package</h2>
-          <p class="lead center" style="margin: 0 auto 60px;">Expert-led production services tailored for brands that
-            demand the best.</p>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- Starter Pack -->
-          <div class="price-card reveal">
-            <div class="price-header">
-              <h4>Starter Pack</h4>
-              <div class="tagline">Social Media Ready</div>
-            </div>
-            <div class="price-body">
-              <ul class="price-list">
-                <li><i class="check-icon">✓</i> 15-30 sec Professional Reel</li>
-                <li><i class="check-icon">✓</i> Dynamic Social Editing</li>
-                <li><i class="check-icon">✓</i> Licensed Background Music</li>
-                <li><i class="check-icon">✓</i> Optimized For Mobile</li>
-              </ul>
-            </div>
-            <div class="price-footer">
-              <a href="#contact" class="btn-glass full-width">Get a Quote</a>
-            </div>
-          </div>
-
-          <!-- Business Pack -->
-          <div class="price-card featured reveal">
-            <div class="popular-tag">Most Popular</div>
-            <div class="price-header">
-              <h4>Business Pack</h4>
-              <div class="tagline">The Growth Engine</div>
-            </div>
-            <div class="price-body">
-              <ul class="price-list">
-                <li><i class="check-icon">✓</i> 60 sec High-End Ad Film</li>
-                <li><i class="check-icon">✓</i> Professional Color Grading</li>
-                <li><i class="check-icon">✓</i> 3 Custom YT Thumbnails</li>
-                <li><i class="check-icon">✓</i> Multiple Format Exports</li>
-              </ul>
-            </div>
-            <div class="price-footer">
-              <a href="#contact" class="btn-glow full-width">Premium Choice</a>
-            </div>
-          </div>
-
-          <!-- Pro Pack -->
-          <div class="price-card reveal">
-            <div class="price-header">
-              <h4>Pro Pack</h4>
-              <div class="tagline">Full Brand Identity</div>
-            </div>
-            <div class="price-body">
-              <ul class="price-list">
-                <li><i class="check-icon">✓</i> Complete Brand Visual Kit</li>
-                <li><i class="check-icon">✓</i> Multi-platform Ad Strategy</li>
-                <li><i class="check-icon">✓</i> Priority Post-Production</li>
-                <li><i class="check-icon">✓</i> Dedicated Account Lead</li>
-              </ul>
-            </div>
-            <div class="price-footer">
-              <a href="#contact" class="btn-glass full-width">Inquire Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <style>
-        .pricing-section {
-          background: var(--bg-alt);
-          padding: 120px 0;
-        }
-
-        .center-content.center {
-          text-align: center;
-        }
-
-        .pricing-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-        }
-
-        .price-card {
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 32px;
-          padding: 48px;
-          display: flex;
-          flex-direction: column;
-          transition: all 0.4s ease;
+        .split-visual {
           position: relative;
+          border-radius: 24px;
+          /* overflow: hidden; Removed to let blobs bleed out */
         }
 
-        .price-card.featured {
-          background: rgba(255, 255, 255, 0.05);
-          border-color: var(--brand);
-          transform: scale(1.05);
+        .split-img {
+          width: 100%;
+          border-radius: 24px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+          position: relative;
           z-index: 2;
-          box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+          transition: transform 0.5s ease;
         }
 
-        @media (max-width: 991px) {
-          .pricing-grid {
-            grid-template-columns: 1fr;
-            max-width: 450px;
-            margin: 0 auto;
-          }
-
-          .price-card {
-            padding: 32px 24px;
-          }
-
-          .price-card.featured {
-            transform: scale(1);
-          }
-        }
-
-        .price-card:hover {
-          border-color: rgba(255, 255, 255, 0.2);
+        .split-item:hover .split-img {
           transform: translateY(-10px);
         }
 
-        .price-card.featured:hover {
-          transform: translateY(-10px) scale(1.05);
-        }
-
-        .popular-tag {
+        /* Ambient Blobs */
+        .blob {
           position: absolute;
-          top: 24px;
-          right: 24px;
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          filter: blur(80px);
+          opacity: 0.4;
+          z-index: 1;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .blob-1 {
           background: var(--brand);
-          color: #000;
-          padding: 6px 16px;
-          border-radius: 100px;
-          font-size: 12px;
+        }
+
+        .blob-2 {
+          background: #31c48d;
+        }
+
+        .blob-3 {
+          background: #3b82f6;
+        }
+
+        .split-text {
+          padding: 20px;
+        }
+
+        .split-icon {
+          width: 50px;
+          height: 50px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          display: grid;
+          place-items: center;
+          color: var(--brand);
+          margin-bottom: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .split-icon svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        .split-text h3 {
+          font-size: clamp(28px, 4vw, 36px);
+          margin: 0 0 16px 0;
           font-weight: 700;
-          text-transform: uppercase;
         }
 
-        .price-header h4 {
-          font-size: 24px;
-          margin: 0 0 8px 0;
-        }
-
-        .tagline {
+        .split-text p {
+          font-size: 16px;
           color: var(--muted);
-          font-size: 14px;
-          margin-bottom: 32px;
+          line-height: 1.7;
+          margin-bottom: 24px;
         }
 
-        .price-list {
+        .feature-list {
           list-style: none;
           padding: 0;
-          margin: 0 0 40px 0;
+          margin: 0 0 30px 0;
+          display: grid;
+          gap: 12px;
         }
 
-        .price-list li {
+        .feature-list li {
           display: flex;
           align-items: center;
-          gap: 12px;
-          margin-bottom: 16px;
-          color: rgba(255, 255, 255, 0.8);
-          font-size: 15px;
+          gap: 10px;
+          color: rgba(255, 255, 255, 0.9);
+          font-weight: 500;
         }
 
-        .check-icon {
+        .feature-list li::before {
+          content: '✓';
           color: var(--brand);
-          font-weight: 900;
-          font-style: normal;
+          font-weight: 800;
         }
 
-        .price-footer {
-          margin-top: auto;
+        .learn-more {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: var(--brand);
+          font-weight: 600;
+          font-size: 15px;
+          transition: gap 0.3s;
         }
 
-        .full-width {
-          width: 100%;
-          justify-content: center;
+        .learn-more:hover {
+          gap: 12px;
+          color: #fff;
+        }
+
+        .arrow {
+          transition: transform 0.3s;
         }
       </style>
     </section>
-
-    <!-- ===================== TESTIMONIALS ===================== -->
-    <section id="reviews" class="section testimonials-section">
+    <!-- ===================== ABOUT ===================== -->
+    <!-- ===================== ABOUT SECTION ===================== -->
+    <section id="about" class="section about-studio">
       <div class="container">
-        <div class="center-content reveal">
-          <div class="eyebrow-container center">
-            <span class="eyebrow-line"></span>
-            <span class="eyebrow-text">Global Feedback</span>
-            <span class="eyebrow-line"></span>
+        <div class="about-hero-stage reveal">
+          <div class="center-content-balanced">
+            <div class="eyebrow-container center">
+              <span class="eyebrow-line"></span>
+              <span class="eyebrow-text">Heritage & Vision</span>
+              <span class="eyebrow-line"></span>
+            </div>
+            <h2 class="title glass-title">About Pixel Pic</h2>
+            <p class="lead center-max">We are a collective of digital craftsmen dedicated to elevating brands through
+              cinematic excellence.</p>
           </div>
-          <h2 class="title section-title center">What Our Clients Say</h2>
-          <p class="lead center" style="margin: 0 auto 60px;">Trusted by visionaries, builders, and creative minds
-            across
-            the industry.</p>
         </div>
 
-        <div class="testimonials-grid">
-          <!-- Review 1 -->
-          <div class="testimonial-card reveal">
-            <div class="testi-header">
-              <div class="stars">★★★★★</div>
-              <div class="testi-date">Oct 2025</div>
-            </div>
-            <p class="testi-text">"Pixel Pic transformed our brand with their amazing ad films. Their attention to
-              detail
-              in color grading is simply unmatched. Highly recommended for any serious production!"</p>
-            <div class="testi-footer">
-              <div class="testi-avatar" style="background: linear-gradient(45deg, #f97316, #fb923c);">A</div>
-              <div class="testi-info">
-                <span class="testi-name">Client A</span>
-                <span class="testi-role">Creative Director, Apex Media</span>
+        <div class="about-grid-modern mt-100">
+          <div class="about-info reveal">
+            <div class="about-tagline">Elite Production Since 2020</div>
+            <h3 class="about-headline">Crafting Stories for the Modern Era</h3>
+            <p class="desc">Based in the heart of Madurai, Pixel Pic Studio has grown into a powerhouse of creative
+              production. We specialize in transforming complex brand messages into visceral, cinematic experiences that
+              capture attention and drive results.</p>
+
+            <div class="stats-grid-v2">
+              <div class="s-card">
+                <span class="s-num">5+</span>
+                <span class="s-label">Years of Mastery</span>
+              </div>
+              <div class="s-card">
+                <span class="s-num">200+</span>
+                <span class="s-label">Production Clips</span>
+              </div>
+              <div class="s-card">
+                <span class="s-num">100%</span>
+                <span class="s-label">Client Success</span>
               </div>
             </div>
           </div>
 
-          <!-- Review 2 -->
-          <div class="testimonial-card reveal featured-card">
-            <div class="testi-header">
-              <div class="stars">★★★★★</div>
-              <div class="testi-date">Nov 2025</div>
-            </div>
-            <p class="testi-text">"Professional, creative, and on time. They have a deep understanding of visual
-              storytelling. The best video production team we've worked with in Madurai. Every project exceeds
-              expectations."</p>
-            <div class="testi-footer">
-              <div class="testi-avatar" style="background: linear-gradient(45deg, #3b82f6, #60a5fa);">B</div>
-              <div class="testi-info">
-                <span class="testi-name">Client B</span>
-                <span class="testi-role">CEO, TechVision Global</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review 3 -->
-          <div class="testimonial-card reveal">
-            <div class="testi-header">
-              <div class="stars">★★★★★</div>
-              <div class="testi-date">Dec 2025</div>
-            </div>
-            <p class="testi-text">"Our social media engagement skyrocketed after working with them for our recent
-              campaign
-              launch. Their reels are high-energy and perfectly optimized for the algorithm."</p>
-            <div class="testi-footer">
-              <div class="testi-avatar" style="background: linear-gradient(45deg, #10b981, #34d399);">C</div>
-              <div class="testi-info">
-                <span class="testi-name">Client C</span>
-                <span class="testi-role">Marketing Lead, Zen Brands</span>
-              </div>
+          <div class="about-visual-modern reveal">
+            <div class="visual-frame">
+              <img src="Editing_Workspace.png" alt="Edit Suite" />
+              <div class="frame-overlay"></div>
             </div>
           </div>
         </div>
       </div>
 
       <style>
-        .testimonials-section {
-          background: var(--bg);
-          overflow: hidden;
+        .about-studio {
+          background: #030712;
+          padding: 140px 0;
         }
 
-        .testimonials-grid {
+        .center-content-balanced {
+          text-align: center;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
+        .center-max {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .about-grid-modern {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 100px;
+          align-items: center;
+        }
+
+        @media (max-width: 991px) {
+          .about-grid-modern {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+        }
+
+        .about-tagline {
+          color: var(--brand);
+          font-weight: 700;
+          letter-spacing: 2px;
+          font-size: 13px;
+          margin-bottom: 12px;
+          text-transform: uppercase;
+        }
+
+        .about-headline {
+          font-size: clamp(32px, 4vw, 42px);
+          margin-bottom: 24px;
+          line-height: 1.1;
+        }
+
+        .stats-grid-v2 {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
+          gap: 20px;
           margin-top: 50px;
         }
 
-        @media (max-width: 1024px) {
-          .testimonials-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
         @media (max-width: 768px) {
-          .testimonials-grid {
+          .stats-grid-v2 {
             grid-template-columns: 1fr;
+            gap: 16px;
+          }
+
+          .s-card {
+            padding: 24px 20px;
           }
         }
 
-        .testimonial-card {
-          background: var(--card);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: var(--radius-lg);
-          padding: 40px;
-          display: flex;
-          flex-direction: column;
-          transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-          backdrop-filter: blur(10px);
+        .s-card {
+          padding: 40px 20px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          border-radius: 24px;
+          text-align: center;
+          transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .testimonial-card:hover {
+        .s-card:hover {
           transform: translateY(-10px);
-          background: var(--card-hover);
-          border-color: rgba(255, 115, 22, 0.3);
-          box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+          background: rgba(255, 255, 255, 0.05);
+          border-color: var(--brand);
         }
 
-        .featured-card {
-          background: rgba(249, 115, 22, 0.03);
-          border-color: rgba(249, 115, 22, 0.1);
-        }
-
-        .testi-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 24px;
-        }
-
-        .stars {
+        .s-num {
+          display: block;
+          font-size: 32px;
+          font-weight: 800;
           color: var(--brand);
-          font-size: 14px;
-          letter-spacing: 2px;
+          margin-bottom: 8px;
         }
 
-        .testi-date {
+        .s-label {
           font-size: 12px;
-          color: var(--muted);
           font-weight: 600;
+          color: var(--muted);
           text-transform: uppercase;
         }
 
-        .testi-text {
-          font-size: 17px;
-          line-height: 1.7;
-          color: rgba(255, 255, 255, 0.9);
-          margin-bottom: 30px;
-          font-style: italic;
+        .visual-frame {
+          border-radius: 40px;
+          overflow: hidden;
+          position: relative;
+          box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
         }
 
-        .testi-footer {
-          margin-top: auto;
-          display: flex;
-          align-items: center;
-          gap: 16px;
+        .visual-frame img {
+          width: 100%;
+          display: block;
+          transition: transform 1s ease;
         }
 
-        .testi-avatar {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          display: grid;
-          place-items: center;
-          font-weight: 800;
-          color: #fff;
-          font-size: 18px;
-        }
-
-        .testi-info {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .testi-name {
-          font-weight: 700;
-          color: #fff;
-          font-size: 16px;
-        }
-
-        .testi-role {
-          font-size: 13px;
-          color: var(--muted);
-          font-weight: 500;
+        .about-visual-modern:hover img {
+          transform: scale(1.05);
         }
       </style>
-    </section>
+      <!-- ===================== PORTFOLIO STAGE ===================== -->
+      <section id="portfolio" class="section portfolio-section">
+        <div class="portfolio-backdrop">
+          <div class="glow-orb glow-1"></div>
+          <div class="glow-orb glow-2"></div>
+        </div>
 
+        <div class="container">
+          <div class="staging-header reveal">
+            <div class="center-stage">
+              <div class="eyebrow-container">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">Our Masterpieces</span>
+                <span class="eyebrow-line"></span>
+              </div>
+              <h2 class="title stage-title">Featured Work</h2>
+              <p class="stage-lead">A collection of cinematic experiences crafted with precision and passion.</p>
+            </div>
 
-    <!-- ===================== CONTACT ===================== -->
-    <!-- ===================== CONTACT ===================== -->
-    <!-- ===================== FOOTER ===================== -->
-    <footer id="contact" class="premium-footer">
-      <div class="container footer-content">
-        <div class="footer-sidebar reveal">
-          <img src="PixelPix_Studio.png" alt="PixelPic Logo" class="footer-logo" />
-          <p class="footer-tagline">Visual mastery for elite brands. From Madurai to the world.</p>
+            <div class="filter-orchestra">
+              <button class="filter-tab active" data-cat="all">All Projects</button>
+              <button class="filter-tab" data-cat="ads">Ad Reels</button>
+              <button class="filter-tab" data-cat="corporate">Corporate</button>
+              <button class="filter-tab" data-cat="social">Social Media</button>
+            </div>
+          </div>
 
-          <div class="contact-methods mt-40">
-            <div class="contact-item">
-              <span class="icon">☏</span>
-              <div class="info">
-                <span class="label">WhatsApp Us</span>
-                <a href="https://wa.me/yournumber" class="val">Message on WA</a>
+          <div class="portfolio-stage-grid" id="portfolioGrid">
+            <!-- Item 1: The Hero Feature -->
+            <a class="stage-card feature-hero reveal" href="#" data-cat="ads"
+              data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+              <div class="stage-img">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1600&auto=format&fit=crop"
+                  alt="Nike Air Max" loading="lazy" />
               </div>
-            </div>
-            <div class="contact-item">
-              <span class="icon">✉</span>
-              <div class="info">
-                <span class="label">Official Email</span>
-                <a href="mailto:studiopixelpic@gmail.com" class="val">studiopixelpic@gmail.com</a>
+              <div class="stage-overlay">
+                <div class="stage-tags">
+                  <span class="tag-pill">Premium Ad</span>
+                  <span class="tag-pill">4K UHD</span>
+                </div>
+                <div class="stage-info">
+                  <h3>Nike Air Max Launch</h3>
+                  <p>Redefining speed with high-energy cinematic visual storytelling.</p>
+                </div>
+                <div class="stage-action">
+                  <div class="play-circle-large">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="contact-item">
-              <span class="icon">♨</span>
-              <div class="info">
-                <span class="label">Base Studio</span>
-                <span class="val">Madurai, Tamil Nadu</span>
+            </a>
+
+            <!-- Item 2: Vertical Highlight -->
+            <a class="stage-card vertical-tile reveal" href="#" data-cat="social"
+              data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+              <div class="stage-img">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop"
+                  alt="Fashion" loading="lazy" />
               </div>
-            </div>
+              <div class="stage-overlay compact">
+                <div class="stage-info">
+                  <span class="cat-label">Social Media</span>
+                  <h3>Fashion Week Highlights</h3>
+                </div>
+                <div class="stage-action">
+                  <div class="play-circle-sm">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Item 3: Standard Card -->
+            <a class="stage-card standard-tile reveal" href="#" data-cat="corporate"
+              data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+              <div class="stage-img">
+                <img src="https://images.unsplash.com/photo-1485217988980-11786ced9454?q=80&w=1600&auto=format&fit=crop"
+                  alt="Tech" loading="lazy" />
+              </div>
+              <div class="stage-overlay compact">
+                <div class="stage-info">
+                  <span class="cat-label">Corporate</span>
+                  <h3>Global Tech Summit 2025</h3>
+                </div>
+                <div class="stage-action">
+                  <div class="play-circle-sm">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Item 4: Wide Card -->
+            <a class="stage-card wide-tile reveal" href="#" data-cat="ads"
+              data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+              <div class="stage-img">
+                <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1600&auto=format&fit=crop"
+                  alt="Organic Tea" loading="lazy" />
+              </div>
+              <div class="stage-overlay compact">
+                <div class="stage-info">
+                  <span class="cat-label">Commercial</span>
+                  <h3>Organic Tea Origins</h3>
+                </div>
+                <div class="stage-action">
+                  <div class="play-circle-sm">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
 
-        <div class="footer-form reveal">
-          <div class="form-wrapper">
-            <h3 class="title">Brief Us Your Vision</h3>
-            <form id="contactForm">
-              <div class="form-group">
-                <input type="text" placeholder="Full Name" required />
-              </div>
-              <div class="form-group">
-                <input type="email" placeholder="Email Address" required />
-              </div>
-              <div class="form-group">
-                <textarea rows="5" placeholder="Project details, timeline and goals..." required></textarea>
-              </div>
-              <button type="submit" class="btn-glow full-width">Initialize Collaboration</button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="container flex-row">
-          <p class="copyright">&copy; <span id="year">2026</span> Pixel Pic Studio — All rights reserved.</p>
-          <div class="footer-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#home">Back to top ↑</a>
-          </div>
-        </div>
-      </div>
-
-      <style>
-        .premium-footer {
-          background: #020617;
-          padding: 120px 0 0 0;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .footer-content {
-          display: grid;
-          grid-template-columns: 0.8fr 1.2fr;
-          gap: 100px;
-          margin-bottom: 100px;
-        }
-
-        @media (max-width: 991px) {
-          .footer-content {
-            grid-template-columns: 1fr;
-            gap: 60px;
+        <style>
+          .portfolio-section {
+            background: #020617;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
           }
-        }
 
-        .footer-logo {
-          height: 48px;
-          margin-bottom: 24px;
-        }
+          .portfolio-backdrop {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+          }
 
-        .footer-tagline {
-          color: var(--muted);
-          font-size: 18px;
-          max-width: 320px;
-          line-height: 1.6;
-        }
+          .glow-orb {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.12;
+          }
 
-        .contact-methods {
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
-        }
+          .glow-1 {
+            top: -20%;
+            left: -10%;
+            background: var(--brand);
+          }
 
-        .contact-item {
-          display: flex;
-          gap: 20px;
-          align-items: center;
-        }
+          .glow-2 {
+            bottom: -20%;
+            right: -10%;
+            background: var(--accent);
+          }
 
-        .contact-item .icon {
-          width: 50px;
-          height: 50px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 12px;
-          display: grid;
-          place-items: center;
-          font-size: 20px;
-          color: var(--brand);
-        }
+          .staging-header {
+            text-align: center;
+            margin-bottom: 80px;
+          }
 
-        .contact-item .label {
-          display: block;
-          font-size: 11px;
-          text-transform: uppercase;
-          color: var(--muted);
-          letter-spacing: 1px;
-          margin-bottom: 4px;
-        }
+          .center-stage {
+            max-width: 700px;
+            margin: 0 auto 40px;
+          }
 
-        .contact-item .val {
-          font-weight: 600;
-          color: #fff;
-          font-size: 15px;
-        }
+          .stage-title {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin: 20px 0;
+            background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
 
-        .form-wrapper {
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.06);
-          padding: 60px;
-          border-radius: 32px;
-          backdrop-filter: blur(20px);
-        }
+          .stage-lead {
+            font-size: 18px;
+            color: var(--muted);
+          }
 
-        @media (max-width: 600px) {
-          .form-wrapper {
+          .filter-orchestra {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+          }
+
+          .filter-tab {
+            background: transparent;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid transparent;
+          }
+
+          .filter-tab:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+          }
+
+          .filter-tab.active {
+            background: var(--brand);
+            color: #000;
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+          }
+
+          @media (max-width: 600px) {
+            .filter-orchestra {
+              border-radius: 24px;
+              padding: 8px;
+              width: 100%;
+              gap: 8px;
+            }
+
+            .filter-tab {
+              flex: 1 1 calc(50% - 8px);
+              padding: 8px 12px;
+              font-size: 11px;
+              text-align: center;
+            }
+          }
+
+          .portfolio-stage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 240px;
+            gap: 30px;
+          }
+
+          .stage-card {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #0d121c;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            text-decoration: none;
+            display: block;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+
+          /* Grid Varieties */
+          .feature-hero {
+            grid-column: span 2;
+            grid-row: span 2;
+          }
+
+          .vertical-tile {
+            grid-column: span 1;
+            grid-row: span 2;
+          }
+
+          .standard-tile {
+            grid-column: span 1;
+            grid-row: span 1;
+          }
+
+          .wide-tile {
+            grid-column: span 1;
+            grid-row: span 1;
+          }
+
+          @media (max-width: 1100px) {
+            .portfolio-stage-grid {
+              grid-template-columns: repeat(2, 1fr);
+              grid-auto-rows: 300px;
+            }
+
+            .feature-hero {
+              grid-column: span 2;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .portfolio-stage-grid {
+              grid-template-columns: 1fr;
+              grid-auto-rows: auto;
+            }
+
+            .stage-card {
+              aspect-ratio: 4/3;
+              grid-column: span 1 !important;
+              grid-row: span 1 !important;
+            }
+
+            .feature-hero {
+              aspect-ratio: 1;
+            }
+          }
+
+          .stage-img {
+            width: 100%;
+            height: 100%;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+
+          .stage-card:hover .stage-img {
+            transform: scale(1.1) rotate(1deg);
+          }
+
+          .stage-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .stage-overlay {
+            position: absolute;
+            inset: 0;
+            padding: 40px;
+            background: linear-gradient(0deg, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.3) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          }
+
+          .stage-overlay.compact {
             padding: 30px;
           }
-        }
 
-        .form-group {
-          margin-bottom: 20px;
-        }
+          .stage-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+          }
 
-        .form-group input,
-        .form-group textarea {
-          width: 100%;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 16px 20px;
-          border-radius: 12px;
-          color: #fff;
-          font-family: inherit;
-          font-size: 15px;
-          transition: all 0.3s;
-        }
+          .tag-pill {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+          }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-          border-color: var(--brand);
-          background: rgba(255, 255, 255, 0.05);
-          outline: none;
-        }
+          .cat-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--brand);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: block;
+          }
 
-        .footer-bottom {
-          padding: 40px 0;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
+          .stage-info h3 {
+            font-size: clamp(20px, 3vw, 28px);
+            margin: 0;
+            font-weight: 700;
+            color: #fff;
+          }
 
-        .flex-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 20px;
-          flex-wrap: wrap;
-        }
+          .stage-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 15px;
+            margin-top: 12px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.1s;
+          }
 
-        .footer-links {
-          display: flex;
-          gap: 24px;
-          font-size: 14px;
-          color: var(--muted);
-        }
+          .stage-card:hover .stage-info p {
+            opacity: 1;
+            transform: translateY(0);
+          }
 
-        .copyright {
-          color: var(--muted);
-          font-size: 14px;
-        }
-      </style>
-    </footer>
+          .stage-action {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          }
 
-    <!-- ============== VIDEO MODAL ============== -->
-    <div class="modal" id="videoModal" aria-modal="true" role="dialog" aria-label="Video player" aria-hidden="true">
-      <div class="modal-card">
-        <div class="modal-head">
-          <strong>Showreel</strong>
-          <div class="row">
-            <button class="icon-btn" id="pauseVideo" aria-label="Pause video">⏸</button>
-            <button class="icon-btn" id="closeVideo" aria-label="Close video">✕</button>
+          .stage-card:hover .stage-action {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+          }
+
+          .play-circle-large {
+            width: 100px;
+            height: 100px;
+            background: var(--brand);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #000;
+            box-shadow: 0 0 50px var(--brand-glow);
+          }
+
+          .play-circle-sm {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #000;
+          }
+
+          .play-circle-large svg {
+            width: 40px;
+          }
+
+          .play-circle-sm svg {
+            width: 24px;
+          }
+        </style>
+      </section>
+
+      <!-- ===================== OUR WORK PAGE ===================== -->
+
+      <!-- Portfolio Stats -->
+
+      <!-- ===================== DRAWER (Mobile Menu) ===================== -->
+
+      <!-- ===================== PRICING ===================== -->
+      <section id="pricing" class="section pricing-section">
+        <div class="container">
+          <div class="center-content reveal">
+            <div class="eyebrow-container center">
+              <span class="eyebrow-line"></span>
+              <span class="eyebrow-text">Investment Plans</span>
+              <span class="eyebrow-line"></span>
+            </div>
+            <h2 class="title section-title center">Choose Your Package</h2>
+            <p class="lead center" style="margin: 0 auto 60px;">Expert-led production services tailored for brands that
+              demand the best.</p>
+          </div>
+
+          <div class="pricing-grid">
+            <!-- Starter Pack -->
+            <div class="price-card reveal">
+              <div class="price-header">
+                <h4>Starter Pack</h4>
+                <div class="tagline">Social Media Ready</div>
+              </div>
+              <div class="price-body">
+                <ul class="price-list">
+                  <li><i class="check-icon">✓</i> 15-30 sec Professional Reel</li>
+                  <li><i class="check-icon">✓</i> Dynamic Social Editing</li>
+                  <li><i class="check-icon">✓</i> Licensed Background Music</li>
+                  <li><i class="check-icon">✓</i> Optimized For Mobile</li>
+                </ul>
+              </div>
+              <div class="price-footer">
+                <a href="#contact" class="btn-glass full-width">Get a Quote</a>
+              </div>
+            </div>
+
+            <!-- Business Pack -->
+            <div class="price-card featured reveal">
+              <div class="popular-tag">Most Popular</div>
+              <div class="price-header">
+                <h4>Business Pack</h4>
+                <div class="tagline">The Growth Engine</div>
+              </div>
+              <div class="price-body">
+                <ul class="price-list">
+                  <li><i class="check-icon">✓</i> 60 sec High-End Ad Film</li>
+                  <li><i class="check-icon">✓</i> Professional Color Grading</li>
+                  <li><i class="check-icon">✓</i> 3 Custom YT Thumbnails</li>
+                  <li><i class="check-icon">✓</i> Multiple Format Exports</li>
+                </ul>
+              </div>
+              <div class="price-footer">
+                <a href="#contact" class="btn-glow full-width">Premium Choice</a>
+              </div>
+            </div>
+
+            <!-- Pro Pack -->
+            <div class="price-card reveal">
+              <div class="price-header">
+                <h4>Pro Pack</h4>
+                <div class="tagline">Full Brand Identity</div>
+              </div>
+              <div class="price-body">
+                <ul class="price-list">
+                  <li><i class="check-icon">✓</i> Complete Brand Visual Kit</li>
+                  <li><i class="check-icon">✓</i> Multi-platform Ad Strategy</li>
+                  <li><i class="check-icon">✓</i> Priority Post-Production</li>
+                  <li><i class="check-icon">✓</i> Dedicated Account Lead</li>
+                </ul>
+              </div>
+              <div class="price-footer">
+                <a href="#contact" class="btn-glass full-width">Inquire Now</a>
+              </div>
+            </div>
           </div>
         </div>
-        <iframe id="videoFrame" class="modal-body" title="Video player" src="" allow="autoplay; encrypted-media"
-          allowfullscreen></iframe>
+
+        <style>
+          .pricing-section {
+            background: var(--bg-alt);
+            padding: 120px 0;
+          }
+
+          .center-content.center {
+            text-align: center;
+          }
+
+          .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+          }
+
+          .price-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            position: relative;
+          }
+
+          .price-card.featured {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--brand);
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+          }
+
+          @media (max-width: 991px) {
+            .pricing-grid {
+              grid-template-columns: 1fr;
+              max-width: 450px;
+              margin: 0 auto;
+            }
+
+            .price-card {
+              padding: 32px 24px;
+            }
+
+            .price-card.featured {
+              transform: scale(1);
+            }
+          }
+
+          .price-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+          }
+
+          .price-card.featured:hover {
+            transform: translateY(-10px) scale(1.05);
+          }
+
+          .popular-tag {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: var(--brand);
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+          }
+
+          .price-header h4 {
+            font-size: 24px;
+            margin: 0 0 8px 0;
+          }
+
+          .tagline {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 32px;
+          }
+
+          .price-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+          }
+
+          .price-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+          }
+
+          .check-icon {
+            color: var(--brand);
+            font-weight: 900;
+            font-style: normal;
+          }
+
+          .price-footer {
+            margin-top: auto;
+          }
+
+          .full-width {
+            width: 100%;
+            justify-content: center;
+          }
+        </style>
+      </section>
+
+      <!-- ===================== TESTIMONIALS ===================== -->
+      <section id="reviews" class="section testimonials-section">
+        <div class="container">
+          <div class="center-content reveal">
+            <div class="eyebrow-container center">
+              <span class="eyebrow-line"></span>
+              <span class="eyebrow-text">Global Feedback</span>
+              <span class="eyebrow-line"></span>
+            </div>
+            <h2 class="title section-title center">What Our Clients Say</h2>
+            <p class="lead center" style="margin: 0 auto 60px;">Trusted by visionaries, builders, and creative minds
+              across
+              the industry.</p>
+          </div>
+
+          <div class="testimonials-grid">
+            <!-- Review 1 -->
+            <div class="testimonial-card reveal">
+              <div class="testi-header">
+                <div class="stars">★★★★★</div>
+                <div class="testi-date">Oct 2025</div>
+              </div>
+              <p class="testi-text">"Pixel Pic transformed our brand with their amazing ad films. Their attention to
+                detail
+                in color grading is simply unmatched. Highly recommended for any serious production!"</p>
+              <div class="testi-footer">
+                <div class="testi-avatar" style="background: linear-gradient(45deg, #f97316, #fb923c);">A</div>
+                <div class="testi-info">
+                  <span class="testi-name">Client A</span>
+                  <span class="testi-role">Creative Director, Apex Media</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="testimonial-card reveal featured-card">
+              <div class="testi-header">
+                <div class="stars">★★★★★</div>
+                <div class="testi-date">Nov 2025</div>
+              </div>
+              <p class="testi-text">"Professional, creative, and on time. They have a deep understanding of visual
+                storytelling. The best video production team we've worked with in Madurai. Every project exceeds
+                expectations."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar" style="background: linear-gradient(45deg, #3b82f6, #60a5fa);">B</div>
+                <div class="testi-info">
+                  <span class="testi-name">Client B</span>
+                  <span class="testi-role">CEO, TechVision Global</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="testimonial-card reveal">
+              <div class="testi-header">
+                <div class="stars">★★★★★</div>
+                <div class="testi-date">Dec 2025</div>
+              </div>
+              <p class="testi-text">"Our social media engagement skyrocketed after working with them for our recent
+                campaign
+                launch. Their reels are high-energy and perfectly optimized for the algorithm."</p>
+              <div class="testi-footer">
+                <div class="testi-avatar" style="background: linear-gradient(45deg, #10b981, #34d399);">C</div>
+                <div class="testi-info">
+                  <span class="testi-name">Client C</span>
+                  <span class="testi-role">Marketing Lead, Zen Brands</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style>
+          .testimonials-section {
+            background: var(--bg);
+            overflow: hidden;
+          }
+
+          .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+          }
+
+          @media (max-width: 1024px) {
+            .testimonials-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+
+          @media (max-width: 768px) {
+            .testimonials-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+
+          .testimonial-card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(10px);
+          }
+
+          .testimonial-card:hover {
+            transform: translateY(-10px);
+            background: var(--card-hover);
+            border-color: rgba(255, 115, 22, 0.3);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+          }
+
+          .featured-card {
+            background: rgba(249, 115, 22, 0.03);
+            border-color: rgba(249, 115, 22, 0.1);
+          }
+
+          .testi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+          }
+
+          .stars {
+            color: var(--brand);
+            font-size: 14px;
+            letter-spacing: 2px;
+          }
+
+          .testi-date {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+
+          .testi-text {
+            font-size: 17px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            font-style: italic;
+          }
+
+          .testi-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+          }
+
+          .testi-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            color: #fff;
+            font-size: 18px;
+          }
+
+          .testi-info {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .testi-name {
+            font-weight: 700;
+            color: #fff;
+            font-size: 16px;
+          }
+
+          .testi-role {
+            font-size: 13px;
+            color: var(--muted);
+            font-weight: 500;
+          }
+        </style>
+      </section>
+
+
+      <!-- ===================== CONTACT ===================== -->
+      <!-- ===================== CONTACT ===================== -->
+      <!-- ===================== FOOTER ===================== -->
+      <footer id="contact" class="premium-footer">
+        <div class="container footer-content">
+          <div class="footer-sidebar reveal">
+            <img src="PixelPix_Studio.png" alt="PixelPic Logo" class="footer-logo" />
+            <p class="footer-tagline">Visual mastery for elite brands. From Madurai to the world.</p>
+
+            <div class="contact-methods mt-40">
+              <div class="contact-item">
+                <span class="icon">☏</span>
+                <div class="info">
+                  <span class="label">WhatsApp Us</span>
+                  <a href="https://wa.me/yournumber" class="val">Message on WA</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="icon">✉</span>
+                <div class="info">
+                  <span class="label">Official Email</span>
+                  <a href="mailto:studiopixelpic@gmail.com" class="val">studiopixelpic@gmail.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="icon">♨</span>
+                <div class="info">
+                  <span class="label">Base Studio</span>
+                  <span class="val">Madurai, Tamil Nadu</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-form reveal">
+            <div class="form-wrapper">
+              <h3 class="title">Brief Us Your Vision</h3>
+              <form id="contactForm">
+                <div class="form-group">
+                  <input type="text" placeholder="Full Name" required />
+                </div>
+                <div class="form-group">
+                  <input type="email" placeholder="Email Address" required />
+                </div>
+                <div class="form-group">
+                  <textarea rows="5" placeholder="Project details, timeline and goals..." required></textarea>
+                </div>
+                <button type="submit" class="btn-glow full-width">Initialize Collaboration</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container flex-row">
+            <p class="copyright">&copy; <span id="year">2026</span> Pixel Pic Studio — All rights reserved.</p>
+            <div class="footer-links">
+              <a href="#">Privacy</a>
+              <a href="#">Terms</a>
+              <a href="#home">Back to top ↑</a>
+            </div>
+          </div>
+        </div>
+
+        <style>
+          .premium-footer {
+            background: #020617;
+            padding: 120px 0 0 0;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .footer-content {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 100px;
+            margin-bottom: 100px;
+          }
+
+          @media (max-width: 991px) {
+            .footer-content {
+              grid-template-columns: 1fr;
+              gap: 60px;
+            }
+          }
+
+          .footer-logo {
+            height: 48px;
+            margin-bottom: 24px;
+          }
+
+          .footer-tagline {
+            color: var(--muted);
+            font-size: 18px;
+            max-width: 320px;
+            line-height: 1.6;
+          }
+
+          .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+          }
+
+          .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+          }
+
+          .contact-item .icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+            color: var(--brand);
+          }
+
+          .contact-item .label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--muted);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+          }
+
+          .contact-item .val {
+            font-weight: 600;
+            color: #fff;
+            font-size: 15px;
+          }
+
+          .form-wrapper {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 60px;
+            border-radius: 32px;
+            backdrop-filter: blur(20px);
+          }
+
+          @media (max-width: 600px) {
+            .form-wrapper {
+              padding: 30px;
+            }
+          }
+
+          .form-group {
+            margin-bottom: 20px;
+          }
+
+          .form-group input,
+          .form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 20px;
+            border-radius: 12px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 15px;
+            transition: all 0.3s;
+          }
+
+          .form-group input:focus,
+          .form-group textarea:focus {
+            border-color: var(--brand);
+            background: rgba(255, 255, 255, 0.05);
+            outline: none;
+          }
+
+          .footer-bottom {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+          }
+
+          .flex-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+          }
+
+          .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 14px;
+            color: var(--muted);
+          }
+
+          .copyright {
+            color: var(--muted);
+            font-size: 14px;
+          }
+        </style>
+      </footer>
+  </main>
+
+  <!-- ============== VIDEO MODAL ============== -->
+  <div class="modal" id="videoModal" aria-modal="true" role="dialog" aria-label="Video player" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <strong>Showreel</strong>
+        <div class="row">
+          <button class="icon-btn" id="pauseVideo" aria-label="Pause video">⏸</button>
+          <button class="icon-btn" id="closeVideo" aria-label="Close video">✕</button>
+        </div>
       </div>
+      <iframe id="videoFrame" class="modal-body" title="Video player" src="" allow="autoplay; encrypted-media"
+        allowfullscreen></iframe>
     </div>
+  </div>
 
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script>
-      // Utilities
-      const $ = s => document.querySelector(s);
-      const $$ = s => Array.from(document.querySelectorAll(s));
+  <script>
+    // Utilities
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
 
 
-      // ===================== CUSTOM CURSOR =====================
-      const customCursor = $('#customCursor');
-      let mouseX = 0, mouseY = 0;
-      let cursorX = 0, cursorY = 0;
+    // ===================== CUSTOM CURSOR =====================
+    const customCursor = $('#customCursor');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
 
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        customCursor.style.opacity = '1';
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      customCursor.style.opacity = '1';
+    });
+
+    function updateCursor() {
+      cursorX += (mouseX - cursorX) * 0.1;
+      cursorY += (mouseY - cursorY) * 0.1;
+      customCursor.style.transform = `translate(${cursorX - 10}px, ${cursorY - 10}px)`;
+      requestAnimationFrame(updateCursor);
+    }
+    updateCursor();
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+      customCursor.style.opacity = '0';
+    });
+
+    // ===================== MAGNETIC EFFECTS =====================
+    const magneticElements = $$('.magnetic');
+    magneticElements.forEach(element => {
+      element.addEventListener('mousemove', (e) => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        element.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
       });
 
-      function updateCursor() {
-        cursorX += (mouseX - cursorX) * 0.1;
-        cursorY += (mouseY - cursorY) * 0.1;
-        customCursor.style.transform = `translate(${cursorX - 10}px, ${cursorY - 10}px)`;
-        requestAnimationFrame(updateCursor);
-      }
-      updateCursor();
-
-      // Hide cursor when leaving window
-      document.addEventListener('mouseleave', () => {
-        customCursor.style.opacity = '0';
+      element.addEventListener('mouseleave', () => {
+        element.style.transform = 'translate(0px, 0px)';
       });
-
-      // ===================== MAGNETIC EFFECTS =====================
-      const magneticElements = $$('.magnetic');
-      magneticElements.forEach(element => {
-        element.addEventListener('mousemove', (e) => {
-          const rect = element.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-          element.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
-        });
-
-        element.addEventListener('mouseleave', () => {
-          element.style.transform = 'translate(0px, 0px)';
-        });
-      });
+    });
 
 
 
-      // ===================== PROGRESS BARS ANIMATION =====================
-      function animateProgressBars() {
-        const progressBars = $$('.progress-fill');
-        progressBars.forEach(bar => {
-          const targetWidth = parseInt(bar.getAttribute('data-width'));
-          let current = 0;
-          bar.style.width = '0%';
-          const animate = setInterval(() => {
-            if (current >= targetWidth) {
-              clearInterval(animate);
-              bar.style.width = targetWidth + '%';
-            } else {
-              current++;
-              bar.style.width = current + '%';
-            }
-          }, 15);
-        });
-      }
-
-
-
-      // Drawer with focus trap
-      const drawer = $('#drawer');
-      const drawerPanel = $('#drawerPanel');
-      const openMenu = $('#openMenu');
-      const closeMenu = $('#closeMenu');
-      const firstFocusable = () => drawerPanel.querySelector('button, a, [tabindex]');
-
-      function toggleMenu(force) {
-        const willOpen = force ?? !drawer.classList.contains('open');
-        drawer.classList.toggle('open', willOpen);
-        if (willOpen) {
-          drawer.setAttribute('aria-hidden', 'false');
-          firstFocusable()?.focus();
-        } else {
-          drawer.setAttribute('aria-hidden', 'true');
-          openMenu.focus();
-        }
-      }
-      openMenu.addEventListener('click', () => toggleMenu(true));
-      closeMenu.addEventListener('click', () => toggleMenu(false));
-      drawer.addEventListener('click', e => { if (e.target === drawer) toggleMenu(false); });
-      drawerPanel.querySelectorAll('[data-d-close]').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
-      window.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) toggleMenu(false); });
-
-      // Smooth scroll for anchor links
-      function smoothTo(id) { const el = document.getElementById(id); if (!el) return; window.scrollTo({ top: el.offsetTop - 64, behavior: 'smooth' }); }
-      $$('a[data-scroll], [data-d-close][href^="#"], .nav-links a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-          const id = a.getAttribute('href')?.slice(1);
-          if (id) { e.preventDefault(); smoothTo(id); }
-        });
-      });
-
-      // Active section highlighting
-      const sections = ['home', 'services', 'portfolio', 'our-work', 'about', 'team', 'contact'];
-      const navLinks = $$('.nav-links a');
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
-          }
-        });
-      }, { rootMargin: '-60% 0px -35% 0px', threshold: .01 });
-      sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
-
-      // Preloader Logic
-      function dismissPreloader() {
-        const preloader = document.getElementById('preloader');
-        if (!preloader) return;
-
-        // Ensure we don't fire multiple times
-        if (document.body.classList.contains('loaded')) return;
-
-        // Wait for the welcome animation to finish (2.5s) + a small buffer
-        setTimeout(() => {
-          document.body.classList.add('loaded');
-          document.body.classList.remove('loading');
-        }, 2500);
-      }
-
-      // Try to dismiss on load, but have a fallback
-      window.addEventListener('load', dismissPreloader);
-
-      // Fallback: If load takes too long (e.g. slow image), dismiss anyway after 4s max
-      setTimeout(dismissPreloader, 4000);
-
-
-
-      // Navbar Scroll & Progress Effect
-      const nav = document.querySelector('.nav');
-      const progress = document.querySelector('.nav-progress-bar');
-
-      if (nav) {
-        window.addEventListener('scroll', () => {
-          // Scrolled State
-          if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
+    // ===================== PROGRESS BARS ANIMATION =====================
+    function animateProgressBars() {
+      const progressBars = $$('.progress-fill');
+      progressBars.forEach(bar => {
+        const targetWidth = parseInt(bar.getAttribute('data-width'));
+        let current = 0;
+        bar.style.width = '0%';
+        const animate = setInterval(() => {
+          if (current >= targetWidth) {
+            clearInterval(animate);
+            bar.style.width = targetWidth + '%';
           } else {
-            nav.classList.remove('scrolled');
+            current++;
+            bar.style.width = current + '%';
           }
-
-          // Progress Bar Calculation
-          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          const scrolled = (winScroll / height) * 100;
-          if (progress) progress.style.width = scrolled + "%";
-        }, { passive: true });
-      }
-
-      // Reveal on Scroll
-      const reveals = document.querySelectorAll('.reveal');
-      const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const elementVisible = 100;
-        reveals.forEach((reveal) => {
-          const elementTop = reveal.getBoundingClientRect().top;
-          if (elementTop < windowHeight - elementVisible) {
-            reveal.classList.add('in');
-          }
-        });
-      };
-      window.addEventListener('scroll', revealOnScroll);
-      revealOnScroll(); // Trigger once on load
-
-      // Video modal
-      const modal = $('#videoModal');
-      const frame = $('#videoFrame');
-      const openReel = $('#openReel');
-      const closeVideo = $('#closeVideo');
-      const pauseVideo = $('#pauseVideo');
-      function openVideo(src) {
-        modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); frame.src = src;
-        closeVideo.focus();
-      }
-      function closeVideoModal() {
-        modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); frame.src =
-          ''; openReel?.focus();
-      }
-      openReel?.addEventListener('click', () => openVideo('https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1&rel=0'));
-      closeVideo.addEventListener('click', closeVideoModal);
-      pauseVideo.addEventListener('click', () => {
-        const s = frame.src; frame.src = s.replace('autoplay=1', 'autoplay=0');
+        }, 15);
       });
-      modal.addEventListener('click', e => { if (e.target === modal) closeVideoModal(); });
-      window.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && modal.classList.contains('open'))
-          closeVideoModal();
-      });
+    }
 
-      // Make any .thumb with data-video open modal
-      $$('.thumb[data-video]').forEach(t => t.addEventListener('click', e => {
-        e.preventDefault();
-        openVideo(t.dataset.video);
-      }));
 
-      // Portfolio category filter - Updated for Portfolio Stage
-      const pills = $$('.filter-tab');
-      const cards = $$('.stage-card');
 
-      function setCat(cat) {
-        // Toggle Active State for pills
-        pills.forEach(p => {
-          p.classList.toggle('active', p.dataset.cat === cat);
-        });
+    // Drawer with focus trap
+    const drawer = $('#drawer');
+    const drawerPanel = $('#drawerPanel');
+    const openMenu = $('#openMenu');
+    const closeMenu = $('#closeMenu');
+    const firstFocusable = () => drawerPanel.querySelector('button, a, [tabindex]');
 
-        // Filter and Animate Cards
-        cards.forEach(c => {
-          const shouldShow = cat === 'all' || c.dataset.cat === cat;
-
-          if (shouldShow) {
-            c.style.display = '';
-            // Small delay to trigger transition
-            requestAnimationFrame(() => {
-              c.style.opacity = '1';
-              c.style.transform = 'scale(1)';
-            });
-          } else {
-            c.style.opacity = '0';
-            c.style.transform = 'scale(0.95)';
-            // Hide after transition finishes
-            setTimeout(() => {
-              if (c.style.opacity === '0') c.style.display = 'none';
-            }, 400);
-          }
-        });
-      }
-
-      pills.forEach(p => p.addEventListener('click', () => setCat(p.dataset.cat)));
-
-      // ===================== OUR WORK PAGE FUNCTIONALITY =====================
-
-      // Portfolio filter functionality
-      const filterBtns = $$('.filter-btn');
-      const portfolioItems = $$('.portfolio-item');
-
-      function filterPortfolio(category) {
-        // Update active button
-        filterBtns.forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.filter === category);
-        });
-
-        // Filter items with animation
-        portfolioItems.forEach(item => {
-          const shouldShow = category === 'all' || item.dataset.category === category;
-
-          if (shouldShow) {
-            item.style.display = 'block';
-            setTimeout(() => {
-              item.classList.add('scale-in');
-            }, 100);
-          } else {
-            item.classList.remove('scale-in');
-            setTimeout(() => {
-              item.style.display = 'none';
-            }, 300);
-          }
-        });
-      }
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterPortfolio(btn.dataset.filter);
-        });
-      });
-
-      // Portfolio item click handlers
-      portfolioItems.forEach(item => {
-        item.addEventListener('click', () => {
-          // Add click animation
-          item.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            item.style.transform = '';
-          }, 150);
-
-          // Safety check for title
-          const title = item.querySelector('.portfolio-title')?.textContent || 'Untitled';
-          console.log('Portfolio item clicked:', title);
-        });
-      });
-
-      // Enhanced scroll animations for new sections
-      const fadeElements = $$('.fade-up, .scale-in, .slide-in-left, .slide-in-right');
-      const fadeObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-      fadeElements.forEach(el => fadeObserver.observe(el));
-
-      // Service badge filter visual toggle
-      $('#serviceBadges')?.addEventListener('click', e => {
-        const b = e.target.closest('button[data-filter]'); if (!b) return;
-        const pressed = b.getAttribute('aria-pressed') === 'true';
-        b.setAttribute('aria-pressed', !pressed);
-      });
-
-      // Pricing highlight
-      const plans = $$('#plans .plan');
-      const highlightBtns = $$('[data-highlight]');
-      function highlightPlan(name) {
-        plans.forEach(p => p.style.outline = p.dataset.name === name ? '3px solid var(--ring)' : 'none');
-      }
-      highlightBtns.forEach(btn => btn.addEventListener('click', () => highlightPlan(btn.dataset.highlight)));
-
-      // Contact form validation + fake submit
-      const form = $('#contactForm');
-      const toast = $('#toast');
-      const sendBtn = $('#sendBtn');
-      function showToast(msg) {
-        toast.textContent = msg; toast.classList.add('show'); setTimeout(() =>
-          toast.classList.remove('show'), 2600);
-      }
-      form?.addEventListener('submit', e => {
-        e.preventDefault();
-        if (!form.checkValidity()) { showToast('Please fill all fields correctly'); return; }
-        sendBtn.setAttribute('aria-busy', 'true');
-        setTimeout(() => {
-          sendBtn.removeAttribute('aria-busy');
-          form.reset();
-          showToast('Thanks. We will get back soon');
-        }, 900);
-      });
-
-      // Footer year - Safe setting
-      const yearEl = $('#year');
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-      // Initial page load animations
-      function initPageAnimations() {
-        // Trigger loading animations for hero elements
-        const heroElements = document.querySelectorAll('.loading-fade');
-        heroElements.forEach((el, index) => {
-          setTimeout(() => {
-            el.style.animation = `fadeInUp 0.8s ease-out ${index * 0.1}s forwards`;
-          }, 100 + (index * 100));
-        });
-
-        // Initialize interactive features
-        setTimeout(() => {
-          animateProgressBars();
-        }, 1000);
-      }
-
-      // Run initial animations when page loads
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPageAnimations);
+    function toggleMenu(force) {
+      const willOpen = force ?? !drawer.classList.contains('open');
+      drawer.classList.toggle('open', willOpen);
+      if (willOpen) {
+        drawer.setAttribute('aria-hidden', 'false');
+        firstFocusable()?.focus();
       } else {
-        initPageAnimations();
+        drawer.setAttribute('aria-hidden', 'true');
+        openMenu.focus();
       }
+    }
+    openMenu.addEventListener('click', () => toggleMenu(true));
+    closeMenu.addEventListener('click', () => toggleMenu(false));
+    drawer.addEventListener('click', e => { if (e.target === drawer) toggleMenu(false); });
+    drawerPanel.querySelectorAll('[data-d-close]').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+    window.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) toggleMenu(false); });
 
-
-
-      // Ambient flow interaction for background
-      window.addEventListener('mousemove', e => {
-        const x = (e.clientX / innerWidth - .5) * 5;
-        const y = (e.clientY / innerHeight - .5) * 5;
-        const mesh = document.querySelector('.ambient-glows');
-        if (mesh) mesh.style.transform = `translate(${x}%, ${y}%)`;
-      }, { passive: true });
-
-      // ===================== PORTFOLIO STATS COUNTER ANIMATION =====================
-      function animateCounters() {
-        const counters = document.querySelectorAll(".stat-number");
-        counters.forEach(counter => {
-          const target = +counter.getAttribute("data-target");
-          let count = 0;
-          const increment = target > 100 ? Math.ceil(target / 100) : 1;
-          const updateCounter = () => {
-            if (count < target) {
-              count += increment; if (count > target) count = target;
-              counter.textContent = count + "+";
-              requestAnimationFrame(updateCounter);
-            } else {
-              counter.textContent = target + "+";
-            }
-          };
-          updateCounter();
-        });
-      }
-
-      const statsSection = document.querySelector(".portfolio-stats");
-      const observerStats = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting) {
-          animateCounters();
-          observerStats.disconnect();
-        }
-      }, { threshold: 0.5 });
-      if (statsSection) {
-        observerStats.observe(statsSection);
-      }
-
-      // ===================== BENTO GRID HOVER EFFECT =====================
-      document.querySelectorAll('.bento-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
-        });
+    // Smooth scroll for anchor links
+    function smoothTo(id) { const el = document.getElementById(id); if (!el) return; window.scrollTo({ top: el.offsetTop - 64, behavior: 'smooth' }); }
+    $$('a[data-scroll], [data-d-close][href^="#"], .nav-links a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href')?.slice(1);
+        if (id) { e.preventDefault(); smoothTo(id); }
       });
-    </script>
+    });
+
+    // Active section highlighting
+    const sections = ['home', 'services', 'portfolio', 'our-work', 'about', 'team', 'contact'];
+    const navLinks = $$('.nav-links a');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-60% 0px -35% 0px', threshold: .01 });
+    sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+
+    // Preloader Logic
+    function dismissPreloader() {
+      const preloader = document.getElementById('preloader');
+      if (!preloader) return;
+
+      // Ensure we don't fire multiple times
+      if (document.body.classList.contains('loaded')) return;
+
+      // Wait for the welcome animation to finish (2.5s) + a small buffer
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+        document.body.classList.remove('loading');
+      }, 2500);
+    }
+
+    // Try to dismiss on load, but have a fallback
+    window.addEventListener('load', dismissPreloader);
+
+    // Fallback: If load takes too long (e.g. slow image), dismiss anyway after 4s max
+    setTimeout(dismissPreloader, 4000);
+
+
+
+    // Navbar Scroll & Progress Effect
+    const nav = document.querySelector('.nav');
+    const progress = document.querySelector('.nav-progress-bar');
+
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        // Scrolled State
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+
+        // Progress Bar Calculation
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        if (progress) progress.style.width = scrolled + "%";
+      }, { passive: true });
+    }
+
+    // Reveal on Scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      const elementVisible = 100;
+      reveals.forEach((reveal) => {
+        const elementTop = reveal.getBoundingClientRect().top;
+        if (elementTop < windowHeight - elementVisible) {
+          reveal.classList.add('in');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Trigger once on load
+
+    // Video modal
+    const modal = $('#videoModal');
+    const frame = $('#videoFrame');
+    const openReel = $('#openReel');
+    const closeVideo = $('#closeVideo');
+    const pauseVideo = $('#pauseVideo');
+    function openVideo(src) {
+      modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); frame.src = src;
+      closeVideo.focus();
+    }
+    function closeVideoModal() {
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); frame.src =
+        ''; openReel?.focus();
+    }
+    openReel?.addEventListener('click', () => openVideo('https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1&rel=0'));
+    closeVideo.addEventListener('click', closeVideoModal);
+    pauseVideo.addEventListener('click', () => {
+      const s = frame.src; frame.src = s.replace('autoplay=1', 'autoplay=0');
+    });
+    modal.addEventListener('click', e => { if (e.target === modal) closeVideoModal(); });
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('open'))
+        closeVideoModal();
+    });
+
+    // Make any .thumb with data-video open modal
+    $$('.thumb[data-video]').forEach(t => t.addEventListener('click', e => {
+      e.preventDefault();
+      openVideo(t.dataset.video);
+    }));
+
+    // Portfolio category filter - Updated for Portfolio Stage
+    const pills = $$('.filter-tab');
+    const cards = $$('.stage-card');
+
+    function setCat(cat) {
+      // Toggle Active State for pills
+      pills.forEach(p => {
+        p.classList.toggle('active', p.dataset.cat === cat);
+      });
+
+      // Filter and Animate Cards
+      cards.forEach(c => {
+        const shouldShow = cat === 'all' || c.dataset.cat === cat;
+
+        if (shouldShow) {
+          c.style.display = '';
+          // Small delay to trigger transition
+          requestAnimationFrame(() => {
+            c.style.opacity = '1';
+            c.style.transform = 'scale(1)';
+          });
+        } else {
+          c.style.opacity = '0';
+          c.style.transform = 'scale(0.95)';
+          // Hide after transition finishes
+          setTimeout(() => {
+            if (c.style.opacity === '0') c.style.display = 'none';
+          }, 400);
+        }
+      });
+    }
+
+    pills.forEach(p => p.addEventListener('click', () => setCat(p.dataset.cat)));
+
+    // ===================== OUR WORK PAGE FUNCTIONALITY =====================
+
+    // Portfolio filter functionality
+    const filterBtns = $$('.filter-btn');
+    const portfolioItems = $$('.portfolio-item');
+
+    function filterPortfolio(category) {
+      // Update active button
+      filterBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === category);
+      });
+
+      // Filter items with animation
+      portfolioItems.forEach(item => {
+        const shouldShow = category === 'all' || item.dataset.category === category;
+
+        if (shouldShow) {
+          item.style.display = 'block';
+          setTimeout(() => {
+            item.classList.add('scale-in');
+          }, 100);
+        } else {
+          item.classList.remove('scale-in');
+          setTimeout(() => {
+            item.style.display = 'none';
+          }, 300);
+        }
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterPortfolio(btn.dataset.filter);
+      });
+    });
+
+    // Portfolio item click handlers
+    portfolioItems.forEach(item => {
+      item.addEventListener('click', () => {
+        // Add click animation
+        item.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          item.style.transform = '';
+        }, 150);
+
+        // Safety check for title
+        const title = item.querySelector('.portfolio-title')?.textContent || 'Untitled';
+        console.log('Portfolio item clicked:', title);
+      });
+    });
+
+    // Enhanced scroll animations for new sections
+    const fadeElements = $$('.fade-up, .scale-in, .slide-in-left, .slide-in-right');
+    const fadeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+
+    // Service badge filter visual toggle
+    $('#serviceBadges')?.addEventListener('click', e => {
+      const b = e.target.closest('button[data-filter]'); if (!b) return;
+      const pressed = b.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', !pressed);
+    });
+
+    // Pricing highlight
+    const plans = $$('#plans .plan');
+    const highlightBtns = $$('[data-highlight]');
+    function highlightPlan(name) {
+      plans.forEach(p => p.style.outline = p.dataset.name === name ? '3px solid var(--ring)' : 'none');
+    }
+    highlightBtns.forEach(btn => btn.addEventListener('click', () => highlightPlan(btn.dataset.highlight)));
+
+    // Contact form validation + fake submit
+    const form = $('#contactForm');
+    const toast = $('#toast');
+    const sendBtn = $('#sendBtn');
+    function showToast(msg) {
+      toast.textContent = msg; toast.classList.add('show'); setTimeout(() =>
+        toast.classList.remove('show'), 2600);
+    }
+    form?.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!form.checkValidity()) { showToast('Please fill all fields correctly'); return; }
+      sendBtn.setAttribute('aria-busy', 'true');
+      setTimeout(() => {
+        sendBtn.removeAttribute('aria-busy');
+        form.reset();
+        showToast('Thanks. We will get back soon');
+      }, 900);
+    });
+
+    // Footer year - Safe setting
+    const yearEl = $('#year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Initial page load animations
+    function initPageAnimations() {
+      // Trigger loading animations for hero elements
+      const heroElements = document.querySelectorAll('.loading-fade');
+      heroElements.forEach((el, index) => {
+        setTimeout(() => {
+          el.style.animation = `fadeInUp 0.8s ease-out ${index * 0.1}s forwards`;
+        }, 100 + (index * 100));
+      });
+
+      // Initialize interactive features
+      setTimeout(() => {
+        animateProgressBars();
+      }, 1000);
+    }
+
+    // Run initial animations when page loads
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPageAnimations);
+    } else {
+      initPageAnimations();
+    }
+
+
+
+    // Ambient flow interaction for background
+    window.addEventListener('mousemove', e => {
+      const x = (e.clientX / innerWidth - .5) * 5;
+      const y = (e.clientY / innerHeight - .5) * 5;
+      const mesh = document.querySelector('.ambient-glows');
+      if (mesh) mesh.style.transform = `translate(${x}%, ${y}%)`;
+    }, { passive: true });
+
+    // ===================== PORTFOLIO STATS COUNTER ANIMATION =====================
+    function animateCounters() {
+      const counters = document.querySelectorAll(".stat-number");
+      counters.forEach(counter => {
+        const target = +counter.getAttribute("data-target");
+        let count = 0;
+        const increment = target > 100 ? Math.ceil(target / 100) : 1;
+        const updateCounter = () => {
+          if (count < target) {
+            count += increment; if (count > target) count = target;
+            counter.textContent = count + "+";
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target + "+";
+          }
+        };
+        updateCounter();
+      });
+    }
+
+    const statsSection = document.querySelector(".portfolio-stats");
+    const observerStats = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        animateCounters();
+        observerStats.disconnect();
+      }
+    }, { threshold: 0.5 });
+    if (statsSection) {
+      observerStats.observe(statsSection);
+    }
+
+    // ===================== BENTO GRID HOVER EFFECT =====================
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  </script>
 </body>
 
 </html>
