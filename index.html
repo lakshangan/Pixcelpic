@@ -118,67 +118,204 @@
       }
     }
 
-    /* Welcoming Preloader */
+    /* ===================== CINEMATIC PRELOADER v2 ===================== */
     #preloader {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: #000;
-      z-index: 99999;
-      /* Increased z-index */
+      /* Solid background to eliminate any void at start */
+      z-index: 100000;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.8s ease-out, visibility 0.8s;
+      overflow: hidden;
+      transition: opacity 1s ease;
     }
 
-    .preloader-content {
+    .preloader-inner {
       text-align: center;
-      color: #fff;
+      position: relative;
+      z-index: 100010;
+      /* Above shutters */
     }
 
-    .welcome-text {
-      font-size: clamp(24px, 4vw, 48px);
-      font-weight: 300;
-      letter-spacing: 2px;
+    .preload-brand-img {
+      height: clamp(60px, 8vw, 100px);
+      width: auto;
+      margin-bottom: 30px;
       opacity: 0;
-      transform: translateY(20px);
-      animation: welcomeAnim 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      /* Fast but smooth reveal (0.5s) to avoid harsh snap */
+      animation: logoFadeIn 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: all 0.8s ease;
     }
 
-    .welcome-text span {
-      color: var(--brand);
-      font-weight: 700;
+    @keyframes logoFadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
-    @keyframes welcomeAnim {
+    body.loaded .preload-brand-img {
+      opacity: 0;
+      filter: blur(40px);
+      transform: scale(0.9);
+      transition-duration: 1.2s;
+    }
+
+    .preload-welcome {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(14px, 1.5vw, 18px);
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      opacity: 0;
+      filter: blur(5px);
+      transform: translateY(10px);
+      animation: cinematicWelcome 1s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.3s;
+    }
+
+    @keyframes cinematicReveal {
       0% {
         opacity: 0;
-        transform: translateY(20px);
-      }
-
-      20% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      80% {
-        opacity: 1;
-        transform: translateY(0);
+        filter: blur(10px);
+        transform: scale(0.95);
       }
 
       100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+      }
+    }
+
+    @keyframes cinematicWelcome {
+      0% {
         opacity: 0;
-        transform: translateY(-20px);
+        filter: blur(5px);
+        transform: translateY(10px);
+      }
+
+      100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+
+    /* Ambient Pulsing Glow */
+    .preload-glow {
+      position: absolute;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(255, 153, 51, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+      filter: blur(80px);
+      border-radius: 50%;
+      animation: preloadPulse 6s ease-in-out infinite;
+    }
+
+    @keyframes preloadPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.4;
+      }
+
+      50% {
+        transform: scale(1.15);
+        opacity: 0.7;
       }
     }
 
     body.loaded #preloader {
+      transform: scale(1.1);
       opacity: 0;
-      visibility: hidden;
+      filter: blur(50px);
+      transition: all 1.8s cubic-bezier(0.85, 0, 0.15, 1);
       pointer-events: none;
+    }
+
+    /* Cinematic Shutter Reveal */
+    /* Snappy Cinematic Shutter Reveal */
+    .shutter-top,
+    .shutter-bottom {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #000;
+      z-index: 100005;
+      /* Between preloader content and Hero */
+      transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
+    }
+
+    .shutter-top {
+      top: 0;
+    }
+
+    .shutter-bottom {
+      bottom: 0;
+    }
+
+    body.loaded .shutter-top {
+      transform: translateY(-100%);
+    }
+
+    body.loaded .shutter-bottom {
+      transform: translateY(100%);
+    }
+
+    /* Hero Reveal Effect */
+    .hero-creative {
+      opacity: 0;
+      filter: blur(20px);
+      transform: scale(1.05);
+      transition: all 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+    }
+
+    body.loaded .hero-creative {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1);
+    }
+
+    /* Light Sweep Transition */
+    .light-sweep {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 40%, rgba(255, 153, 51, 0.15) 50%, transparent 60%);
+      z-index: 100002;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(-100%) skewX(-25deg);
+    }
+
+    body.loaded .light-sweep {
+      animation: sweep 2s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.3s;
+    }
+
+    @keyframes sweep {
+      0% {
+        transform: translateX(-100%) skewX(-25deg);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateX(200%) skewX(-25deg);
+        opacity: 0;
+      }
     }
 
     /* Global Reveal Animations */
@@ -1312,78 +1449,6 @@
       word-wrap: break-word
     }
 
-    /* ===================== CINEMATIC PRELOADER (MINIMAL REDESIGN) ===================== */
-    .preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(135deg, #0c0f16 0%, #181d2a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-      overflow: hidden;
-    }
-
-    /* Synced transitions for body.loaded */
-    body.loaded .preloader {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    body.loaded .loading-bar {
-      display: none;
-    }
-
-    body.loaded {
-      overflow: visible !important;
-    }
-
-    .preloader-text {
-      font-size: 20px;
-      color: var(--text);
-      margin-bottom: 20px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-align: center;
-    }
-
-    .loading-bar {
-      width: 260px;
-      height: 7px;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 4px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16) inset;
-    }
-
-    .loading-progress {
-      height: 100%;
-      background: linear-gradient(90deg, var(--brand), #ffd6a8 70%, var(--brand) 100%);
-      border-radius: 4px;
-      width: 0%;
-      transition: width 0.7s cubic-bezier(.7, 0, .3, 1);
-      position: relative;
-      background-size: 200% 100%;
-      animation: gradientShift 2.5s ease-in-out infinite;
-    }
-
-    @keyframes gradientShift {
-
-      0%,
-      100% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-    }
 
     /* ===================== OUR WORK PAGE STYLES ===================== */
 
@@ -2185,14 +2250,15 @@
 
 <body class="loading">
   <!-- ================== CINEMATIC PRELOADER ================== -->
-  <div class="preloader" id="preloader">
-    <div class="preloader-content">
-      <img src="PixelPix_Studio.png" alt="PixelPix Studio Logo"
-        style="height: 50px; width: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" />
-      <div class="preloader-words" id="preloaderWords">Loading Assets...</div>
-      <div class="loading-bar">
-        <div class="loading-progress progress-fill" id="loadingProgress"></div>
-      </div>
+  <div class="shutter-top"></div>
+  <div class="shutter-bottom"></div>
+  <div class="light-sweep"></div>
+
+  <div id="preloader">
+    <div class="preload-glow"></div>
+    <div class="preloader-inner">
+      <img src="PixelPix_Studio.png" alt="PixelPix Studio" class="preload-brand-img" />
+      <p class="preload-welcome">Experience Excellence.</p>
     </div>
   </div>
 
@@ -2496,25 +2562,35 @@
         .hero-creative {
           padding: 120px 0 80px;
           min-height: auto;
+          text-align: center;
+          /* Center for mobile */
+        }
+
+        .hero-layout-left {
+          justify-content: center;
         }
 
         .hero-headline {
-          font-size: clamp(36px, 11vw, 56px);
+          font-size: clamp(34px, 10vw, 52px);
           letter-spacing: -1px;
+          margin-inline: auto;
         }
 
         .hero-btns {
           flex-direction: column;
-          align-items: flex-start;
-          max-width: 300px;
-          margin-inline: 0;
+          align-items: center;
+          /* Center buttons */
+          max-width: 100%;
+          width: 100%;
+          margin-top: 50px;
         }
 
         .btn-glow,
         .btn-glass {
           width: 100%;
+          max-width: 280px;
           justify-content: center;
-          padding: 14px 24px;
+          padding: 16px 24px;
         }
       }
     </style>
@@ -2597,14 +2673,10 @@
           <div class="split-item reveal">
             <div class="split-text-reveal">
               <span class="service-num"></span>
-              <h3>Visionary Thinking</h3>
+              <h3>Concept Development</h3>
               <p>Everything starts with a spark. We dive deep into your brand DNA to conceptualize visual stories that
                 don't just look good, but solve problems and drive growth.</p>
-              <ul class="feature-pills-small">
-                <li>Brand Analysis</li>
-                <li>Creative Direction</li>
-                <li>Market Research</li>
-              </ul>
+
             </div>
             <div class="split-visual">
               <div class="art-backdrop"></div>
@@ -2616,14 +2688,10 @@
           <div class="split-item reverse reveal">
             <div class="split-text-reveal">
               <span class="service-num"></span>
-              <h3>Strategic Scripting</h3>
+              <h3>The Final Delivery</h3>
               <p>We translate abstract ideas into structured narratives. Our scripts are engineered for impact, ensuring
                 every word and frame serves a clear strategic purpose.</p>
-              <ul class="feature-pills-small">
-                <li>Ad Copywriting</li>
-                <li>Storyboarding</li>
-                <li>Production Blueprint</li>
-              </ul>
+
             </div>
             <div class="split-visual">
               <div class="art-backdrop"></div>
@@ -2638,11 +2706,7 @@
               <h3>Cinematic Production</h3>
               <p>Lights, camera, and precision. Our production team utilizes high-end cinema gear to capture
                 high-fidelity footage that meets the highest industry standards.</p>
-              <ul class="feature-pills-small">
-                <li>4K Raw Capture</li>
-                <li>Studio Lighting</li>
-                <li>Pro Audio Mapping</li>
-              </ul>
+
             </div>
             <div class="split-visual">
               <div class="art-backdrop"></div>
@@ -2654,14 +2718,10 @@
           <div class="split-item reverse reveal">
             <div class="split-text-reveal">
               <span class="service-num"></span>
-              <h3>Masterful Editing</h3>
+              <h3>Where the Magic Happens - Editing</h3>
               <p>The magic happens on the timeline. We sculpt your story through advanced editing, color grading, and
                 VFX, turning raw frames into a cinematic masterpiece.</p>
-              <ul class="feature-pills-small">
-                <li>Visual Effects</li>
-                <li>Color Grading</li>
-                <li>Sound Synthesis</li>
-              </ul>
+
             </div>
             <div class="split-visual">
               <div class="art-backdrop"></div>
@@ -2676,15 +2736,11 @@
               <h3>Strategic Distribution</h3>
               <p>A masterpiece deserves an audience. We optimize your content for every platform, from high-stakes
                 broadcast to viral social media loops.</p>
-              <ul class="feature-pills-small">
-                <li>Social Packaging</li>
-                <li>Format Optimization</li>
-                <li>Launch Support</li>
-              </ul>
+
             </div>
             <div class="split-visual">
               <div class="art-backdrop"></div>
-              <img src="Editing Software PNG/Publish.png" alt="Distribution" class="split-img-static img-large">
+              <img src="Editing Software PNG/Deliver.png" alt="Final Assets" class="split-img-static">
             </div>
           </div>
 
@@ -2695,15 +2751,11 @@
               <h3>Asset Excellence</h3>
               <p>We deliver ready-to-use digital assets that empower your brand across all channels. Our final delivery
                 ensures you have everything you need to scale.</p>
-              <ul class="feature-pills-small">
-                <li>Global Delivery</li>
-                <li>Archive Support</li>
-                <li>Scalable Assets</li>
-              </ul>
+
             </div>
             <div class="split-visual">
               <div class="art-backdrop"></div>
-              <img src="Editing Software PNG/Deliver.png" alt="Final Assets" class="split-img-static">
+              <img src="Editing Software PNG/Publish.png" alt="Distribution" class="split-img-static img-large">
             </div>
           </div>
         </div>
@@ -2749,8 +2801,8 @@
           .split-item,
           .split-item.reverse {
             grid-template-columns: 1fr !important;
-            gap: 60px;
             text-align: center;
+            gap: 50px;
           }
 
           .split-item.reverse .split-text-reveal,
@@ -2759,7 +2811,12 @@
           }
 
           .split-wrapper {
-            gap: 100px;
+            gap: 140px;
+          }
+
+          .split-visual {
+            order: -1 !important;
+            /* Image always on top for mobile */
           }
         }
 
@@ -3048,11 +3105,18 @@
         @media (max-width: 768px) {
           .stats-grid-v2 {
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 20px;
+            max-width: 320px;
+            margin-inline: auto;
           }
 
           .s-card {
-            padding: 24px 20px;
+            padding: 30px 20px;
+          }
+
+          .about-tagline {
+            text-align: center;
+            display: block;
           }
         }
 
@@ -4397,26 +4461,32 @@
     }, { rootMargin: '-60% 0px -35% 0px', threshold: .01 });
     sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
 
-    // Preloader Logic
+    // Cinematic Preloader Engine (Accelerated)
+    // Unified Cinematic Preloader Logic
     function dismissPreloader() {
-      const preloader = document.getElementById('preloader');
-      if (!preloader) return;
+      const preloader = $('#preloader');
+      if (!preloader || document.body.classList.contains('loaded')) return;
 
-      // Ensure we don't fire multiple times
-      if (document.body.classList.contains('loaded')) return;
-
-      // Wait for the welcome animation to finish (2.5s) + a small buffer
+      // Extended "Hero Stay" for the brand (3.5 seconds)
       setTimeout(() => {
         document.body.classList.add('loaded');
         document.body.classList.remove('loading');
-      }, 2500);
+
+        // Final cleanup for performance
+        setTimeout(() => {
+          preloader.style.display = 'none';
+          document.querySelector('.shutter-top').style.display = 'none';
+          document.querySelector('.shutter-bottom').style.display = 'none';
+        }, 2000);
+      }, 3500);
     }
 
-    // Try to dismiss on load, but have a fallback
+    // Trigger dismiss sequence
+    document.addEventListener('DOMContentLoaded', dismissPreloader);
     window.addEventListener('load', dismissPreloader);
 
-    // Fallback: If load takes too long (e.g. slow image), dismiss anyway after 4s max
-    setTimeout(dismissPreloader, 4000);
+    // Safety Fallback
+    setTimeout(dismissPreloader, 7000);
 
 
 
