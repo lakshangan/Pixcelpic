@@ -4,358 +4,273 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Works - Pixel Pic Studio</title>
+  <title>Our Works | PixelPic Studio - Cinematic Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
   <style>
-    html,
-    body {
+    :root {
+      --bg: #030712;
+      --bg-alt: #0f172a;
+      --brand: #ff9f43;
+      --brand-glow: rgba(255, 159, 67, 0.3);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --card-bg: #1e293b;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
-      width: 100%;
-      word-break: break-word;
-      overflow-wrap: anywhere;
       scroll-behavior: smooth;
     }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: #0c0f16;
-      color: #fff;
+    h1,
+    h2,
+    h3,
+    .brand {
+      font-family: 'Outfit', sans-serif;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 0 40px;
     }
 
-    /* Hero Section */
-    .portfolio-hero {
-      background: linear-gradient(135deg, #181d2a, #0c0f16);
-      padding: 140px 0 80px;
-      text-align: left;
-    }
-
-    .portfolio-hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      color: #ff9f43;
-    }
-
-    .portfolio-hero p {
-      font-size: 18px;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0;
-      color: #ddd;
-    }
-
-    /* Section */
-    .section {
-      padding: 60px 20px;
-    }
-
-    /* Filter Buttons */
-    .portfolio-filter {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 15px;
-      margin-bottom: 40px;
-    }
-
-    .filter-btn {
-      background: #181d2a;
-      border: 1px solid #444;
-      padding: 10px 20px;
-      border-radius: 20px;
-      color: #fff;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: #ff9f43;
-      border-color: #ff9f43;
-      color: #000;
-    }
-
-    /* Portfolio Grid */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .portfolio-item {
-      background: #181d2a;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-8px);
-    }
-
-    .portfolio-item img {
-      width: 100%;
-      display: block;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .portfolio-overlay {
-      position: absolute;
+    /* Custom Cursor */
+    .cursor-dot,
+    .cursor-outline {
+      pointer-events: none;
+      position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      color: #fff;
-      transition: opacity 0.3s ease;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 10000;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    .portfolio-item:hover .portfolio-overlay {
-      opacity: 1;
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--brand);
     }
 
-    .portfolio-content {
-      padding: 20px;
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--brand);
     }
 
-    .portfolio-category {
-      font-size: 14px;
-      color: #ff9f43;
-      margin-bottom: 8px;
-    }
-
-    .portfolio-title {
-      font-size: 20px;
-      margin: 5px 0;
-    }
-
-    .portfolio-description {
-      font-size: 14px;
-      color: #ccc;
-      line-height: 1.4;
-      margin-bottom: 12px;
-    }
-
-    .portfolio-meta span {
-      font-size: 12px;
-      margin-right: 10px;
-      color: #aaa;
-    }
-
-    /* Showcase */
-    .project-showcase .showcase-item {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-
-    .showcase-image {
-      flex: 1 1 45%;
-    }
-
-    .showcase-image img {
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    .showcase-content {
-      flex: 1 1 45%;
-    }
-
-    .showcase-content h3 {
-      font-size: 28px;
-      margin-bottom: 15px;
-      color: #ff9f43;
-    }
-
-    .showcase-content p {
-      color: #ddd;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .showcase-tags {
-      margin-bottom: 20px;
-    }
-
-    .showcase-tag {
-      background: #181d2a;
-      border: 1px solid #444;
-      padding: 6px 14px;
-      border-radius: 20px;
-      margin-right: 10px;
-      font-size: 12px;
-      color: #fff;
-    }
-
-    .button {
-      background: #ff9f43;
-      padding: 10px 22px;
-      border-radius: 25px;
-      color: #000;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-
-    .button:hover {
-      background: #ffb766;
-    }
-
-    /* Stats */
-    .portfolio-stats {
-      background: #181d2a;
-      padding: 80px 20px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 36px;
-      font-weight: 700;
-      color: #ff9f43;
-    }
-
-    .stat-label {
-      font-size: 16px;
-      color: #ddd;
-      margin-top: 10px;
-    }
-
+    /* --- Navigation Upgrade --- */
     .nav {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: #0c0f16;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      position: fixed;
+      top: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 1100px;
+      z-index: 1000;
+      background: rgba(3, 7, 18, 0.4);
+      backdrop-filter: blur(30px) saturate(160%);
+      -webkit-backdrop-filter: blur(30px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      padding: 8px 32px;
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 20px 40px -8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .nav.scrolled {
+      top: 16px;
+      background: rgba(3, 7, 18, 0.85);
+      border-color: rgba(255, 153, 51, 0.2);
+      padding: 6px 20px;
+      max-width: 900px;
     }
 
     .nav-wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 10px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      font-weight: 800;
-      letter-spacing: .5px;
-      gap: 12px;
-      font-size: 1.25rem;
-      color: #fff;
-    }
-
-    .brand img {
-      height: 50px;
-      width: auto;
-      margin-right: 10px;
-      display: inline-block;
-      vertical-align: middle;
-      border-radius: 8px;
-      background: #0d1320;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      height: 44px;
     }
 
     .nav-links {
       display: none;
-      gap: 28px;
-      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 4px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
     }
 
     .nav-links a {
-      color: #fff;
-      opacity: 0.85;
-      text-decoration: none;
-      font-size: 1rem;
-      padding: 2px 4px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       position: relative;
-      transition: color 0.2s, opacity 0.2s;
+      text-decoration: none;
     }
 
-    .nav-links a:hover,
-    .nav-links a:focus {
-      opacity: 1;
-    }
-
-    .nav-links a::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 2px;
-      background: #ff9f43;
-      transition: width 0.2s;
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a:focus::after {
-      width: 100%;
+    .nav-links a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .nav-links a.active {
-      color: #ff9f43;
-      opacity: 1;
-      font-weight: 600;
-    }
-
-    .nav-links a.active::after {
-      width: 100%;
-      background: #ff9f43;
-    }
-
-    .contact-btn {
-      background: #ff9f43;
-      color: #1b1205;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: none;
-      box-shadow: 0 10px 25px rgba(255, 159, 67, 0.09);
-      margin-left: 10px;
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .contact-btn:hover,
-    .contact-btn:focus {
-      background: #ffb766;
+      background: #fff;
       color: #000;
     }
 
+    .contact-btn {
+      background: linear-gradient(135deg, var(--brand) 0%, #ea580c 100%);
+      color: #fff !important;
+      font-weight: 700 !important;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: none;
+      box-shadow: 0 8px 20px rgba(255, 153, 51, 0.25);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+      opacity: 1 !important;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(255, 153, 51, 0.4);
+    }
+
     .menu {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       display: grid;
       place-items: center;
-      border-radius: 10px;
+      border-radius: 50%;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .menu {
+        display: none;
+      }
+    }
+
+    .nav-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 32px;
+      right: 32px;
+      height: 2px;
+      background: var(--brand);
+      width: 0%;
+      border-radius: 100px;
+      opacity: 0.4;
+      transition: width 0.1s linear;
+    }
+
+    /* Refined Mobile Drawer */
+    .drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(2, 6, 23, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      display: grid;
+      place-items: center;
+    }
+
+    .drawer.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-panel {
+      width: min(90%, 400px);
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 32px;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      transform: scale(0.9);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .drawer.open .drawer-panel {
+      transform: scale(1);
+    }
+
+    .drawer-panel a {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .drawer-panel a:hover {
+      color: var(--brand);
+      transform: scale(1.05);
+    }
+
+    .drawer-panel .icon-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
     }
 
     .hamburger {
@@ -383,78 +298,435 @@
       top: 6px;
     }
 
-    @media (min-width: 900px) {
-      .nav-links {
-        display: flex;
-      }
-
-      .menu {
-        display: none;
-      }
+    /* Hero */
+    .portfolio-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding: 180px 0 100px;
+      overflow: hidden;
     }
 
-    /* mobile drawer */
-    .drawer {
-      position: fixed;
+    .hero-bg {
+      position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, .6);
-      display: grid;
-      place-items: end;
+      z-index: -1;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(255, 159, 67, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(15, 23, 42, 1) 0%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: var(--brand);
+      filter: blur(150px);
+      opacity: 0.05;
+      border-radius: 50%;
+      animation: float-glow 20s infinite alternate;
+    }
+
+    @keyframes float-glow {
+      0% {
+        transform: translate(-10%, -10%);
+      }
+
+      100% {
+        transform: translate(10%, 10%);
+      }
+    }
+
+    .portfolio-hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 24px;
+      background: linear-gradient(to right, #fff, var(--brand));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
       opacity: 0;
-      pointer-events: none;
-      transition: .25s ease opacity
+      transform: translateY(50px);
     }
 
-    .drawer.open {
+    .portfolio-hero p {
+      max-width: 650px;
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .visible h1,
+    .visible p {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      transition: var(--transition);
+    }
+
+    .visible p {
+      transition-delay: 0.2s;
+    }
+
+    /* Filters */
+    .filter-container {
+      position: sticky;
+      top: 100px;
+      z-index: 100;
+      margin-top: -40px;
+      margin-bottom: 80px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .portfolio-filter {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
+      padding: 8px;
+      border-radius: 999px;
+      border: 1px solid var(--glass-border);
+      gap: 8px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .filter-btn {
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .filter-btn.active {
+      background: var(--brand);
+      color: #000;
+    }
+
+    .filter-btn:not(.active):hover {
+      background: var(--glass);
+    }
+
+    /* Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 32px;
+      margin-bottom: 120px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition);
+    }
+
+    .portfolio-item.reveal {
       opacity: 1;
-      pointer-events: auto
+      transform: translateY(0);
     }
 
-    .drawer-panel {
-      transform: translateX(8%);
-      transition: .28s ease transform;
-    }
-
-    .drawer.open .drawer-panel {
-      transform: translateX(0)
-    }
-
-    .drawer-panel {
+    .portfolio-item img {
+      width: 100%;
       height: 100%;
-      width: min(88%, 360px);
-      background: var(--card);
-      padding: 22px;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(3, 7, 18, 0.9) 0%, transparent 60%);
+      padding: 32px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      border-left: 1px solid rgba(255, 255, 255, .08)
+      justify-content: flex-end;
+      opacity: 0;
+      transition: var(--transition);
     }
 
-    .drawer a {
-      padding: 12px 10px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .04);
-      border: 1px solid rgba(255, 255, 255, .06)
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .item-cat {
+      color: var(--brand);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    .item-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      transform: translateY(20px);
+      transition: var(--transition);
+      transition-delay: 0.1s;
+    }
+
+    .portfolio-item:hover .item-cat,
+    .portfolio-item:hover .item-title {
+      transform: translateY(0);
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      width: 80px;
+      height: 80px;
+      background: var(--brand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+      box-shadow: 0 0 30px var(--brand-glow);
+    }
+
+    .portfolio-item:hover .play-btn {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .play-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: #000;
+      margin-left: 4px;
+    }
+
+    /* Showcase Section */
+    .project-showcase {
+      padding: 150px 0;
+      background: var(--bg-alt);
+      margin-top: 100px;
+    }
+
+    .section-header {
+      margin-bottom: 80px;
+      max-width: 600px;
+    }
+
+    .section-header h2 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .showcase-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 150px;
+    }
+
+    .showcase-item {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .showcase-item.reverse {
+      grid-template-columns: 1fr 1.2fr;
+    }
+
+    .showcase-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    .showcase-img-wrap img {
+      width: 100%;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .showcase-item:hover .showcase-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .showcase-content h3 {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+      color: var(--brand);
+    }
+
+    .showcase-content p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .showcase-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .tag {
+      padding: 8px 18px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 36px;
+      border: 2px solid var(--brand);
+      border-radius: 999px;
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+
+    .btn-outline:hover {
+      background: var(--brand);
+      color: #000;
+    }
+
+    /* Stats */
+    .stats-section {
+      padding: 120px 0;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .stat-card {
+      padding: 40px;
+      background: var(--glass);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      border-color: var(--brand);
+      transform: translateY(-10px);
+      background: rgba(255, 159, 67, 0.05);
+    }
+
+    .stat-val {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+
+      .showcase-item,
+      .showcase-item.reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-hero h1 {
+        font-size: 3.5rem;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
   <nav class="nav" aria-label="Primary">
     <div class="container nav-wrap">
-      <span class="brand">
-        <img src="PixelPix Studio.png" alt="PixelPic Studio Logo"
-          style="height: 30px; width: auto; margin-right: 8px; display: inline-block;" />
-      </span>
-      <div class="nav-links" role="menubar" aria-label="Primary Navigation">
-        <a href="pixelpic.html" role="menuitem" class="nav-link">Home</a>
-        <!-- <a href="#about" role="menuitem" class="nav-link">About Us</a>
-        <a href="#services" role="menuitem" class="nav-link">Services</a>
-        <a href="our-work.html" role="menuitem" class="active nav-link">Our Works</a> -->
-        <a class="contact-btn" href="#contact" role="menuitem">Contact Us</a>
+      <a href="index.html" class="brand">
+        <img src="PixelPix_Studio.png" alt="PixelPic Studio" />
+      </a>
+      <div class="nav-links" role="menubar">
+        <a href="index.html" role="menuitem" class="nav-link">Home</a>
+        <a href="index.html#about" role="menuitem" class="nav-link">About</a>
+        <a href="index.html#services" role="menuitem" class="nav-link">Services</a>
+        <a href="our-work.html" role="menuitem" class="nav-link active">Work</a>
+        <a class="contact-btn" href="index.html#contact" role="menuitem">Contact</a>
       </div>
-      <button class="menu interactive-hover" id="openMenu" aria-label="Open menu" aria-haspopup="dialog"
-        aria-controls="drawerPanel"><span class="hamburger"></span></button>
+      <button class="menu interactive-hover" id="openMenu" aria-label="Open menu">
+        <span class="hamburger"></span>
+      </button>
+      <div class="nav-progress-bar"></div>
     </div>
   </nav>
 
@@ -462,234 +734,321 @@
   <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Navigation Menu">
     <div class="drawer-panel" id="drawerPanel">
       <button class="icon-btn" id="closeMenu" aria-label="Close menu">✕</button>
-      <a href="/index.html" data-d-close>Home</a>
-
+      <a href="index.html" data-d-close>Home</a>
+      <a href="index.html#about" data-d-close>About Us</a>
+      <a href="index.html#services" data-d-close>Services</a>
+      <a href="our-work.html" data-d-close>Our Works</a>
+      <a class="contact-btn" href="index.html#contact" data-d-close>Contact Us</a>
     </div>
   </div>
 
-
-  <!-- ===================== OUR WORK PAGE ===================== -->
-  <section id="our-work" class="portfolio-hero">
+  <section class="portfolio-hero" id="hero">
     <div class="container">
-      <div class="portfolio-hero-content fade-up">
-        <h1>Our Creative Portfolio</h1>
-        <p>Discover our collection of cinematic masterpieces, from stunning video reels to captivating short films,
-          innovative logos, and eye-catching posters that tell compelling stories.</p>
+      <div class="hero-glow"></div>
+      <div class="hero-content">
+        <h1>Creative <br> Excellence.</h1>
+        <p>A curated showcase of cinematic stories, high-end visual production, and creative brand transformations
+          crafted with precision and passion.</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <!-- Category Filter -->
-      <div class="portfolio-filter fade-up">
-        <button class="filter-btn active" data-filter="all">All Work</button>
-        <button class="filter-btn" data-filter="video">Video Reels</button>
+  <div class="container">
+    <div class="filter-container">
+      <div class="portfolio-filter">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="video">Video Production</button>
         <button class="filter-btn" data-filter="short-film">Short Films</button>
-        <button class="filter-btn" data-filter="logo">Logo Design</button>
-        <button class="filter-btn" data-filter="poster">Poster Design</button>
-        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="logo">Branding</button>
+        <button class="filter-btn" data-filter="poster">Visual Design</button>
+      </div>
+    </div>
+
+    <div class="portfolio-grid" id="workGrid">
+      <!-- Item 1 -->
+      <div class="portfolio-item reveal" data-category="video">
+        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1600&auto=format&fit=crop"
+          alt="Video Project">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="item-cat">Video Production</div>
+          <h3 class="item-title">Cinematic Showreel 2024</h3>
+        </div>
       </div>
 
-      <!-- Portfolio Grid -->
-      <div class="portfolio-grid" id="workGrid">
-        <!-- Video Reels -->
-        <div class="portfolio-item scale-in" data-category="video">
-          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1600&auto=format&fit=crop"
-            alt="Cinematic Video Reel" loading="lazy" />
-          <div class="portfolio-overlay">
-            <div class="portfolio-play">▶</div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Video Reel</div>
-            <h3 class="portfolio-title">Cinematic Showreel 2024</h3>
-            <p class="portfolio-description">A stunning compilation of our best cinematic moments, showcasing our
-              expertise in visual storytelling and post-production mastery.</p>
-            <div class="portfolio-meta">
-              <span>Duration: 3:45</span>
-              <span>4K Resolution</span>
-            </div>
-          </div>
+      <!-- Item 2 -->
+      <div class="portfolio-item reveal" data-category="short-film">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&auto=format&fit=crop"
+          alt="Short Film">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
         </div>
-
-        <!-- Short Film -->
-        <div class="portfolio-item scale-in" data-category="short-film">
-          <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&auto=format&fit=crop"
-            alt="Short Film Production" loading="lazy" />
-          <div class="portfolio-overlay">
-            <div class="portfolio-play">▶</div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Short Film</div>
-            <h3 class="portfolio-title">The Silent Echo</h3>
-            <p class="portfolio-description">An award-winning short film exploring themes of connection and isolation in
-              the modern digital age.</p>
-            <div class="portfolio-meta">
-              <span>Duration: 12:30</span>
-              <span>Festival Winner</span>
-            </div>
-          </div>
+        <div class="portfolio-overlay">
+          <div class="item-cat">Short Film</div>
+          <h3 class="item-title">The Silent Echo</h3>
         </div>
+      </div>
 
-        <!-- Logo Design -->
-        <div class="portfolio-item scale-in" data-category="logo">
-          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=1600&auto=format&fit=crop"
-            alt="Logo Design Collection" loading="lazy" />
-          <div class="portfolio-overlay">
-            <div class="portfolio-play">▶</div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Logo Design</div>
-            <h3 class="portfolio-title">TechStart Brand Identity</h3>
-            <p class="portfolio-description">Complete brand identity design including logo, color palette, and visual
-              guidelines for a cutting-edge tech startup.</p>
-            <div class="portfolio-meta">
-              <span>Brand Identity</span>
-              <span>Vector Files</span>
-            </div>
-          </div>
+      <!-- Item 3 -->
+      <div class="portfolio-item reveal" data-category="logo">
+        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1600&auto=format&fit=crop"
+          alt="Branding">
+        <div class="portfolio-overlay">
+          <div class="item-cat">Branding</div>
+          <h3 class="item-title">TechStart Identity</h3>
         </div>
+      </div>
 
-        <!-- Poster Design -->
-        <div class="portfolio-item scale-in" data-category="poster">
-          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1600&auto=format&fit=crop"
-            alt="Movie Poster Design" loading="lazy" />
-          <div class="portfolio-overlay">
-            <div class="portfolio-play">▶</div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Poster Design</div>
-            <h3 class="portfolio-title">Summer Blockbuster Campaign</h3>
-            <p class="portfolio-description">Complete poster series for a major summer movie release, featuring dynamic
-              typography and compelling visuals.</p>
-            <div class="portfolio-meta">
-              <span>Print Ready</span>
-              <span>Multiple Formats</span>
-            </div>
-          </div>
+      <!-- Item 4 -->
+      <div class="portfolio-item reveal" data-category="poster">
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1600&auto=format&fit=crop"
+          alt="Poster Design">
+        <div class="portfolio-overlay">
+          <div class="item-cat">Visual Design</div>
+          <h3 class="item-title">Summer Blockbuster</h3>
         </div>
+      </div>
 
-        <!-- Branding -->
-        <div class="portfolio-item scale-in" data-category="branding">
-          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1600&auto=format&fit=crop"
-            alt="Brand Identity Design" loading="lazy" />
-          <div class="portfolio-overlay">
-            <div class="portfolio-play">▶</div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Branding</div>
-            <h3 class="portfolio-title">EcoLife Complete Branding</h3>
-            <p class="portfolio-description">Comprehensive branding package for an eco-friendly lifestyle brand,
-              including logo, packaging, and marketing materials.</p>
-            <div class="portfolio-meta">
-              <span>Full Package</span>
-              <span>Sustainable Design</span>
-            </div>
-          </div>
+      <!-- Item 5 -->
+      <div class="portfolio-item reveal" data-category="video">
+        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1600&auto=format&fit=crop"
+          alt="Event Reel">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
         </div>
+        <div class="portfolio-overlay">
+          <div class="item-cat">Video Production</div>
+          <h3 class="item-title">Global Summit 2023</h3>
+        </div>
+      </div>
 
-        <!-- Video Reel -->
-        <div class="portfolio-item scale-in" data-category="video">
-          <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1600&auto=format&fit=crop"
-            alt="Corporate Video Reel" loading="lazy" />
-          <div class="portfolio-overlay">
-            <div class="portfolio-play">▶</div>
-          </div>
-          <div class="portfolio-content">
-            <div class="portfolio-category">Video Reel</div>
-            <h3 class="portfolio-title">Corporate Excellence Reel</h3>
-            <p class="portfolio-description">Professional corporate video showcasing company culture, achievements, and
-              future vision with cinematic quality.</p>
-            <div class="portfolio-meta">
-              <span>Duration: 2:15</span>
-              <span>Corporate</span>
-            </div>
-          </div>
+      <!-- Item 6 -->
+      <div class="portfolio-item reveal" data-category="logo">
+        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1600&auto=format&fit=crop"
+          alt="Packaging">
+        <div class="portfolio-overlay">
+          <div class="item-cat">Branding</div>
+          <h3 class="item-title">EcoLife Rebrand</h3>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Project Showcase -->
   <section class="project-showcase">
     <div class="container">
-      <div class="showcase-item">
-        <div class="showcase-image slide-in-left">
-          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1600&auto=format&fit=crop"
-            alt="Featured Project" loading="lazy" />
-        </div>
-        <div class="showcase-content slide-in-right">
-          <h3>Featured Project: Cinematic Masterpiece</h3>
-          <p>Our latest cinematic project showcases the perfect blend of storytelling, visual effects, and
-            post-production excellence. This project demonstrates our commitment to creating compelling narratives that
-            resonate with audiences.</p>
-          <div class="showcase-tags">
-            <span class="showcase-tag">Cinematography</span>
-            <span class="showcase-tag">Color Grading</span>
-            <span class="showcase-tag">Sound Design</span>
-            <span class="showcase-tag">VFX</span>
-          </div>
-          <a href="#" class="button">View Full Project</a>
-        </div>
+      <div class="section-header reveal">
+        <h2>Case Studies</h2>
+        <p>Deep dives into how we transform ideas into cinematic reality.</p>
       </div>
 
-      <div class="showcase-item">
-        <div class="showcase-image slide-in-right">
-          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=1600&auto=format&fit=crop"
-            alt="Brand Identity Project" loading="lazy" />
-        </div>
-        <div class="showcase-content slide-in-left">
-          <h3>Brand Identity: Modern & Minimal</h3>
-          <p>A comprehensive brand identity project that redefines modern design principles. From logo creation to
-            complete visual guidelines, this project exemplifies our approach to creating timeless brand experiences.
-          </p>
-          <div class="showcase-tags">
-            <span class="showcase-tag">Logo Design</span>
-            <span class="showcase-tag">Typography</span>
-            <span class="showcase-tag">Color Theory</span>
-            <span class="showcase-tag">Brand Guidelines</span>
+      <div class="showcase-grid">
+        <!-- Showcase 1 -->
+        <div class="showcase-item">
+          <div class="showcase-img-wrap reveal">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1600&auto=format&fit=crop"
+              alt="Featured Project">
           </div>
-          <a href="#" class="button">View Full Project</a>
+          <div class="showcase-content reveal">
+            <h3>The Art of Motion</h3>
+            <p>Our recent collaboration with a global tech giant involved creating a series of abstract motion graphics
+              that visualised high-speed data transfer. We pushed the boundaries of CGI to deliver a 4K immersive
+              experience.</p>
+            <div class="showcase-tags">
+              <span class="tag">Motion Graphics</span>
+              <span class="tag">CGI</span>
+              <span class="tag">Sound Design</span>
+            </div>
+            <a href="#" class="btn-outline">View Case Study</a>
+          </div>
+        </div>
+
+        <!-- Showcase 2 -->
+        <div class="showcase-item reverse">
+          <div class="showcase-content reveal">
+            <h3>Visual Identity 2.0</h3>
+            <p>Rethinking branding for the digital age. We developed a dynamic logo system that adapts to its
+              environment, creating a living brand for the modern web.</p>
+            <div class="showcase-tags">
+              <span class="tag">Identity</span>
+              <span class="tag">Dynamic UI</span>
+              <span class="tag">Strategy</span>
+            </div>
+            <a href="#" class="btn-outline">View Case Study</a>
+          </div>
+          <div class="showcase-img-wrap reveal" style="order: 2;">
+            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=1600&auto=format&fit=crop"
+              alt="Featured Project">
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-val">150+</div>
+          <div class="stat-label">Projects Done</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-val">25+</div>
+          <div class="stat-label">Awards Won</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-val">98%</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-val">12M</div>
+          <div class="stat-label">Views Generated</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</body>
-<script>
-  // Drawer with focus trap
-  const drawer = document.getElementById('drawer');
-  const drawerPanel = document.getElementById('drawerPanel');
-  const openMenu = document.getElementById('openMenu');
-  const closeMenu = document.getElementById('closeMenu');
-  const firstFocusable = () => drawerPanel.querySelector('button, a, [tabindex]');
+  <script>
+    // Utilities
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
 
-  function toggleMenu(force) {
-    const willOpen = force ?? !drawer.classList.contains('open');
-    drawer.classList.toggle('open', willOpen);
-    if (willOpen) {
-      drawer.setAttribute('aria-hidden', 'false');
-      firstFocusable()?.focus();
-    } else {
-      drawer.setAttribute('aria-hidden', 'true');
-      openMenu.focus();
-    }
-  }
-  openMenu.addEventListener('click', () => toggleMenu(true));
-  closeMenu.addEventListener('click', () => toggleMenu(false));
-  drawer.addEventListener('click', e => { if (e.target === drawer) toggleMenu(false); });
-  drawerPanel.querySelectorAll('[data-d-close]').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
-  window.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) toggleMenu(false); });
+    // Custom Cursor
+    const dot = document.querySelector('.cursor-dot');
+    const outline = document.querySelector('.cursor-outline');
 
-  // Smooth scroll for anchor links
-  function smoothTo(id) { const el = document.getElementById(id); if (!el) return; window.scrollTo({ top: el.offsetTop - 64, behavior: 'smooth' }); }
-  Array.from(document.querySelectorAll('a[data-scroll], [data-d-close][href^="#"], .nav-links a[href^="#"]')).forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href')?.slice(1);
-      if (id) { e.preventDefault(); smoothTo(id); }
+    window.addEventListener('mousemove', (e) => {
+      const posX = e.clientX;
+      const posY = e.clientY;
+
+      dot.style.left = `${posX}px`;
+      dot.style.top = `${posY}px`;
+
+      outline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+      }, { duration: 500, fill: "forwards" });
     });
-  });
-</script>
+
+    // Reveal on Scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.classList.contains('portfolio-item') || entry.target.classList.contains('stat-card')) {
+            entry.target.classList.add('reveal');
+          }
+          if (entry.target.classList.contains('showcase-img-wrap') || entry.target.classList.contains('showcase-content') || entry.target.classList.contains('section-header')) {
+            entry.target.classList.add('reveal');
+          }
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.portfolio-hero, .portfolio-item, .showcase-img-wrap, .showcase-content, .stat-card, .section-header').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Navbar Scroll & Progress Effect
+    const nav = document.querySelector('.nav');
+    const progress = document.querySelector('.nav-progress-bar');
+
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        // Scrolled State
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+
+        // Progress Bar Calculation
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        if (progress) progress.style.width = scrolled + "%";
+      }, { passive: true });
+    }
+
+    // Drawer with focus trap
+    const drawer = $('#drawer');
+    const drawerPanel = $('#drawerPanel');
+    const openMenu = $('#openMenu');
+    const closeMenu = $('#closeMenu');
+    const firstFocusable = () => drawerPanel.querySelector('button, a, [tabindex]');
+
+    function toggleMenu(force) {
+      const willOpen = force ?? !drawer.classList.contains('open');
+      drawer.classList.toggle('open', willOpen);
+      if (willOpen) {
+        drawer.setAttribute('aria-hidden', 'false');
+        firstFocusable()?.focus();
+      } else {
+        drawer.setAttribute('aria-hidden', 'true');
+        openMenu.focus();
+      }
+    }
+    if (openMenu) openMenu.addEventListener('click', () => toggleMenu(true));
+    if (closeMenu) closeMenu.addEventListener('click', () => toggleMenu(false));
+    if (drawer) drawer.addEventListener('click', e => { if (e.target === drawer) toggleMenu(false); });
+    if (drawerPanel) drawerPanel.querySelectorAll('[data-d-close]').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+    window.addEventListener('keydown', e => { if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) toggleMenu(false); });
+
+    // Filtering Logic
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active btn
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        items.forEach(item => {
+          item.style.transition = 'all 0.4s ease';
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'scale(1)';
+            }, 10);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 400);
+          }
+        });
+      });
+    });
+
+    // Interactive Hover for cards
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        outline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        outline.style.backgroundColor = 'rgba(255, 159, 67, 0.1)';
+      });
+      item.addEventListener('mouseleave', () => {
+        outline.style.transform = 'translate(-50%, -50%) scale(1)';
+        outline.style.backgroundColor = 'transparent';
+      });
+    });
+  </script>
+</body>
 
 </html>
