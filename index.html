@@ -42,6 +42,7 @@
     /* Global Transitions & Smoothness */
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 100px;
       overflow-x: hidden;
       width: 100%;
     }
@@ -584,47 +585,53 @@
     }
 
     .menu {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: #fff;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       cursor: pointer;
+      padding: 0;
+      position: relative;
     }
 
     .menu:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: var(--brand);
+      transform: scale(1.05);
     }
 
     .hamburger {
-      width: 20px;
+      width: 24px;
       height: 2px;
       background: #fff;
       position: relative;
-      transition: 0.3s;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      border-radius: 2px;
     }
 
     .hamburger::before,
     .hamburger::after {
       content: '';
       position: absolute;
+      left: 0;
       width: 100%;
       height: 2px;
       background: #fff;
-      transition: 0.3s;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      border-radius: 2px;
     }
 
     .hamburger::before {
-      top: -6px;
+      top: -8px;
     }
 
     .hamburger::after {
-      bottom: -6px;
+      bottom: -8px;
     }
 
     .menu.open .hamburger {
@@ -632,11 +639,11 @@
     }
 
     .menu.open .hamburger::before {
-      transform: translateY(6px) rotate(45deg);
+      transform: translateY(8px) rotate(45deg);
     }
 
     .menu.open .hamburger::after {
-      transform: translateY(-6px) rotate(-45deg);
+      transform: translateY(-8px) rotate(-45deg);
     }
 
     /* Circular Scroll Progress */
@@ -2894,8 +2901,6 @@
         </div>
 
         <div class="split-wrapper">
-          <!-- Connector Line removed for cleaner UI -->
-
           <!-- Service 1: Conceptualization -->
           <div class="split-item reveal">
             <div class="split-text-reveal">
@@ -3302,38 +3307,10 @@
                 </div>
               </div>
 
-              <div class="cta-mini">
-                <!-- <a href="#our-work.html" class="link-arrow">
-                  Explore our philosophy
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </a> -->
-              </div>
             </div>
           </div>
         </div>
 
-        <!-- Secondary Core values Section -->
-        <!-- <div class="values-composition mt-140">
-          <div class="value-card reveal">
-            <div class="v-num">01</div>
-            <h4 class="v-title">Precision</h4>
-            <p class="v-desc">Frame-by-frame scrutiny ensures that nothing leaves our studio unless it is perfect.</p>
-          </div>
-          <div class="value-card reveal">
-            <div class="v-num">02</div>
-            <h4 class="v-title">Innovation</h4>
-            <p class="v-desc">We leverage the latest in AI and rendering tech to push the boundaries of what's possible.
-            </p>
-          </div>
-          <div class="value-card reveal">
-            <div class="v-num">03</div>
-            <h4 class="v-title">Culture</h4>
-            <p class="v-desc">Our team is a family of creators who live and breathe the art of the moving image.</p>
-          </div>
-        </div> -->
       </div>
 
       <style>
@@ -3577,6 +3554,55 @@
           }
         }
 
+        @media (max-width: 768px) {
+          .about-studio-refined {
+            padding: 100px 0;
+          }
+
+          .megatitle {
+            font-size: 38px;
+            letter-spacing: -1px;
+          }
+
+          .premium-lead {
+            font-size: 16px;
+            padding-left: 20px;
+          }
+
+          .story-title {
+            font-size: 26px;
+          }
+
+          .stats-premium {
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+          }
+
+          .stat-item {
+            flex: 1 1 80px;
+          }
+
+          .stat-val {
+            font-size: 32px;
+          }
+
+          .stat-name {
+            font-size: 9px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+          }
+
+          .mt-100 {
+            margin-top: 50px;
+          }
+
+          .mt-140 {
+            margin-top: 80px;
+          }
+        }
+
         .mt-100 {
           margin-top: 100px;
         }
@@ -3585,155 +3611,6 @@
           margin-top: 140px;
         }
       </style>
-
-      <!-- ===================== TEST IT SECTION ===================== -->
-      <!-- <section id="test-it" class="section test-it-section">
-        <div class="container">
-          <div class="test-it-grid reveal">
-            <div class="test-it-visual">
-              <div class="art-frame">
-                <img src="Editing Software PNG/Thinking.png" alt="Creative Thinking" />
-                <div class="art-glow"></div>
-              </div>
-            </div>
-            <div class="test-it-content">
-              <div class="eyebrow-container">
-                <span class="eyebrow-line"></span>
-                <span class="eyebrow-text">Experimental Design</span>
-              </div>
-              <h2 class="title section-title">Thinking Beyond <br><span class="brand-text">The Frame.</span></h2>
-              <p class="lead">We don't just edit; we engineered experiences. This is where logic meets raw creativity,
-                and every pixel is tested for maximum emotional resonance.</p>
-
-              <div class="feature-pills">
-                <span class="pill">Visual Logic</span>
-                <span class="pill">Story Engineering</span>
-                <span class="pill">Aesthetic Research</span>
-              </div>
-
-              <a href="#portfolio" class="contact-btn magnetic" style="display: inline-block; margin-top: 30px;">See the
-                Results</a>
-            </div>
-          </div>
-        </div>
-
-        <style>
-          .test-it-section {
-            background: #000;
-            /* Pure black background as requested */
-            padding: 140px 0;
-            position: relative;
-            overflow: hidden;
-          }
-
-          .test-it-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 100px;
-            align-items: center;
-          }
-
-          @media (max-width: 1024px) {
-            .test-it-grid {
-              grid-template-columns: 1fr;
-              gap: 60px;
-              text-align: center;
-            }
-
-            .test-it-content .eyebrow-container {
-              justify-content: center;
-            }
-          }
-
-          .art-frame {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 40px;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-          }
-
-          .art-frame:hover {
-            border-color: var(--brand);
-            background: rgba(255, 255, 255, 0.04);
-            transform: scale(1.02);
-          }
-
-          .art-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
-            animation: float-art 6s ease-in-out infinite;
-          }
-
-          @keyframes float-art {
-
-            0%,
-            100% {
-              transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-              transform: translateY(-20px) rotate(2deg);
-            }
-          }
-
-          .art-glow {
-            position: absolute;
-            inset: 20%;
-            background: var(--brand);
-            filter: blur(100px);
-            opacity: 0.1;
-            z-index: -1;
-            transition: opacity 0.6s ease;
-          }
-
-          .art-frame:hover .art-glow {
-            opacity: 0.2;
-          }
-
-          .test-it-content .section-title {
-            font-size: clamp(36px, 5vw, 56px);
-            margin: 24px 0;
-            line-height: 1;
-          }
-
-          .brand-text {
-            color: var(--brand);
-            font-weight: 800;
-          }
-
-          .feature-pills {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 32px;
-          }
-
-          @media (max-width: 1024px) {
-            .feature-pills {
-              justify-content: center;
-            }
-          }
-
-          .pill {
-            padding: 8px 16px;
-            background: rgba(255, 153, 51, 0.05);
-            border: 1px solid rgba(253, 153, 51, 0.2);
-            border-radius: 100px;
-            color: var(--brand);
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-          }
-        </style>
-      </section> -->
 
       <!-- ===================== PORTFOLIO STAGE ===================== -->
       <section id="portfolio" class="section portfolio-section">
@@ -4161,12 +4038,6 @@
           }
         </style>
       </section>
-
-      <!-- ===================== OUR WORK PAGE ===================== -->
-
-      <!-- Portfolio Stats -->
-
-      <!-- ===================== DRAWER (Mobile Menu) ===================== -->
 
       <!-- ===================== PRICING ===================== -->
       <section id="pricing" class="section pricing-section">
@@ -4596,13 +4467,6 @@
                 <p class="info-text">Madurai, Tamil Nadu<br>India — 625001</p>
               </div>
 
-              <!-- <div class="footer-newsletter">
-                <h4 class="info-label">Stay in the Loop</h4>
-                <div class="newsletter-input">
-                  <input type="email" placeholder="Email Address" />
-                  <button aria-label="Subscribe">➔</button>
-                </div>
-              </div> -->
             </div>
           </div>
 
