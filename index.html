@@ -2852,6 +2852,8 @@
     <style>
       .marquee-strip {
         background: var(--brand);
+        display: flex;
+        align-items: center;
         padding: 24px 0;
         overflow: hidden;
         position: relative;
@@ -2863,6 +2865,7 @@
 
       .marquee-content {
         display: flex;
+        align-items: center;
         gap: 40px;
         white-space: nowrap;
         animation: marquee 20s linear infinite;
@@ -4186,6 +4189,8 @@
             flex-direction: column;
             transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
+            /* Prevent child overflow */
           }
 
           .price-card.featured {
@@ -4279,7 +4284,9 @@
 
           .full-width {
             width: 100%;
+            display: flex;
             justify-content: center;
+            margin: 0;
           }
         </style>
       </section>
