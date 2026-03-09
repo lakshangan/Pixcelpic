@@ -12,19 +12,23 @@
     rel="stylesheet">
   <style>
     :root {
-      --bg: #030712;
-      --bg-alt: #0f172a;
+      --bg: #000000;
+      /* Pure black for Apple-like depth */
+      --bg-alt: #050505;
       --brand: #ff9f43;
-      --brand-glow: rgba(255, 159, 67, 0.3);
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --glass: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --card-bg: #1e293b;
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      --brand-glow: rgba(255, 159, 67, 0.4);
+      --text: #ffffff;
+      --text-muted: #86868b;
+      /* Apple-style muted text */
+      --glass: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --card-bg: #121212;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      /* Smoother Apple-like easing */
+      --container-max: 1200px;
     }
 
     * {
@@ -50,9 +54,9 @@
     }
 
     .container {
-      max-width: 1400px;
+      max-width: var(--container-max);
       margin: 0 auto;
-      padding: 0 40px;
+      padding: 0 32px;
     }
 
     /* Custom Cursor */
@@ -484,32 +488,35 @@
     }
 
     .portfolio-hero h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 24px;
-      background: linear-gradient(to right, #fff, var(--brand));
+      font-size: clamp(3.5rem, 10vw, 7.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 32px;
+      letter-spacing: -0.03em;
+      background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(30px);
     }
 
     .portfolio-hero p {
-      max-width: 650px;
-      font-size: 1.25rem;
+      max-width: 600px;
+      font-size: 1.5rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.4;
+      font-weight: 500;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
+      letter-spacing: -0.01em;
     }
 
     .visible h1,
     .visible p {
       opacity: 1 !important;
       transform: translateY(0) !important;
-      transition: var(--transition);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .visible p {
@@ -572,12 +579,14 @@
       position: relative;
       border-radius: var(--radius-md);
       overflow: hidden;
-      aspect-ratio: 16/10;
-      background: var(--card-bg);
-      border: 1px solid var(--glass-border);
+      aspect-ratio: 16/9;
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.05);
       opacity: 0;
-      transform: translateY(40px);
-      transition: var(--transition);
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: none;
+      /* Let the custom cursor handle interaction */
     }
 
     .portfolio-item.reveal {
@@ -668,19 +677,21 @@
 
     /* Showcase Section */
     .project-showcase {
-      padding: 150px 0;
-      background: var(--bg-alt);
-      margin-top: 100px;
+      padding: 180px 0;
+      background: #000;
+      position: relative;
     }
 
     .section-header {
-      margin-bottom: 80px;
-      max-width: 600px;
+      margin-bottom: 100px;
+      max-width: 800px;
     }
 
     .section-header h2 {
-      font-size: 3rem;
-      margin-bottom: 16px;
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      margin-bottom: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
 
     .showcase-grid {
@@ -718,16 +729,17 @@
     }
 
     .showcase-content h3 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 24px;
-      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     .showcase-content p {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
+      line-height: 1.5;
       color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .showcase-tags {
@@ -766,35 +778,38 @@
 
     /* Stats */
     .stats-section {
-      padding: 120px 0;
-      text-align: center;
+      padding: 200px 0;
+      background: #000;
     }
 
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .stat-card {
-      padding: 40px;
-      background: var(--glass);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--glass-border);
+      padding: 80px 40px;
+      background: transparent;
+      border-radius: 0;
+      border: none;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
       transition: var(--transition);
+      text-align: center;
     }
 
-    .stat-card:hover {
-      border-color: var(--brand);
-      transform: translateY(-10px);
-      background: rgba(255, 159, 67, 0.05);
+    .stat-card:last-child {
+      border-right: none;
     }
 
     .stat-val {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: var(--brand);
-      margin-bottom: 8px;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }
 
     .stat-label {
@@ -837,10 +852,29 @@
 
       .stats-grid {
         grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .portfolio-hero {
+        text-align: center;
       }
 
       .portfolio-hero h1 {
         font-size: 3.5rem;
+      }
+
+      .filter-container {
+        justify-content: center;
+      }
+
+      .portfolio-filter {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .portfolio-overlay {
+        text-align: center;
+        align-items: center;
       }
     }
   </style>
@@ -922,88 +956,204 @@
     </div>
 
     <div class="portfolio-grid" id="workGrid">
-      <!-- Item 1 -->
+      <!-- Item 1 (Video) -->
       <div class="portfolio-item reveal" data-category="video">
-        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1600&auto=format&fit=crop"
-          alt="Video Project">
-        <div class="play-btn">
-          <svg viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
+        <video class="portfolio-video" muted loop playsinline poster="Cinematic Editing Studio Scene.png">
+          <source src="bg.mp4" type="video/mp4">
+        </video>
         <div class="portfolio-overlay">
           <div class="item-cat">Video Production</div>
-          <h3 class="item-title">Cinematic Showreel 2024</h3>
+          <h3 class="item-title">Cinematic Showreel 2025</h3>
+          <div class="item-meta">4K HDR • 60 FPS</div>
         </div>
       </div>
 
-      <!-- Item 2 -->
-      <div class="portfolio-item reveal" data-category="short-film">
-        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1600&auto=format&fit=crop"
-          alt="Short Film">
-        <div class="play-btn">
-          <svg viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
+      <!-- Item 2 (Video Placeholder) -->
+      <div class="portfolio-item reveal" data-category="video">
+        <video class="portfolio-video" muted loop playsinline>
+          <!-- Using the same video as placeholder for demonstration -->
+          <source src="bg.mp4" type="video/mp4">
+        </video>
         <div class="portfolio-overlay">
-          <div class="item-cat">Short Film</div>
-          <h3 class="item-title">The Silent Echo</h3>
+          <div class="item-cat">Commercial</div>
+          <h3 class="item-title">Brand Narrative</h3>
+          <div class="item-meta">Studio Grade • Anamorphic</div>
         </div>
       </div>
 
       <!-- Item 3 -->
       <div class="portfolio-item reveal" data-category="logo">
-        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1600&auto=format&fit=crop"
-          alt="Branding">
+        <img src="PixelPix_Studio.png" alt="Branding" style="background: #000; object-fit: contain; padding: 40px;">
         <div class="portfolio-overlay">
           <div class="item-cat">Branding</div>
-          <h3 class="item-title">TechStart Identity</h3>
+          <h3 class="item-title">PixelPic Identity</h3>
+          <div class="item-meta">Visual Systems</div>
         </div>
       </div>
 
       <!-- Item 4 -->
-      <div class="portfolio-item reveal" data-category="poster">
-        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1600&auto=format&fit=crop"
-          alt="Poster Design">
+      <div class="portfolio-item reveal" data-category="short-film">
+        <video class="portfolio-video" muted loop playsinline>
+          <source src="bg.mp4" type="video/mp4">
+        </video>
         <div class="portfolio-overlay">
-          <div class="item-cat">Visual Design</div>
-          <h3 class="item-title">Summer Blockbuster</h3>
-        </div>
-      </div>
-
-      <!-- Item 5 -->
-      <div class="portfolio-item reveal" data-category="video">
-        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1600&auto=format&fit=crop"
-          alt="Event Reel">
-        <div class="play-btn">
-          <svg viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-        <div class="portfolio-overlay">
-          <div class="item-cat">Video Production</div>
-          <h3 class="item-title">Global Summit 2023</h3>
-        </div>
-      </div>
-
-      <!-- Item 6 -->
-      <div class="portfolio-item reveal" data-category="logo">
-        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1600&auto=format&fit=crop"
-          alt="Packaging">
-        <div class="portfolio-overlay">
-          <div class="item-cat">Branding</div>
-          <h3 class="item-title">EcoLife Rebrand</h3>
+          <div class="item-cat">Short Film</div>
+          <h3 class="item-title">The Silent Echo</h3>
+          <div class="item-meta">Atmospheric Noir</div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- ===================== PROCESS SHOWCASE ("How it was") ===================== -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow" style="color: var(--brand); font-weight: 700;">Behind the Lens</span>
+        <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -0.02em;">From Fragmented to Finished.</h2>
+        <p style="color: var(--text-muted); font-size: 1.25rem;">Experience the transformation from raw footage to
+          cinematic masterpiece. We focus on every pixel to ensure the story is felt, not just seen.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card reveal">
+          <div class="process-media">
+            <div class="comparison-container">
+              <div class="before-label">RAW</div>
+              <div class="after-label">POST-PROD</div>
+              <img src="Cinematic Editing Studio Scene.png" alt="Process" class="process-img">
+              <div class="comparison-slider"></div>
+            </div>
+          </div>
+          <div class="process-info">
+            <h3>Mastering the Grade</h3>
+            <p>Our colorists manipulate light and shadow to create distinct emotional atmospheres that resonate with
+              your audience.</p>
+          </div>
+        </div>
+
+        <div class="process-card reveal" style="transition-delay: 0.2s;">
+          <div class="process-media">
+            <video class="process-video" autoplay muted loop playsinline>
+              <source src="bg.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="process-info">
+            <h3>The Dynamic Edit</h3>
+            <p>Rhythm and pacing are the heart of storytelling. Our editors craft sequences that keep viewers engaged
+              from the first second to the last.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .portfolio-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .portfolio-item:hover .portfolio-video {
+      transform: scale(1.05);
+    }
+
+    .item-meta {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .portfolio-item:hover .item-meta {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+
+
+    .process-info p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 991px) {
+      .process-grid {
+        grid-template-columns: 1fr;
+        gap: 80px;
+      }
+    }
+
+    /* Comparison Slider (Simplified for now) */
+    .comparison-container {
+      position: relative;
+      height: 100%;
+    }
+
+    .before-label,
+    .after-label {
+      position: absolute;
+      top: 20px;
+      padding: 6px 12px;
+      font-size: 10px;
+      font-weight: 800;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 4px;
+      z-index: 10;
+      letter-spacing: 1px;
+    }
+
+    .before-label {
+      left: 20px;
+      color: #aaa;
+    }
+
+    .after-label {
+      right: 20px;
+      color: var(--brand);
+      border: 1px solid var(--brand);
+    }
+
+    .comparison-slider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--brand);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .comparison-slider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      background: var(--brand);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--brand-glow);
+    }
+  </style>
+
   <section class="project-showcase">
     <div class="container">
       <div class="section-header reveal">
-        <h2>Case Studies</h2>
-        <p>Deep dives into how we transform ideas into cinematic reality.</p>
+        <span class="eyebrow" style="color: var(--brand); font-weight: 700;">Portfolio Stories</span>
+        <h2>Deep Dives into Cinematic Reality.</h2>
+        <p>Exploring the intersection of technology and artistry through our most impactful projects.</p>
       </div>
 
       <div class="showcase-grid">
@@ -1534,10 +1684,36 @@
         const rect = link.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        link.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        link.style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
       });
       link.addEventListener('mouseleave', () => {
         link.style.transform = '';
+      });
+    });
+
+    // Portfolio Video Hover Play
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const video = item.querySelector('video');
+      if (video) {
+        item.addEventListener('mouseenter', () => {
+          video.play().catch(e => console.log('Auto-play blocked'));
+        });
+        item.addEventListener('mouseleave', () => {
+          video.pause();
+          video.currentTime = 0;
+        });
+      }
+    });
+
+    // Comparison Slider Interaction
+    document.querySelectorAll('.comparison-container').forEach(container => {
+      const slider = container.querySelector('.comparison-slider');
+      container.addEventListener('mousemove', e => {
+        const rect = container.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        if (slider) slider.style.left = `${x}%`;
+        // For a real slider we'd clip an 'after' image here
+        // container.querySelector('.after-img').style.clipPath = `inset(0 ${100-x}% 0 0)`;
       });
     });
 
@@ -1573,14 +1749,21 @@
     });
 
     // Interactive Hover for cards
-    document.querySelectorAll('.portfolio-item').forEach(item => {
+    document.querySelectorAll('.portfolio-item, .process-card').forEach(item => {
       item.addEventListener('mouseenter', () => {
-        outline.style.transform = 'translate(-50%, -50%) scale(1.5)';
+        outline.style.transform = 'translate(-50%, -50%) scale(2.5)';
         outline.style.backgroundColor = 'rgba(255, 159, 67, 0.1)';
+        outline.style.borderColor = 'transparent';
+        outline.innerHTML = '<span style="color: #fff; font-size: 8px; font-weight: 800; letter-spacing: 1px;">VIEW</span>';
+        outline.style.display = 'flex';
+        outline.style.alignItems = 'center';
+        outline.style.justifyContent = 'center';
       });
       item.addEventListener('mouseleave', () => {
         outline.style.transform = 'translate(-50%, -50%) scale(1)';
         outline.style.backgroundColor = 'transparent';
+        outline.style.borderColor = 'var(--brand)';
+        outline.innerHTML = '';
       });
     });
   </script>

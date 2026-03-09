@@ -9,7 +9,11 @@
     rel="stylesheet">
   <meta name="color-scheme" content="dark light" />
   <style>
-    /* =========================================================
+    * {
+      box-sizing: border-box;
+    }
+
+    /* =====================
        PIXCEL STUDIO — PRO INTERACTIVE SINGLE FILE
        + Polished visuals
        + Accessible controls
@@ -3557,20 +3561,39 @@
         @media (max-width: 768px) {
           .about-studio-refined {
             padding: 100px 0;
+            text-align: center;
+          }
+
+          .about-header {
+            text-align: center;
+          }
+
+          .eyebrow-modern {
+            justify-content: center;
           }
 
           .megatitle {
             font-size: 38px;
             letter-spacing: -1px;
+            margin-bottom: 20px;
           }
 
           .premium-lead {
             font-size: 16px;
-            padding-left: 20px;
+            padding-left: 0;
+            border-left: none;
+            text-align: center;
+            margin-inline: auto;
+            max-width: 600px;
           }
 
           .story-title {
             font-size: 26px;
+            text-align: center;
+          }
+
+          .story-text {
+            text-align: center;
           }
 
           .stats-premium {
@@ -3913,6 +3936,30 @@
             .feature-hero {
               aspect-ratio: 1;
             }
+
+            .center-stage {
+              text-align: center;
+            }
+
+            .filter-orchestra {
+              justify-content: center;
+              flex-wrap: wrap;
+            }
+
+            .stage-overlay {
+              align-items: center;
+              text-align: center;
+              padding: 30px 20px;
+            }
+
+            .stage-tags {
+              justify-content: center;
+            }
+
+            .stage-info p {
+              display: none;
+              /* Hide long desc on mobile cards for cleaner look */
+            }
           }
 
           .stage-img {
@@ -4158,6 +4205,13 @@
 
             .price-card {
               padding: 32px 24px;
+              text-align: center;
+            }
+
+            .price-list {
+              text-align: left;
+              margin: 0 auto;
+              width: fit-content;
             }
 
             .price-card.featured {
