@@ -3352,6 +3352,17 @@
           pointer-events: none;
         }
 
+        .reveal {
+          opacity: 0;
+          transform: translateY(40px);
+          transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
         .about-grid {
           display: grid;
           grid-template-columns: 1.1fr 1fr;
@@ -3552,196 +3563,6 @@
         }
       </style>
     </section>
-
-    .stats-premium {
-    display: flex;
-    gap: 60px;
-    margin-top: 50px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .stat-val {
-    display: block;
-    font-size: 44px;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1;
-    margin-bottom: 10px;
-    }
-
-    .stat-name {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--brand);
-    font-weight: 600;
-    }
-
-    .link-arrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 13px;
-    color: #fff;
-    margin-top: 40px;
-    transition: gap 0.3s ease;
-    }
-
-    .link-arrow svg {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-    }
-
-    .link-arrow:hover {
-    gap: 20px;
-    color: var(--brand);
-    }
-
-    .link-arrow:hover svg {
-    transform: translateX(5px);
-    }
-
-    .values-composition {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    }
-
-    .value-card {
-    padding: 60px 40px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 32px;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .value-card:hover {
-    background: rgba(255, 153, 51, 0.05);
-    border-color: rgba(255, 153, 51, 0.2);
-    transform: translateY(-15px);
-    }
-
-    .v-num {
-    font-size: 14px;
-    color: var(--brand);
-    font-weight: 800;
-    margin-bottom: 20px;
-    display: block;
-    }
-
-    .v-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #fff;
-    }
-
-    .v-desc {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.6;
-    }
-
-    @media (max-width: 1024px) {
-    .header-split {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    }
-
-    .narrative-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-    }
-
-    .values-composition {
-    grid-template-columns: 1fr;
-    }
-
-    .parallax-wrapper {
-    aspect-ratio: 16/9;
-    }
-    }
-
-    @media (max-width: 768px) {
-    .about-studio-refined {
-    padding: 100px 0;
-    text-align: center;
-    }
-
-    .about-header {
-    text-align: center;
-    }
-
-    .eyebrow-modern {
-    justify-content: center;
-    }
-
-    .megatitle {
-    font-size: 38px;
-    letter-spacing: -1px;
-    margin-bottom: 20px;
-    }
-
-    .premium-lead {
-    font-size: 16px;
-    padding-left: 0;
-    border-left: none;
-    text-align: center;
-    margin-inline: auto;
-    max-width: 600px;
-    }
-
-    .story-title {
-    font-size: 26px;
-    text-align: center;
-    }
-
-    .story-text {
-    text-align: center;
-    }
-
-    .stats-premium {
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    }
-
-    .stat-item {
-    flex: 1 1 80px;
-    }
-
-    .stat-val {
-    font-size: 32px;
-    }
-
-    .stat-name {
-    font-size: 9px;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    }
-
-    .mt-100 {
-    margin-top: 50px;
-    }
-
-    .mt-140 {
-    margin-top: 80px;
-    }
-    }
-
-    .mt-100 {
-    margin-top: 100px;
-    }
-
-    .mt-140 {
-    margin-top: 140px;
-    }
-    </style>
 
     <!-- ===================== PORTFOLIO STAGE ===================== -->
     <section id="portfolio" class="section portfolio-section">
@@ -5360,7 +5181,7 @@
     });
 
     // Enhanced scroll animations for new sections
-    const fadeElements = $$('.fade-up, .scale-in, .slide-in-left, .slide-in-right');
+    const fadeElements = $$('.fade-up, .scale-in, .slide-in-left, .slide-in-right, .reveal');
     const fadeObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
