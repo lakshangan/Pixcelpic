@@ -2662,8 +2662,13 @@
   <main id="main-content" style="overflow-x: hidden; width: 100%;">
     <header id="home" class="hero-creative">
       <div class="hero-video-bg">
-        <video autoplay loop muted playsinline class="bg-video">
+        <!-- Desktop: horizontal bg.mp4 -->
+        <video autoplay loop muted playsinline class="bg-video desktop-video">
           <source src="bg.mp4" type="video/mp4">
+        </video>
+        <!-- Mobile: vertical Comp 1.mp4 -->
+        <video autoplay loop muted playsinline class="bg-video mobile-video">
+          <source src="Comp 1.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
       </div>
@@ -2711,6 +2716,10 @@
         object-fit: cover;
         opacity: 0.8;
       }
+
+      /* show/hide per breakpoint */
+      .mobile-video { display: none; }
+      .desktop-video { display: block; }
 
       .video-overlay {
         position: absolute;
@@ -2795,12 +2804,26 @@
       }
 
       @media (max-width: 768px) {
+        /* swap videos: hide desktop, show mobile vertical */
+        .desktop-video { display: none; }
+        .mobile-video  { display: block; }
+
+        /* portrait overlay: fade from bottom so text stays readable */
+        .video-overlay {
+          background: linear-gradient(
+            to top,
+            rgba(2, 6, 23, 0.92) 0%,
+            rgba(2, 6, 23, 0.55) 50%,
+            rgba(2, 6, 23, 0.25) 100%
+          );
+        }
+
         .hero-creative {
           padding: 160px 24px 80px;
-          /* Synchronized side padding */
-          min-height: auto;
+          min-height: 100svh;
           text-align: center;
-          /* Perfectly centered for a balanced mobile entry */
+          align-items: flex-end;
+          /* pins content to bottom so it sits above the fade */
         }
 
         .hero-layout-left {
