@@ -1,730 +1,1317 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Work — PixelPic Studio</title>
-  <meta name="description" content="Explore PixelPic Studio's cinematic portfolio — films, commercials, brand campaigns, and more.">
+  <meta name="description"
+    content="Explore PixelPic Studio's cinematic portfolio — films, commercials, brand campaigns and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <style>
     :root {
-      --bg:    #04040a;
+      --bg: #04040a;
       --brand: #ff9f43;
-      --text:  #e8e8ef;
+      --text: #e8e8ef;
       --muted: #6b7280;
-      --card:  #0b0b12;
-      --bdr:   rgba(255,255,255,.07);
-      --r:     18px;
+      --card: #0b0b13;
+      --bdr: rgba(255, 255, 255, .07);
+      --r: 16px;
+      --gap: 16px;
     }
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { overflow-x:hidden; scroll-behavior:smooth; }
-    body {
-      background: var(--bg); color: var(--text);
-      font-family:'Outfit',sans-serif;
-      -webkit-font-smoothing:antialiased;
-      overflow-x:hidden;
-      cursor:none;
-    }
-    a { color:inherit; text-decoration:none; }
-    img { display:block; width:100%; }
 
-    /* ─── CUSTOM CURSOR ─── */
-    #c-dot {
-      position:fixed; z-index:9999999;
-      width:8px; height:8px; border-radius:50%;
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ─── CURSOR ─── */
+    #cd {
+      position: fixed;
+      z-index: 9999999;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
       background: var(--brand);
-      pointer-events:none; transform:translate(-50%,-50%);
-      transition: width .15s, height .15s;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
     }
-    #c-ring {
-      position:fixed; z-index:9999998;
-      width:32px; height:32px; border-radius:50%;
-      border:1.5px solid rgba(255,159,67,.45);
-      pointer-events:none; transform:translate(-50%,-50%);
+
+    #cr {
+      position: fixed;
+      z-index: 9999998;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 159, 67, .5);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: width .35s, height .35s;
     }
-    @media (hover:none) { #c-dot,#c-ring{display:none} body{cursor:auto} }
+
+    @media(hover:none) {
+
+      #cd,
+      #cr {
+        display: none
+      }
+
+      body {
+        cursor: auto
+      }
+    }
 
     /* ─── NAV ─── */
     .nav {
-      position:fixed; top:24px; left:50%; transform:translateX(-50%);
-      width:calc(100% - 48px); max-width:1240px; height:68px;
-      z-index:99999;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 32px;
-      background:rgba(4,4,10,.45);
-      backdrop-filter:blur(32px) saturate(160%);
-      -webkit-backdrop-filter:blur(32px) saturate(160%);
-      border:1px solid var(--bdr);
-      border-radius:100px;
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 1240px;
+      height: 68px;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      background: rgba(4, 4, 10, .45);
+      backdrop-filter: blur(32px) saturate(160%);
+      -webkit-backdrop-filter: blur(32px) saturate(160%);
+      border: 1px solid var(--bdr);
+      border-radius: 100px;
       transition: all .5s ease;
     }
-    .nav.slim { top:12px; height:58px; background:rgba(4,4,10,.88); border-color:rgba(255,159,67,.12); }
-    .nav-logo img { height:28px; }
-    .nav-links { display:flex; gap:32px; }
-    .nav-links a {
-      font-size:12px; font-weight:600; color:var(--muted);
-      text-transform:uppercase; letter-spacing:1.6px; transition:color .3s;
-    }
-    .nav-links a:hover,.nav-links a.on { color:#fff; }
-    .nav-cta a {
-      background:#fff; color:#000;
-      padding:10px 24px; border-radius:100px;
-      font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:1px;
-      transition:background .3s, transform .3s;
-    }
-    .nav-cta a:hover { background:var(--brand); transform:scale(1.04); }
 
-    /* hamburger */
-    .burger { display:none; background:none; border:1px solid var(--bdr); border-radius:50%; width:40px; height:40px; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:5px; }
-    .burger span { display:block; width:18px; height:2px; background:#fff; border-radius:2px; transition:.3s; }
+    .nav.slim {
+      top: 12px;
+      height: 56px;
+      background: rgba(4, 4, 10, .9);
+      border-color: rgba(255, 159, 67, .12);
+    }
+
+    .nav-logo img {
+      height: 28px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      transition: color .3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.on {
+      color: #fff;
+    }
+
+    .nav-cta a {
+      background: #fff;
+      color: #000;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background .3s, transform .3s;
+    }
+
+    .nav-cta a:hover {
+      background: var(--brand);
+      transform: scale(1.04);
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 1px solid var(--bdr);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .burger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
     @media(max-width:900px) {
-      .nav-links,.nav-cta{display:none}
-      .burger{display:flex}
+
+      .nav-links,
+      .nav-cta {
+        display: none
+      }
+
+      .burger {
+        display: flex
+      }
     }
 
     /* ─── DRAWER ─── */
     .drawer {
-      position:fixed; inset:0; z-index:999999;
-      background:rgba(0,0,0,.85); backdrop-filter:blur(12px);
-      display:none; justify-content:flex-end;
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      background: rgba(0, 0, 0, .85);
+      backdrop-filter: blur(12px);
+      display: none;
+      justify-content: flex-end;
     }
-    .drawer.on { display:flex; }
-    .draw-panel {
-      width:300px; height:100%; background:#08080f;
-      border-left:1px solid var(--bdr);
-      padding:90px 36px 60px;
-      display:flex; flex-direction:column; gap:28px;
+
+    .drawer.on {
+      display: flex;
     }
-    .draw-panel a { font-size:26px; font-weight:800; color:#fff; }
-    .draw-panel a:hover { color:var(--brand); }
-    .draw-close {
-      position:absolute; top:22px; right:22px;
-      background:none; border:1px solid var(--bdr); color:#fff;
-      width:38px; height:38px; border-radius:50%; cursor:pointer;
-      font-size:16px; display:grid; place-items:center;
+
+    .dpanel {
+      width: 300px;
+      height: 100%;
+      background: #08080f;
+      border-left: 1px solid var(--bdr);
+      padding: 90px 36px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .dpanel a {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .dpanel a:hover {
+      color: var(--brand);
+    }
+
+    .dclose {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      background: none;
+      border: 1px solid var(--bdr);
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: grid;
+      place-items: center;
     }
 
     /* ─── HERO ─── */
     .hero {
-      min-height:100vh;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center;
-      padding:160px 40px 80px;
-      position:relative; overflow:hidden;
-    }
-    .hero::before {
-      content:''; position:absolute;
-      width:900px; height:900px; border-radius:50%;
-      background:radial-gradient(circle, rgba(255,159,67,.07) 0%, transparent 65%);
-      top:-300px; left:50%; transform:translateX(-50%);
-      pointer-events:none;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 180px 40px 80px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-pill {
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(255,159,67,.1); border:1px solid rgba(255,159,67,.2);
-      color:var(--brand); font-size:11px; font-weight:700;
-      text-transform:uppercase; letter-spacing:2px;
-      padding:6px 18px; border-radius:100px; margin-bottom:36px;
+    /* ─── HERO VIDEO BG (mobile only) ─── */
+    .hero-video-bg {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
     }
-    .hero-pill::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--brand); animation:blink 2s infinite; }
-    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
+
+    .hero-video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    .hero-video-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(4, 4, 10, 0.35) 0%,
+        rgba(4, 4, 10, 0.55) 60%,
+        rgba(4, 4, 10, 0.85) 100%
+      );
+    }
+
+    @media (max-width: 640px) {
+      .hero-video-bg {
+        display: block;
+      }
+
+      /* hide the static radial glow on mobile — video handles atmosphere */
+      .hero::before {
+        display: none;
+      }
+
+      /* lift all hero content above the video layer */
+      .hero > *:not(.hero-video-bg) {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 159, 67, .07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 159, 67, .1);
+      border: 1px solid rgba(255, 159, 67, .2);
+      color: var(--brand);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 36px;
+    }
+
+    .pill::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--brand);
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(1.6)
+      }
+    }
 
     .hero h1 {
-      font-size:clamp(3.5rem,9vw,9rem);
-      font-weight:900; letter-spacing:-0.045em; line-height:.88;
-      background:linear-gradient(165deg, #fff 20%, rgba(255,255,255,.25) 100%);
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent;
-      margin-bottom:28px;
+      font-size: clamp(3.5rem, 9vw, 9rem);
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: .88;
+      background: linear-gradient(165deg, #fff 20%, rgba(255, 255, 255, .2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 28px;
     }
-    .hero-sub { font-size:18px; color:var(--muted); max-width:520px; line-height:1.65; margin-bottom:52px; }
 
-    /* count row */
-    .hero-counts {
-      display:flex; gap:48px; flex-wrap:wrap; justify-content:center;
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 52px;
     }
-    .hero-ct { text-align:center; }
-    .hero-ct-num { font-size:2.2rem; font-weight:900; color:#fff; letter-spacing:-0.03em; }
-    .hero-ct-lbl { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--brand); margin-top:4px; }
+
+    .hero-counts {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hct-num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.03em;
+    }
+
+    .hct-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--brand);
+      margin-top: 4px;
+    }
 
     /* ─── FILTERS ─── */
     .filter-bar {
-      display:flex; justify-content:center; gap:8px; flex-wrap:wrap;
-      padding:0 40px 64px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 0 40px 64px;
     }
+
     .fb {
-      padding:10px 22px; border-radius:100px;
-      background:transparent; border:1px solid var(--bdr);
-      color:var(--muted); font-family:'Outfit',sans-serif;
-      font-size:13px; font-weight:600; cursor:pointer; transition:all .3s;
-    }
-    .fb:hover { border-color:rgba(255,255,255,.2); color:#fff; }
-    .fb.on { background:#fff; color:#000; border-color:#fff; }
-
-    /* ─── WORK GRID (full-bleed masonry-style) ─── */
-    .work-section { padding:0 32px 140px; max-width:1480px; margin:0 auto; }
-
-    /* CSS Masonry-style: two rows of varied widths using flex rows */
-    .work-row { display:flex; gap:16px; margin-bottom:16px; }
-    .work-row .card { flex:1; min-height:380px; }
-    .work-row .card.tall { min-height:560px; }
-    .work-row .card.sq { min-height:380px; flex:0 0 380px; }
-    .work-row .card.lrg { flex:2; }
-    .work-row .card.sm { flex:0 0 300px; min-height:300px; }
-    .work-row .card.txt { min-height:300px; }
-
-    /* The card itself */
-    .card {
-      position:relative; border-radius:var(--r);
-      overflow:hidden; background:var(--card);
-      border:1px solid var(--bdr);
-      cursor:pointer;
-      opacity:0; transform:translateY(20px);
-      transition:opacity .65s ease, transform .65s ease, border-color .3s;
-    }
-    .card.vis { opacity:1; transform:translateY(0); }
-    .card.hidden { display:none; opacity:0; }
-    .card:hover { border-color:rgba(255,255,255,.15); }
-
-    /* image fill */
-    .card-bg {
-      position:absolute; inset:0;
-      object-fit:cover; width:100%; height:100%;
-      transition:transform 1.1s cubic-bezier(.16,1,.3,1);
-    }
-    .card:hover .card-bg { transform:scale(1.07); }
-
-    /* Gradient scrim */
-    .card-scrim {
-      position:absolute; inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.02) 55%);
-      transition:opacity .4s;
+      padding: 10px 22px;
+      border-radius: 100px;
+      background: transparent;
+      border: 1px solid var(--bdr);
+      color: var(--muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .3s;
     }
 
-    /* Info */
-    .card-info {
-      position:absolute; bottom:0; left:0; right:0; padding:26px 28px;
-      transform:translateY(6px); opacity:0;
-      transition:transform .4s ease, opacity .4s ease;
-      z-index:2;
+    .fb:hover {
+      border-color: rgba(255, 255, 255, .2);
+      color: #fff;
     }
-    .card:hover .card-info { transform:translateY(0); opacity:1; }
-    .card-tag { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:2.5px; color:var(--brand); margin-bottom:6px; }
-    .card-name { font-size:20px; font-weight:700; color:#fff; line-height:1.15; }
 
-    /* Play icon */
-    .play-icon {
-      position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-50%) scale(0);
-      width:64px; height:64px; border-radius:50%;
-      background:rgba(255,255,255,.12);
-      border:1.5px solid rgba(255,255,255,.3);
-      backdrop-filter:blur(8px);
-      display:flex;align-items:center;justify-content:center;
-      transition:transform .4s cubic-bezier(.16,1,.3,1);
-      z-index:2;
+    .fb.on {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
     }
-    .card:hover .play-icon { transform:translate(-50%,-50%) scale(1); }
-    .play-icon svg { margin-left:4px; }
 
-    /* Text-only cards */
-    .card-text-body {
-      position:absolute; inset:0; padding:36px;
-      display:flex; flex-direction:column; justify-content:flex-end; z-index:2;
+    /* ─── IFRAME GRID ─── */
+    .work-section {
+      padding: 0 32px 140px;
+      max-width: 1480px;
+      margin: 0 auto;
     }
-    .card-text-body.center { justify-content:center; align-items:flex-start; }
-    .card-eyebrow { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:3px; color:var(--brand); margin-bottom:12px; }
-    .card-headline {
-      font-size:clamp(2rem,3.5vw,3.2rem); font-weight:900;
-      letter-spacing:-0.03em; line-height:1.0; color:#fff;
-    }
-    .card-body-text { font-size:14px; color:var(--muted); line-height:1.6; margin-top:14px; max-width:320px; }
 
-    /* Accent / stat cards */
-    .card-stat {
-      position:absolute; inset:0; padding:40px;
-      display:flex; flex-direction:column; justify-content:center; align-items:flex-start; z-index:2;
+    /* 3-column grid — iframes control their own aspect ratio */
+    .ig {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1.2fr;
+      gap: var(--gap);
     }
-    .stat-big { font-size:clamp(4rem,8vw,7rem); font-weight:900; letter-spacing:-0.06em; color:#fff; line-height:1; }
-    .stat-big span { color:var(--brand); }
-    .stat-desc { font-size:13px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:2px; margin-top:16px; }
 
-    /* ─── FOOTER CTA ─── */
+    /* span helpers */
+    .span2 {
+      grid-column: span 2;
+    }
+
+    .span3 {
+      grid-column: span 3;
+    }
+
+    .rowspan2 {
+      grid-row: span 2;
+    }
+
+    /* CELL — base container */
+    .cell {
+      border-radius: var(--r);
+      border: 1px solid var(--bdr);
+      overflow: hidden;
+      background: var(--card);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease, border-color .3s;
+    }
+
+    .cell.vis {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cell.hide {
+      display: none;
+    }
+
+    .cell:hover {
+      border-color: rgba(255, 255, 255, .15);
+    }
+
+    /* ── IFRAME CELL ──
+       Wraps <iframe> in a 16:9 aspect-ratio container. */
+    .vid-cell .vid-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Loading spinner before iframe drops in */
+    .vid-cell .vid-wrap::before {
+      content: '';
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border: 2px solid rgba(255, 255, 255, .1);
+      border-top-color: var(--brand);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .vid-cell .vid-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none;
+      /* hidden until loaded by JS */
+      z-index: 2;
+    }
+
+    /* label strip below the video */
+    .vid-label {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .vid-label-left {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .vid-tag {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--brand);
+      margin-bottom: 4px;
+    }
+
+    .vid-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .vid-expand {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid var(--bdr);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all .3s;
+      color: #fff;
+    }
+
+    .vid-expand:hover {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #000;
+    }
+
+    /* ── TEXT / STAT CELLS ── */
+    .info-cell {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 220px;
+    }
+
+    .info-cell.mid {
+      justify-content: center;
+    }
+
+    .cell-eyebrow {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--brand);
+      margin-bottom: 12px;
+    }
+
+    .cell-headline {
+      font-size: clamp(1.8rem, 2.5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: #fff;
+    }
+
+    .cell-body {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 14px;
+      max-width: 300px;
+    }
+
+    .stat-big {
+      font-size: clamp(4rem, 8vw, 7rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat-big em {
+      color: var(--brand);
+      font-style: normal;
+    }
+
+    .stat-desc {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    /* ─── CTA ─── */
     .cta-band {
-      border-top:1px solid var(--bdr);
-      padding:100px 40px;
-      text-align:center;
+      border-top: 1px solid var(--bdr);
+      padding: 100px 40px;
+      text-align: center;
     }
-    .cta-band p { font-size:13px; color:var(--brand); text-transform:uppercase; letter-spacing:2px; font-weight:700; margin-bottom:20px; }
+
+    .cta-band p {
+      font-size: 12px;
+      color: var(--brand);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
     .cta-band h2 {
-      font-size:clamp(2.5rem,6vw,5.5rem); font-weight:900; letter-spacing:-0.04em; color:#fff; margin-bottom:40px;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 40px;
     }
-    .cta-btn-row { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-    .btn-prim {
-      background:var(--brand); color:#000; padding:16px 40px; border-radius:100px;
-      font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:1.5px;
-      transition:transform .3s, box-shadow .3s;
+
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    .btn-prim:hover { transform:scale(1.04); box-shadow:0 8px 30px rgba(255,159,67,.35); }
-    .btn-sec {
-      border:1px solid var(--bdr); color:#fff; padding:16px 40px; border-radius:100px;
-      font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px;
-      transition:border-color .3s, color .3s;
+
+    .btn-p {
+      background: var(--brand);
+      color: #000;
+      padding: 16px 40px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: transform .3s, box-shadow .3s;
     }
-    .btn-sec:hover { border-color:rgba(255,255,255,.3); color:#fff; }
+
+    .btn-p:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 30px rgba(255, 159, 67, .35);
+    }
+
+    .btn-s {
+      border: 1px solid var(--bdr);
+      color: #fff;
+      padding: 16px 40px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: border-color .3s;
+    }
+
+    .btn-s:hover {
+      border-color: rgba(255, 255, 255, .3);
+    }
 
     /* ─── FOOTER ─── */
     .footer {
-      border-top:1px solid var(--bdr);
-      padding:48px 40px;
-      display:flex; align-items:center; justify-content:space-between;
-      max-width:1480px; margin:0 auto; flex-wrap:wrap; gap:20px;
+      border-top: 1px solid var(--bdr);
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 20px;
     }
-    .footer img { height:24px; opacity:.6; }
-    .footer-links { display:flex; gap:24px; }
-    .footer-links a { font-size:12px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:1px; }
-    .footer-links a:hover { color:#fff; }
-    .footer small { font-size:12px; color:var(--muted); }
 
-    /* ─── VIDEO MODAL ─── */
+    .footer img {
+      height: 24px;
+      opacity: .6;
+    }
+
+    .flinks {
+      display: flex;
+      gap: 24px;
+    }
+
+    .flinks a {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .flinks a:hover {
+      color: #fff;
+    }
+
+    .footer small {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── EXPAND MODAL (fullscreen iframe) ─── */
     .modal {
-      position:fixed; inset:0; z-index:10000000;
-      background:rgba(0,0,0,.97);
-      backdrop-filter:blur(20px);
-      display:flex; align-items:center; justify-content:center;
-      padding:32px;
-      opacity:0; pointer-events:none;
-      transition:opacity .5s ease;
+      position: fixed;
+      inset: 0;
+      z-index: 10000000;
+      background: rgba(0, 0, 0, .97);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .5s ease;
     }
-    .modal.on { opacity:1; pointer-events:all; }
-    .modal-box {
-      width:100%; max-width:1140px; position:relative;
-      transform:scale(.92); transition:transform .55s cubic-bezier(.16,1,.3,1);
+
+    .modal.on {
+      opacity: 1;
+      pointer-events: all;
     }
-    .modal.on .modal-box { transform:scale(1); }
-    .modal-frame { aspect-ratio:16/9; border-radius:20px; overflow:hidden; box-shadow:0 60px 120px rgba(0,0,0,.7); }
-    .modal-frame iframe { width:100%; height:100%; display:block; border:none; }
-    .modal-x {
-      position:absolute; top:-56px; right:0;
-      width:44px; height:44px; border-radius:50%;
-      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
-      color:#fff; font-size:20px; cursor:pointer; display:grid; place-items:center;
-      transition:background .3s;
+
+    .mbox {
+      width: 100%;
+      max-width: 1140px;
+      position: relative;
+      transform: scale(.92);
+      transition: transform .55s cubic-bezier(.16, 1, .3, 1);
     }
-    .modal-x:hover { background:rgba(255,255,255,.16); }
-    .modal-meta {
-      position:absolute; bottom:-54px; left:0; right:0;
-      display:flex; align-items:center; justify-content:space-between;
-      flex-wrap:wrap; gap:12px;
+
+    .modal.on .mbox {
+      transform: scale(1);
     }
-    .modal-title { font-size:16px; font-weight:700; color:rgba(255,255,255,.7); }
-    .modal-yt {
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px;
-      color:rgba(255,255,255,.45); transition:color .3s;
+
+    /* Aspect-ratio container for the modal iframe too */
+    .mbox-ratio {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 60px 120px rgba(0, 0, 0, .7);
     }
-    .modal-yt:hover { color:var(--brand); }
+
+    .mbox-ratio iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      z-index: 3;
+    }
+
+    .mx {
+      position: absolute;
+      top: -56px;
+      right: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .15);
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background .3s;
+      z-index: 4;
+    }
+
+    .mx:hover {
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .mmeta {
+      position: absolute;
+      bottom: -52px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mtitle {
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .6);
+    }
+
+    .myt {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, .4);
+      transition: color .3s;
+    }
+
+    .myt:hover {
+      color: var(--brand);
+    }
 
     /* ─── RESPONSIVE ─── */
-    @media(max-width:900px) {
-      .work-row { flex-direction:column; }
-      .work-row .card, .work-row .card.tall, .work-row .card.sq,
-      .work-row .card.lrg, .work-row .card.sm, .work-row .card.txt { flex:none; width:100%; min-height:280px; }
-      .work-row .card.tall { min-height:420px; }
-      .hero { padding:140px 24px 60px; }
-      .hero h1 { font-size:3rem; }
-      .filter-bar { padding:0 16px 48px; }
-      .work-section { padding:0 16px 100px; }
-      .footer { flex-direction:column; align-items:flex-start; padding:40px 24px; }
-      .hero-counts { gap:28px; }
+    @media(max-width:1024px) {
+      .ig {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .span2 {
+        grid-column: span 2;
+      }
+
+      .span3 {
+        grid-column: span 2;
+      }
+
+      .rowspan2 {
+        grid-row: span 1;
+      }
+    }
+
+    @media(max-width:640px) {
+      .ig {
+        grid-template-columns: 1fr;
+      }
+
+      .span2,
+      .span3,
+      .rowspan2 {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .hero {
+        padding: 140px 20px 60px;
+      }
+
+      .work-section {
+        padding: 0 16px 90px;
+      }
+
+      .filter-bar {
+        padding: 0 16px 48px;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 20px;
+      }
+
+      .hero-counts {
+        gap: 24px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- CURSOR -->
-<div id="c-dot"></div>
-<div id="c-ring"></div>
+  <!-- CURSOR -->
+  <div id="cd"></div>
+  <div id="cr"></div>
 
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="nav-logo"><a href="index.html"><img src="PixelPix_Studio.png" alt="PixelPic Studio"></a></div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#about">About</a>
-    <a href="our-work.html" class="on">Work</a>
-  </div>
-  <div class="nav-cta"><a href="index.html#contact">Get in Touch</a></div>
-  <button class="burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-
-<!-- DRAWER -->
-<div class="drawer" id="drawer">
-  <div class="draw-panel">
-    <button class="draw-close" id="drawerClose">✕</button>
-    <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#about">About</a>
-    <a href="our-work.html">Work</a>
-    <a href="index.html#contact" style="color:var(--brand)">Contact</a>
-  </div>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-pill">Creative Portfolio</div>
-  <h1>We Make<br>Worlds Move.</h1>
-  <p class="hero-sub">Cinematic productions, brand campaigns, and visual stories that stop thumbs and move hearts. Every pixel, intentional.</p>
-  <div class="hero-counts">
-    <div class="hero-ct"><div class="hero-ct-num">150+</div><div class="hero-ct-lbl">Projects</div></div>
-    <div class="hero-ct"><div class="hero-ct-num">25+</div><div class="hero-ct-lbl">Awards</div></div>
-    <div class="hero-ct"><div class="hero-ct-num">98%</div><div class="hero-ct-lbl">Satisfaction</div></div>
-    <div class="hero-ct"><div class="hero-ct-num">12M</div><div class="hero-ct-lbl">Views</div></div>
-  </div>
-</section>
-
-<!-- FILTERS -->
-<div class="filter-bar">
-  <button class="fb on" data-f="all">All Work</button>
-  <button class="fb" data-f="cinematic">Cinematic</button>
-  <button class="fb" data-f="film">Short Films</button>
-  <button class="fb" data-f="commercial">Commercial</button>
-  <button class="fb" data-f="branding">Branding</button>
-  <button class="fb" data-f="campaign">Campaigns</button>
-</div>
-
-<!-- WORK GRID -->
-<div class="work-section" id="grid">
-
-  <!-- ROW 1 -->
-  <div class="work-row">
-    <!-- BIG FEATURED VIDEO -->
-    <div class="card lrg" data-f="cinematic"
-         data-vid="https://www.youtube.com/embed/kF8rkDUH3YQ"
-         data-yt="https://youtu.be/kF8rkDUH3YQ?si=9dpCZtaMa4g80sJV"
-         data-title="Architects of Emotion">
-      <img src="Cinematic Editing Studio Scene.png" alt="Architects of Emotion" class="card-bg">
-      <div class="card-scrim"></div>
-      <div class="play-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="card-info">
-        <div class="card-tag">Cinematic · Featured</div>
-        <div class="card-name">Architects of Emotion</div>
-      </div>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo"><a href="index.html"><img src="PixelPix_Studio.png" alt="PixelPic Studio"></a></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="our-work.html" class="on">Work</a>
     </div>
-
-    <!-- STAT CARD -->
-    <div class="card sm" style="background:linear-gradient(145deg,#11111d,#1a0f2e)" data-f="branding">
-      <div class="card-stat">
-        <div class="stat-big">12<span>M</span></div>
-        <div class="stat-desc">Views Generated<br>Across All Projects</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 2 -->
-  <div class="work-row">
-    <!-- TEXT / BRAND CARD -->
-    <div class="card sm" style="background:linear-gradient(160deg,#0a0a18,#14101f)" data-f="branding">
-      <div class="card-text-body">
-        <div class="card-eyebrow">Our Studio</div>
-        <div class="card-headline">Visual<br>Identity<br>that Lasts.</div>
-        <div class="card-body-text">Brand systems built for the digital era — logos that adapt, palettes that emote.</div>
-      </div>
-    </div>
-
-    <!-- COMMERCIAL VIDEO -->
-    <div class="card" data-f="commercial"
-         data-vid="https://www.youtube.com/embed/kF8rkDUH3YQ"
-         data-yt="https://youtu.be/kF8rkDUH3YQ?si=9dpCZtaMa4g80sJV"
-         data-title="Tech Summit 2025">
-      <img src="Editing_Workspace.png" alt="Commercial" class="card-bg">
-      <div class="card-scrim"></div>
-      <div class="play-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="card-info">
-        <div class="card-tag">Commercial</div>
-        <div class="card-name">Tech Summit 2025</div>
-      </div>
-    </div>
-
-    <!-- CAMPAIGN  -->
-    <div class="card" data-f="campaign">
-      <img src="Creative Team Unity Assets Aug 30 2025.png" alt="Campaign" class="card-bg">
-      <div class="card-scrim"></div>
-      <div class="card-info">
-        <div class="card-tag">Campaign</div>
-        <div class="card-name">Unity Drive</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 3 -->
-  <div class="work-row">
-    <!-- TALL SHORT FILM -->
-    <div class="card tall" data-f="film"
-         data-vid="https://www.youtube.com/embed/kF8rkDUH3YQ"
-         data-yt="https://youtu.be/kF8rkDUH3YQ?si=9dpCZtaMa4g80sJV"
-         data-title="The Silent Echo">
-      <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=900&auto=format&fit=crop" alt="The Silent Echo" class="card-bg">
-      <div class="card-scrim"></div>
-      <div class="play-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="card-info">
-        <div class="card-tag">Short Film</div>
-        <div class="card-name">The Silent Echo</div>
-      </div>
-    </div>
-
-    <!-- stack right: 2 stacked -->
-    <div style="display:flex;flex-direction:column;gap:16px;flex:1;">
-      <div class="card" style="flex:1" data-f="cinematic"
-           data-vid="https://www.youtube.com/embed/kF8rkDUH3YQ"
-           data-yt="https://youtu.be/kF8rkDUH3YQ?si=9dpCZtaMa4g80sJV"
-           data-title="Rhythm of Nature">
-        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=900&auto=format&fit=crop" alt="Rhythm of Nature" class="card-bg">
-        <div class="card-scrim"></div>
-        <div class="play-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div class="card-info">
-          <div class="card-tag">Cinematic</div>
-          <div class="card-name">Rhythm of Nature</div>
-        </div>
-      </div>
-
-      <!-- ACCENT BRAND CARD -->
-      <div class="card" style="flex:1;background:var(--brand)" data-f="branding">
-        <div class="card-text-body center">
-          <div class="card-eyebrow" style="color:#000">PixelPic Studio</div>
-          <div class="card-headline" style="color:#000;font-size:clamp(1.5rem,3vw,2.5rem)">Where Story<br>Meets Screen.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Wide cinematic -->
-    <div class="card lrg" data-f="film"
-         data-vid="https://www.youtube.com/embed/kF8rkDUH3YQ"
-         data-yt="https://youtu.be/kF8rkDUH3YQ?si=9dpCZtaMa4g80sJV"
-         data-title="Whispers of Light">
-      <img src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?q=80&w=1400&auto=format&fit=crop" alt="Whispers of Light" class="card-bg">
-      <div class="card-scrim"></div>
-      <div class="play-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="card-info">
-        <div class="card-tag">Short Film · Award Winner</div>
-        <div class="card-name">Whispers of Light</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 4 -->
-  <div class="work-row">
-    <!-- wide commercial -->
-    <div class="card lrg" data-f="commercial"
-         data-vid="https://www.youtube.com/embed/kF8rkDUH3YQ"
-         data-yt="https://youtu.be/kF8rkDUH3YQ?si=9dpCZtaMa4g80sJV"
-         data-title="Horizon Brand Campaign">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1200&auto=format&fit=crop" alt="Horizon" class="card-bg">
-      <div class="card-scrim"></div>
-      <div class="play-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="card-info">
-        <div class="card-tag">Commercial</div>
-        <div class="card-name">Horizon Brand Campaign</div>
-      </div>
-    </div>
-
-    <!-- Campaign card -->
-    <div class="card" data-f="campaign">
-      <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=900&auto=format&fit=crop" alt="Urban Pulse" class="card-bg">
-      <div class="card-scrim"></div>
-      <div class="card-info">
-        <div class="card-tag">Campaign</div>
-        <div class="card-name">Urban Pulse</div>
-      </div>
-    </div>
-
-    <!-- Dark stat card -->
-    <div class="card sm" style="background:linear-gradient(145deg,#0e0e1a,#1a0f12)" data-f="cinematic">
-      <div class="card-stat">
-        <div class="stat-big">25<span>+</span></div>
-        <div class="stat-desc">Awards<br>Won Globally</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 5 -->
-  <div class="work-row">
-    <!-- text card -->
-    <div class="card txt" style="background:linear-gradient(150deg,#0a1020,#101828)" data-f="branding">
-      <div class="card-text-body" style="justify-content:center">
-        <div class="card-eyebrow">Madurai, India</div>
-        <div class="card-headline" style="font-size:clamp(1.6rem,2.5vw,2.5rem)">Trusted by brands<br>across the globe.</div>
-        <div class="card-body-text">From startups to Fortune 500s — we craft stories that transform audiences into communities.</div>
-      </div>
-    </div>
-
-    <!-- Cinematic video -->
-    <div class="card lrg" data-f="cinematic"
-         data-vid="https://www.youtube.com/embed/kF8rkDUH3YQ"
-         data-yt="https://youtu.be/kF8rkDUH3YQ?si=9dpCZtaMa4g80sJV"
-         data-title="Golden Hour">
-      <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?q=80&w=1200&auto=format&fit=crop" alt="Golden Hour" class="card-bg">
-      <div class="card-scrim"></div>
-      <div class="play-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="card-info">
-        <div class="card-tag">Cinematic</div>
-        <div class="card-name">Golden Hour</div>
-      </div>
-    </div>
-
-    <!-- Logo branding card -->
-    <div class="card" data-f="branding" style="background:#000">
-      <img src="PixelPix_Studio.png" alt="PixelPic Identity" class="card-bg" style="object-fit:contain;padding:48px">
-      <div class="card-info" style="opacity:1;transform:none">
-        <div class="card-tag">Branding</div>
-        <div class="card-name">PixelPic Identity</div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- CTA BAND -->
-<div class="cta-band">
-  <p>Ready to start?</p>
-  <h2>Let's build something<br>remarkable together.</h2>
-  <div class="cta-btn-row">
-    <a href="index.html#contact" class="btn-prim">Start a Project</a>
-    <a href="index.html#about" class="btn-sec">About the Studio</a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-  <img src="PixelPix_Studio.png" alt="PixelPic Studio">
-  <nav class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#about">About</a>
-    <a href="our-work.html">Work</a>
-    <a href="index.html#contact">Contact</a>
+    <div class="nav-cta"><a href="index.html#contact">Get in Touch</a></div>
+    <button class="burger" id="bBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
-  <small>© 2026 PixelPic Studio. All rights reserved.</small>
-</div>
 
-<!-- VIDEO MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <button class="modal-x" id="mClose">✕</button>
-    <div class="modal-frame">
-      <iframe id="mFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-    <div class="modal-meta">
-      <span class="modal-title" id="mTitle"></span>
-      <a href="#" target="_blank" class="modal-yt" id="mYt">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 002.1 2.1C4.5 20.4 12 20.4 12 20.4s7.5 0 9.4-.5a3 3 0 002.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.6V8.4L15.8 12z"/></svg>
-        Watch on YouTube →
-      </a>
+  <!-- DRAWER -->
+  <div class="drawer" id="drawer">
+    <div class="dpanel">
+      <button class="dclose" id="dClose">✕</button>
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="our-work.html">Work</a>
+      <a href="index.html#contact" style="color:var(--brand)">Contact</a>
     </div>
   </div>
-</div>
 
-<script>
-/* === CURSOR === */
-const cdot = document.getElementById('c-dot');
-const cring = document.getElementById('c-ring');
-let rx=0,ry=0,mx=0,my=0;
-window.addEventListener('mousemove', e=>{
-  mx=e.clientX; my=e.clientY;
-  cdot.style.left=mx+'px'; cdot.style.top=my+'px';
-});
-(function raf(){
-  rx+=(mx-rx)*.13; ry+=(my-ry)*.13;
-  cring.style.left=rx+'px'; cring.style.top=ry+'px';
-  requestAnimationFrame(raf);
-})();
+  <!-- HERO -->
+  <section class="hero">
+    <!-- VIDEO BG (mobile only) -->
+    <div class="hero-video-bg" aria-hidden="true">
+      <video src="Comp 1.mp4" autoplay muted loop playsinline preload="auto"></video>
+    </div>
+    <div class="pill">Our Portfolio</div>
+    <h1>We Make<br>Worlds Move.</h1>
+    <p class="hero-sub">Cinematic productions, brand campaigns and visual stories that stop thumbs and move hearts.
+      Every pixel, intentional.</p>
+    <div class="hero-counts">
+      <div>
+        <div class="hct-num">150+</div>
+        <div class="hct-lbl">Projects</div>
+      </div>
+      <div>
+        <div class="hct-num">25+</div>
+        <div class="hct-lbl">Awards</div>
+      </div>
+      <div>
+        <div class="hct-num">98%</div>
+        <div class="hct-lbl">Satisfaction</div>
+      </div>
+      <div>
+        <div class="hct-num">12M</div>
+        <div class="hct-lbl">Views</div>
+      </div>
+    </div>
+  </section>
 
-/* === NAV shrink === */
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('slim',scrollY>60),{passive:true});
+  <!-- FILTERS -->
+  <div class="filter-bar">
+    <button class="fb on" data-f="all">All Work</button>
+    <button class="fb" data-f="cinematic">Cinematic</button>
+    <button class="fb" data-f="film">Short Films</button>
+    <button class="fb" data-f="commercial">Commercial</button>
+    <button class="fb" data-f="branding">Branding</button>
+    <button class="fb" data-f="campaign">Campaigns</button>
+  </div>
 
-/* === DRAWER === */
-document.getElementById('burgerBtn').onclick = ()=>document.getElementById('drawer').classList.add('on');
-document.getElementById('drawerClose').onclick = ()=>document.getElementById('drawer').classList.remove('on');
+  <!-- ═══ IFRAME GRID ═══ -->
+  <div class="work-section">
+    <div class="ig" id="grid">
 
-/* === SCROLL REVEAL === */
-const cards = [...document.querySelectorAll('.card')];
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      const i = cards.indexOf(entry.target);
-      setTimeout(()=>entry.target.classList.add('vis'), (i%6)*55);
-      io.unobserve(entry.target);
-    }
-  });
-},{threshold:0.07, rootMargin:'0px 0px -30px 0px'});
-cards.forEach(c=>io.observe(c));
+      <!-- ① FEATURED VIDEO — spans 2 columns -->
+      <div class="cell vid-cell span2" data-f="cinematic" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
+        data-title="Architects of Emotion">
+        <div class="vid-wrap" data-vid="nN0CLB5q_rU">
+          <!-- Staggered script will inject iframe here -->
+        </div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Cinematic · Featured</div>
+            <div class="vid-name">Architects of Emotion</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
 
-/* === FILTERS === */
-document.querySelectorAll('.fb').forEach(btn=>{
-  btn.onclick = ()=>{
-    document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
-    btn.classList.add('on');
-    const f = btn.dataset.f;
-    cards.forEach(card=>{
-      if(f==='all' || card.dataset.f===f){
-        card.classList.remove('hidden');
-        requestAnimationFrame(()=>card.classList.add('vis'));
-      } else {
-        card.classList.remove('vis');
-        card.classList.add('hidden');
+      <!-- ② STAT CARD -->
+      <div class="cell" data-f="branding" style="background:linear-gradient(145deg,#10101e,#1a0f2e)">
+        <div class="info-cell mid">
+          <div class="cell-eyebrow">Our Impact</div>
+          <div class="stat-big">12<em>M</em></div>
+          <div class="stat-desc">Views Generated<br>Across All Projects</div>
+        </div>
+      </div>
+
+      <!-- ③ VIDEO — commercial -->
+      <div class="cell vid-cell" data-f="commercial" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
+        data-title="Tech Summit 2025">
+        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Commercial</div>
+            <div class="vid-name">Tech Summit 2025</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ④ TEXT CARD — agency story -->
+      <div class="cell" data-f="branding" style="background:linear-gradient(155deg,#0a0a18,#101828)">
+        <div class="info-cell">
+          <div class="cell-eyebrow">Our Studio</div>
+          <div class="cell-headline">Visual<br>Identity<br>that Lasts.</div>
+          <div class="cell-body">Brand systems built for the digital era — logos that adapt, palettes that emote.</div>
+        </div>
+      </div>
+
+      <!-- ⑤ VIDEO — short film -->
+      <div class="cell vid-cell" data-f="film" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
+        data-title="The Silent Echo">
+        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Short Film</div>
+            <div class="vid-name">The Silent Echo</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ⑥ VIDEO — cinematic (spans 2) -->
+      <div class="cell vid-cell span2" data-f="cinematic" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
+        data-title="Whispers of Light">
+        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Short Film · Award Winner</div>
+            <div class="vid-name">Whispers of Light</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ⑦ STAT CARD -->
+      <div class="cell" data-f="branding" style="background:linear-gradient(145deg,#0f0e1a,#1a100f)">
+        <div class="info-cell mid">
+          <div class="cell-eyebrow">Global Recognition</div>
+          <div class="stat-big">25<em>+</em></div>
+          <div class="stat-desc">Awards Won<br>Across Categories</div>
+        </div>
+      </div>
+
+      <!-- ⑧ VIDEO — campaign -->
+      <div class="cell vid-cell" data-f="campaign" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
+        data-title="Urban Pulse Campaign">
+        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Campaign</div>
+            <div class="vid-name">Urban Pulse Campaign</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ⑨ VIDEO — commercial -->
+      <div class="cell vid-cell" data-f="commercial" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
+        data-title="Horizon Brand Film">
+        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Commercial</div>
+            <div class="vid-name">Horizon Brand Film</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ⑩ BRAND ACCENT CARD -->
+      <div class="cell" data-f="branding" style="background:var(--brand)">
+        <div class="info-cell" style="justify-content:center">
+          <div class="cell-eyebrow" style="color:#000">PixelPic Studio</div>
+          <div class="cell-headline" style="color:#000;font-size:clamp(1.6rem,2.5vw,2.4rem)">Where Story<br>Meets
+            Screen.</div>
+        </div>
+      </div>
+
+      <!-- ⑪ VIDEO — spans 2, cinematic -->
+      <div class="cell vid-cell span2" data-f="cinematic" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
+        data-title="Golden Hour">
+        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Cinematic</div>
+            <div class="vid-name">Golden Hour</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /ig -->
+  </div><!-- /work-section -->
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <p>Ready to Start?</p>
+    <h2>Let's build something<br>remarkable together.</h2>
+    <div class="btn-row">
+      <a href="index.html#contact" class="btn-p">Start a Project</a>
+      <a href="index.html#about" class="btn-s">About the Studio</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="PixelPix_Studio.png" alt="PixelPic Studio">
+    <nav class="flinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="our-work.html">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <small>© 2026 PixelPic Studio. All rights reserved.</small>
+  </div>
+
+  <!-- EXPAND MODAL (fullscreen with sound) -->
+  <div class="modal" id="modal">
+    <div class="mbox">
+      <button class="mx" id="mClose">✕</button>
+      <div class="mbox-ratio">
+        <!-- Fullscreen iframe loaded dynamically -->
+        <iframe id="mFrame" src="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+      </div>
+      <div class="mmeta">
+        <span class="mtitle" id="mTitle"></span>
+        <a href="#" target="_blank" class="myt" id="mYt">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.5 15.6V8.4L15.8 12z" />
+          </svg>
+          Watch on YouTube →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* CURSOR */
+    const cd = document.getElementById('cd');
+    const cr = document.getElementById('cr');
+    let rx = 0, ry = 0, mx = 0, my = 0;
+    window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cd.style.left = mx + 'px'; cd.style.top = my + 'px'; });
+    (function raf() { rx += (mx - rx) * .13; ry += (my - ry) * .13; cr.style.left = rx + 'px'; cr.style.top = ry + 'px'; requestAnimationFrame(raf); })();
+
+    /* NAV */
+    window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('slim', scrollY > 60), { passive: true });
+
+    /* DRAWER */
+    document.getElementById('bBtn').onclick = () => document.getElementById('drawer').classList.add('on');
+    document.getElementById('dClose').onclick = () => document.getElementById('drawer').classList.remove('on');
+
+    /* ═══ 1. STAGGERED INJECTION & 4. USER GESTURE PROXY ═══ */
+    // IntersectionObserver detects scroll gesture, unlocking media capabilities
+    // and prevents the "Bot-like flood" by staggering the requests.
+    const videoContainers = document.querySelectorAll('.vid-wrap[data-vid]');
+    let loadQueue = [];
+    let isQueueProcessing = false;
+
+    function processQueue() {
+      if (loadQueue.length === 0) {
+        isQueueProcessing = false;
+        return;
       }
+      isQueueProcessing = true;
+
+      // Shift the first wrap from the queue
+      const wrap = loadQueue.shift();
+      const vidId = wrap.dataset.vid;
+
+      // 3. NO-COOKIE DOMAIN + 2. MANDATORY PLAYLIST + AUTOPLAY/MUTE
+      const url = `https://www.youtube-nocookie.com/embed/${vidId}?autoplay=1&mute=1&loop=1&playlist=${vidId}&controls=1&modestbranding=1&rel=0`;
+
+      const ifr = document.createElement('iframe');
+      ifr.src = url;
+      ifr.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      ifr.setAttribute('allowfullscreen', 'true');
+
+      // Fade in the iframe after it's injected
+      ifr.onload = () => ifr.style.display = 'block';
+      wrap.appendChild(ifr);
+
+      // Stagger the next injection by 300ms to prevent race conditions
+      setTimeout(processQueue, 300);
+    }
+
+    const vidObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadQueue.push(entry.target);
+          obs.unobserve(entry.target);
+          if (!isQueueProcessing) processQueue();
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px 200px 0px" });
+
+    videoContainers.forEach(wrap => vidObserver.observe(wrap));
+
+    /* SCROLL REVEAL (Animation for Cards) */
+    const cells = [...document.querySelectorAll('.cell')];
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const i = cells.indexOf(e.target);
+          setTimeout(() => e.target.classList.add('vis'), (i % 5) * 70);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+    cells.forEach(c => io.observe(c));
+
+    /* FILTERS */
+    document.querySelectorAll('.fb').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        const f = btn.dataset.f;
+        cells.forEach(c => {
+          if (f === 'all' || c.dataset.f === f) {
+            c.classList.remove('hide');
+            requestAnimationFrame(() => c.classList.add('vis'));
+          } else {
+            c.classList.remove('vis'); c.classList.add('hide');
+          }
+        });
+      };
     });
-  };
-});
 
-/* === VIDEO MODAL === */
-const modal = document.getElementById('modal');
-const mFrame = document.getElementById('mFrame');
-const mYt = document.getElementById('mYt');
-const mTitle = document.getElementById('mTitle');
+    /* EXPAND MODAL — clicking the expand button opens video fullscreen WITH sound */
+    const modal = document.getElementById('modal');
+    const mFrame = document.getElementById('mFrame');
+    const mTitle = document.getElementById('mTitle');
+    const mYt = document.getElementById('mYt');
 
-document.querySelectorAll('.card[data-vid]').forEach(card=>{
-  card.onclick = ()=>{
-    mFrame.src = card.dataset.vid + '?autoplay=1&rel=0';
-    mYt.href = card.dataset.yt || '#';
-    mTitle.textContent = card.dataset.title || '';
-    modal.classList.add('on');
-    document.body.style.overflow='hidden';
-  };
-});
+    document.querySelectorAll('.vid-expand').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const cell = btn.closest('.cell');
+        const wrap = cell.querySelector('.vid-wrap');
+        if (!wrap) return;
 
-document.getElementById('mClose').onclick = closeM;
-modal.addEventListener('click',e=>{ if(e.target===modal) closeM(); });
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeM(); });
-function closeM(){
-  modal.classList.remove('on');
-  mFrame.src='';
-  document.body.style.overflow='';
-}
+        // Modal always gets sound (mute=0) and uses standard youtube.com for user-triggered expanding
+        const vidId = wrap.dataset.vid;
+        mFrame.src = `https://www.youtube.com/embed/${vidId}?autoplay=1&mute=0&rel=0&modestbranding=1`;
+        mTitle.textContent = cell.dataset.title || '';
+        mYt.href = cell.dataset.yt || '#';
+        modal.classList.add('on');
+        document.body.style.overflow = 'hidden';
+      });
+    });
 
-/* === CURSOR SCALE === */
-document.querySelectorAll('.card,.fb,.btn-prim,.btn-sec,.nav-cta a').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ cring.style.width='56px'; cring.style.height='56px'; });
-  el.addEventListener('mouseleave',()=>{ cring.style.width='32px'; cring.style.height='32px'; });
-});
-</script>
+    document.getElementById('mClose').onclick = closeM;
+    modal.addEventListener('click', e => { if (e.target === modal) closeM(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); });
+    function closeM() { modal.classList.remove('on'); mFrame.src = ''; document.body.style.overflow = ''; }
+
+    /* CURSOR SCALE */
+    document.querySelectorAll('.cell,.fb,.btn-p,.btn-s,.nav-cta a,.vid-expand').forEach(el => {
+      el.addEventListener('mouseenter', () => { cr.style.width = '52px'; cr.style.height = '52px'; });
+      el.addEventListener('mouseleave', () => { cr.style.width = '32px'; cr.style.height = '32px'; });
+    });
+  </script>
 </body>
+
 </html>
