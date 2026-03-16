@@ -2465,6 +2465,15 @@
 </head>
 
 <body class="loading">
+  <!-- Immediate Check to Bypass Preloader on Return -->
+  <script>
+    if (sessionStorage.getItem('pixcelPreloaderFinished')) {
+      document.body.classList.remove('loading');
+      document.body.classList.add('loaded');
+      document.write('<style>#preloader, .shutter-top, .shutter-bottom, .light-sweep { display: none !important; }</style>');
+    }
+  </script>
+
   <!-- ================== CINEMATIC PRELOADER ================== -->
   <div class="shutter-top"></div>
   <div class="shutter-bottom"></div>
@@ -2674,12 +2683,12 @@
       </div>
       <div class="container hero-layout-left">
         <div class="hero-content reveal">
-          <h4 class="hero-eyebrow loading-fade delay-1">Pre-Production • Production • Post-Production — All in One Place</h4>
+          <h4 class="hero-eyebrow loading-fade delay-1">Pre-Production • Production • Post-Production — All in One Place
+          </h4>
           <h1 class="hero-headline loading-fade delay-2">
             Turning Ideas Into <br>
             <span class="text-glow">Powerful Visual Stories.</span>
           </h1>
-          <p class="hero-subtitle loading-fade delay-3">From idea to final video, Pixel Pic Media helps businesses create powerful photos, videos, and digital content that attract customers and grow their brand.</p>
 
           <div class="hero-btns loading-fade delay-4">
             <a href="#contact" class="btn-glow">Start Your Project</a>
@@ -5835,10 +5844,12 @@
       if (!preloader || document.body.classList.contains('loaded')) return;
 
       // Perfectly synced Dismissal (2.4 seconds)
-      // This aligns the shutter opening with the completion of the entrance animations
       setTimeout(() => {
         document.body.classList.add('loaded');
         document.body.classList.remove('loading');
+        
+        // Save session state
+        sessionStorage.setItem('pixcelPreloaderFinished', 'true');
 
         // Final cleanup for performance
         setTimeout(() => {
