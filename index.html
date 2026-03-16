@@ -3262,6 +3262,369 @@
         });
       </script>
     </section>
+
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- ═══  MORE THAN FILM — DESIGN SERVICES SECTION  ════════ -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <section id="design-services" class="section ds-section">
+
+      <style>
+        /* ─── Design Services Section ─── */
+        .ds-section {
+          background: var(--bg);
+          padding: 140px 0;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* ambient glow blob */
+        .ds-section::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 800px;
+          height: 800px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255,153,51,.06) 0%, transparent 65%);
+          pointer-events: none;
+        }
+
+        /* header */
+        .ds-header {
+          text-align: center;
+          margin-bottom: 80px;
+        }
+
+        .ds-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--brand);
+          margin-bottom: 20px;
+        }
+
+        .ds-eyebrow::before,
+        .ds-eyebrow::after {
+          content: '';
+          width: 32px;
+          height: 1px;
+          background: var(--brand);
+          opacity: 0.5;
+        }
+
+        .ds-title {
+          font-size: clamp(2.2rem, 5vw, 4rem);
+          font-weight: 800;
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+          color: #fff;
+          margin: 0 0 20px;
+        }
+
+        .ds-title em {
+          font-style: normal;
+          background: linear-gradient(135deg, var(--brand) 0%, #ea580c 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .ds-lead {
+          font-size: 17px;
+          color: var(--muted);
+          max-width: 560px;
+          margin: 0 auto;
+          line-height: 1.7;
+        }
+
+        /* ─── Cards Grid ─── */
+        .ds-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          position: relative;
+        }
+
+        .ds-card {
+          position: relative;
+          background: rgba(15, 23, 42, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.07);
+          border-radius: 28px;
+          padding: 48px 40px 44px;
+          overflow: hidden;
+          transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                      border-color 0.4s ease,
+                      box-shadow 0.5s ease;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          opacity: 0;
+          transform: translateY(40px);
+        }
+
+        .ds-card.in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .ds-card:hover {
+          transform: translateY(-10px);
+          border-color: rgba(255, 153, 51, 0.3);
+          box-shadow:
+            0 30px 60px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(255, 153, 51, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* corner glow on hover */
+        .ds-card::before {
+          content: '';
+          position: absolute;
+          top: -80px;
+          right: -80px;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255,153,51,.12) 0%, transparent 70%);
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+        }
+
+        .ds-card:hover::before {
+          opacity: 1;
+        }
+
+        /* card number badge */
+        .ds-num {
+          position: absolute;
+          top: 36px;
+          right: 36px;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 2px;
+          color: rgba(255,153,51,.35);
+          font-variant-numeric: tabular-nums;
+        }
+
+        /* icon container */
+        .ds-icon-wrap {
+          width: 72px;
+          height: 72px;
+          border-radius: 20px;
+          background: rgba(255, 153, 51, 0.08);
+          border: 1px solid rgba(255, 153, 51, 0.15);
+          display: grid;
+          place-items: center;
+          margin-bottom: 32px;
+          transition: background 0.4s ease, box-shadow 0.4s ease;
+          position: relative;
+        }
+
+        .ds-card:hover .ds-icon-wrap {
+          background: rgba(255, 153, 51, 0.14);
+          box-shadow: 0 0 28px rgba(255, 153, 51, 0.2);
+        }
+
+        .ds-icon-wrap svg {
+          width: 32px;
+          height: 32px;
+          stroke: var(--brand);
+          transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .ds-card:hover .ds-icon-wrap svg {
+          transform: scale(1.15) rotate(-4deg);
+        }
+
+        /* card text */
+        .ds-card-tag {
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          color: var(--brand);
+          margin-bottom: 10px;
+        }
+
+        .ds-card-title {
+          font-size: 1.55rem;
+          font-weight: 800;
+          color: #fff;
+          letter-spacing: -0.02em;
+          line-height: 1.2;
+          margin-bottom: 16px;
+        }
+
+        .ds-card-body {
+          font-size: 14.5px;
+          color: var(--muted);
+          line-height: 1.7;
+          margin-bottom: 32px;
+        }
+
+        /* feature pills */
+        .ds-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .ds-pill {
+          font-size: 11.5px;
+          font-weight: 600;
+          color: rgba(255,255,255,0.55);
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 100px;
+          padding: 5px 14px;
+          transition: all 0.3s ease;
+        }
+
+        .ds-card:hover .ds-pill {
+          color: rgba(255,255,255,0.8);
+          border-color: rgba(255,153,51,0.2);
+        }
+
+        /* divider line below cards */
+        .ds-divider {
+          width: 1px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          background: rgba(255,255,255,0.05);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 1024px) {
+          .ds-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .ds-section {
+            padding: 90px 0;
+          }
+
+          .ds-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .ds-card {
+            padding: 36px 28px;
+          }
+
+          .ds-header {
+            margin-bottom: 52px;
+          }
+        }
+      </style>
+
+      <div class="container">
+
+        <!-- Header -->
+        <div class="ds-header reveal">
+          <div class="ds-eyebrow">Beyond the Frame</div>
+          <h2 class="ds-title">We Don't Just Film —<br><em>We Build Brands.</em></h2>
+          <p class="ds-lead">From cinematic production to pixel-perfect design, we cover the full creative spectrum so your brand always looks its best — everywhere.</p>
+        </div>
+
+        <!-- Cards -->
+        <div class="ds-grid" id="dsGrid">
+
+          <!-- Card 1: Graphics Design -->
+          <div class="ds-card" style="transition-delay:.08s">
+            <span class="ds-num">01</span>
+            <div class="ds-icon-wrap">
+              <!-- Layers / Graphics icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="ds-card-tag">Visual Design</div>
+            <h3 class="ds-card-title">Graphics Design</h3>
+            <p class="ds-card-body">Stunning visuals that stop thumbs mid-scroll. From social banners to full brand kits, we craft graphics that communicate instantly and resonate deeply.</p>
+            <div class="ds-pills">
+              <span class="ds-pill">Social Media</span>
+              <span class="ds-pill">Brand Kit</span>
+              <span class="ds-pill">Digital Ads</span>
+              <span class="ds-pill">Thumbnails</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Poster Design -->
+          <div class="ds-card" style="transition-delay:.18s">
+            <span class="ds-num">02</span>
+            <div class="ds-icon-wrap">
+              <!-- Frame / Poster icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="3"/>
+                <path d="M3 9h18"/>
+                <circle cx="7.5" cy="6" r="0.5" fill="currentColor"/>
+                <circle cx="10.5" cy="6" r="0.5" fill="currentColor"/>
+                <path d="M7 13l3 3 4-5"/>
+              </svg>
+            </div>
+            <div class="ds-card-tag">Print & Digital</div>
+            <h3 class="ds-card-title">Poster Design</h3>
+            <p class="ds-card-body">Every great film needs a great poster. We design bold, print-ready posters with cinematic composition, hierarchy, and that magnetic first impression your audience deserves.</p>
+            <div class="ds-pills">
+              <span class="ds-pill">Event Posters</span>
+              <span class="ds-pill">Film Posters</span>
+              <span class="ds-pill">Campaign Art</span>
+              <span class="ds-pill">Print-Ready</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Logo Design -->
+          <div class="ds-card" style="transition-delay:.28s">
+            <span class="ds-num">03</span>
+            <div class="ds-icon-wrap">
+              <!-- Signature / Logo icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                <path d="M8 12h8"/>
+                <path d="M12 8l4 4-4 4"/>
+              </svg>
+            </div>
+            <div class="ds-card-tag">Brand Identity</div>
+            <h3 class="ds-card-title">Logo Design</h3>
+            <p class="ds-card-body">Your logo is your signature — it must be timeless. We craft logos grounded in strategy, designed to look equally powerful on a business card and a billboard.</p>
+            <div class="ds-pills">
+              <span class="ds-pill">Wordmarks</span>
+              <span class="ds-pill">Monograms</span>
+              <span class="ds-pill">Icon Marks</span>
+              <span class="ds-pill">Brand Guide</span>
+            </div>
+          </div>
+
+        </div><!-- /ds-grid -->
+      </div>
+
+      <script>
+        (function () {
+          var cards = document.querySelectorAll('#dsGrid .ds-card');
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                observer.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.12 });
+          cards.forEach(function (c) { observer.observe(c); });
+        })();
+      </script>
+
+    </section>
     <!-- ===================== ABOUT SECTION ===================== -->
     <!-- ===================== REDESIGNED ABOUT SECTION ===================== -->
     <section id="about" class="section about-cinematic">
