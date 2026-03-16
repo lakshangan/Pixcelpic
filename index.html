@@ -4210,7 +4210,7 @@
         <div class="portfolio-stage-grid" id="portfolioGrid">
           <!-- Item 1: The Hero Feature -->
           <a class="stage-card feature-hero reveal" href="#" data-cat="ads"
-            data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+            data-video="https://www.youtube.com/embed/kF8rkDUH3YQ?autoplay=1&rel=0">
             <div class="stage-img">
               <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1600&auto=format&fit=crop"
                 alt="Nike Air Max" loading="lazy" />
@@ -4236,7 +4236,7 @@
 
           <!-- Item 2: Vertical Highlight -->
           <a class="stage-card vertical-tile reveal" href="#" data-cat="social"
-            data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+            data-video="https://www.youtube.com/embed/o8N0oHGWCt8?autoplay=1&rel=0">
             <div class="stage-img">
               <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop"
                 alt="Fashion" loading="lazy" />
@@ -4258,14 +4258,14 @@
 
           <!-- Item 3: Standard Card -->
           <a class="stage-card standard-tile reveal" href="#" data-cat="corporate"
-            data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+            data-video="https://www.youtube.com/embed/IimI14BFdWk?autoplay=1&rel=0">
             <div class="stage-img">
               <img src="https://images.unsplash.com/photo-1485217988980-11786ced9454?q=80&w=1600&auto=format&fit=crop"
                 alt="Tech" loading="lazy" />
             </div>
             <div class="stage-overlay compact">
               <div class="stage-info">
-                <span class="cat-label">Corporate</span>
+                <span class="cat-label">Corporate Ad</span>
                 <h3>Global Tech Summit 2025</h3>
               </div>
               <div class="stage-action">
@@ -4280,14 +4280,14 @@
 
           <!-- Item 4: Wide Card -->
           <a class="stage-card wide-tile reveal" href="#" data-cat="ads"
-            data-video="https://www.youtube.com/embed/ScMzIvxBSi4?autoplay=1">
+            data-video="https://www.youtube.com/embed/5RbWsDi2xAc?autoplay=1&rel=0">
             <div class="stage-img">
               <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1600&auto=format&fit=crop"
                 alt="Organic Tea" loading="lazy" />
             </div>
             <div class="stage-overlay compact">
               <div class="stage-info">
-                <span class="cat-label">Commercial</span>
+                <span class="cat-label">Commercial Ad</span>
                 <h3>Organic Tea Origins</h3>
               </div>
               <div class="stage-action">
@@ -4584,7 +4584,31 @@
         }
 
         .stage-card:hover .stage-img {
-          transform: scale(1.1) rotate(1deg);
+          transform: scale(1.1);
+          filter: brightness(0.8) contrast(1.1);
+        }
+
+        /* Scanning line effect for 'Live' feel */
+        .stage-card::after {
+          content: '';
+          position: absolute;
+          top: -100%;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, transparent, rgba(255,153,51,0.15), transparent);
+          z-index: 2;
+          pointer-events: none;
+          transition: 0s;
+        }
+
+        .stage-card:hover::after {
+          animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+          0% { top: -100%; }
+          100% { top: 100%; }
         }
 
         .stage-img img {
@@ -4667,7 +4691,26 @@
 
         .stage-card:hover .stage-action {
           opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-circle-large, .play-circle-sm {
+          position: relative;
+        }
+
+        .stage-card:hover .play-circle-large::after,
+        .stage-card:hover .play-circle-sm::after {
+          content: '';
+          position: absolute;
+          inset: -15px;
+          border: 1px solid var(--brand);
+          border-radius: 50%;
+          animation: pulse-ring 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+          0% { transform: scale(1); opacity: 0.8; }
+          100% { transform: scale(1.6); opacity: 0; }
         }
 
         .play-circle-large {
@@ -5705,8 +5748,8 @@
         closeVideoModal();
     });
 
-    // Make any .thumb with data-video open modal
-    $$('.thumb[data-video]').forEach(t => t.addEventListener('click', e => {
+    // Make any .thumb or .stage-card with data-video open modal
+    $$('.thumb[data-video], .stage-card[data-video]').forEach(t => t.addEventListener('click', e => {
       e.preventDefault();
       openVideo(t.dataset.video);
     }));
