@@ -459,6 +459,11 @@
       grid-row: span 2;
     }
 
+    /* ─── PORTRAIT CELL (Shorts 9:16) ─── */
+    .vid-cell.portrait .vid-wrap {
+      padding-bottom: 177.78%; /* 9:16 */
+    }
+
     /* CELL — base container */
     .cell {
       border-radius: var(--r);
@@ -972,38 +977,36 @@
   <!-- FILTERS -->
   <div class="filter-bar">
     <button class="fb on" data-f="all">All Work</button>
-    <button class="fb" data-f="cinematic">Cinematic</button>
+    <button class="fb" data-f="shorts">Shorts</button>
+    <button class="fb" data-f="ad">Ad Videos</button>
     <button class="fb" data-f="film">Short Films</button>
-    <button class="fb" data-f="commercial">Commercial</button>
-    <button class="fb" data-f="branding">Branding</button>
-    <button class="fb" data-f="campaign">Campaigns</button>
   </div>
 
   <!-- ═══ IFRAME GRID ═══ -->
   <div class="work-section">
     <div class="ig" id="grid">
 
-      <!-- ① FEATURED VIDEO — spans 2 columns -->
-      <div class="cell vid-cell span2" data-f="cinematic" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
-        data-title="Architects of Emotion">
-        <div class="vid-wrap" data-vid="nN0CLB5q_rU">
-          <!-- Staggered script will inject iframe here -->
-        </div>
+      <!-- ══════════════════════════════════ -->
+      <!--  SHORT FILMS  (16:9)              -->
+      <!-- ══════════════════════════════════ -->
+
+      <!-- SF-1 Featured · spans 2 -->
+      <div class="cell vid-cell span2" data-f="film"
+           data-yt="https://youtu.be/2b9mXdPahiU" data-title="Short Film 1">
+        <div class="vid-wrap" data-vid="2b9mXdPahiU"></div>
         <div class="vid-label">
           <div class="vid-label-left">
-            <div class="vid-tag">Cinematic · Featured</div>
-            <div class="vid-name">Architects of Emotion</div>
+            <div class="vid-tag">Short Film · Featured</div>
+            <div class="vid-name">Short Film 1</div>
           </div>
           <button class="vid-expand" title="Expand">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </button>
         </div>
       </div>
 
-      <!-- ② STAT CARD -->
-      <div class="cell" data-f="branding" style="background:linear-gradient(145deg,#10101e,#1a0f2e)">
+      <!-- STAT CARD -->
+      <div class="cell" data-f="all" style="background:linear-gradient(145deg,#10101e,#1a0f2e)">
         <div class="info-cell mid">
           <div class="cell-eyebrow">Our Impact</div>
           <div class="stat-big">12<em>M</em></div>
@@ -1011,68 +1014,111 @@
         </div>
       </div>
 
-      <!-- ③ VIDEO — commercial -->
-      <div class="cell vid-cell" data-f="commercial" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
-        data-title="Tech Summit 2025">
-        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
-        <div class="vid-label">
-          <div class="vid-label-left">
-            <div class="vid-tag">Commercial</div>
-            <div class="vid-name">Tech Summit 2025</div>
-          </div>
-          <button class="vid-expand" title="Expand">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- ④ TEXT CARD — agency story -->
-      <div class="cell" data-f="branding" style="background:linear-gradient(155deg,#0a0a18,#101828)">
-        <div class="info-cell">
-          <div class="cell-eyebrow">Our Studio</div>
-          <div class="cell-headline">Visual<br>Identity<br>that Lasts.</div>
-          <div class="cell-body">Brand systems built for the digital era — logos that adapt, palettes that emote.</div>
-        </div>
-      </div>
-
-      <!-- ⑤ VIDEO — short film -->
-      <div class="cell vid-cell" data-f="film" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
-        data-title="The Silent Echo">
-        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+      <!-- SF-2 -->
+      <div class="cell vid-cell" data-f="film"
+           data-yt="https://youtu.be/Ix-dngLyuDk" data-title="Short Film 2">
+        <div class="vid-wrap" data-vid="Ix-dngLyuDk"></div>
         <div class="vid-label">
           <div class="vid-label-left">
             <div class="vid-tag">Short Film</div>
-            <div class="vid-name">The Silent Echo</div>
+            <div class="vid-name">Short Film 2</div>
           </div>
           <button class="vid-expand" title="Expand">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </button>
         </div>
       </div>
 
-      <!-- ⑥ VIDEO — cinematic (spans 2) -->
-      <div class="cell vid-cell span2" data-f="cinematic" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
-        data-title="Whispers of Light">
+      <!-- SF-3 -->
+      <div class="cell vid-cell" data-f="film"
+           data-yt="https://youtu.be/gWLOhzBu3X4" data-title="Short Film 3">
+        <div class="vid-wrap" data-vid="gWLOhzBu3X4"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Short Film</div>
+            <div class="vid-name">Short Film 3</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- SF-4 -->
+      <div class="cell vid-cell" data-f="film"
+           data-yt="https://youtu.be/DYDxNLfQvjM" data-title="Short Film 4">
+        <div class="vid-wrap" data-vid="DYDxNLfQvjM"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Short Film</div>
+            <div class="vid-name">Short Film 4</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- SF-5 · spans 2 -->
+      <div class="cell vid-cell span2" data-f="film"
+           data-yt="https://youtu.be/n1NuN4Byxh4" data-title="Short Film 5">
+        <div class="vid-wrap" data-vid="n1NuN4Byxh4"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Short Film</div>
+            <div class="vid-name">Short Film 5</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- BRAND ACCENT CARD -->
+      <div class="cell" data-f="all" style="background:linear-gradient(155deg,#0a0a18,#101828)">
+        <div class="info-cell">
+          <div class="cell-eyebrow">Our Studio</div>
+          <div class="cell-headline">Visual<br>Identity<br>that Lasts.</div>
+          <div class="cell-body">Cinematic stories built frame by frame — every cut, intentional.</div>
+        </div>
+      </div>
+
+      <!-- SF-6 · spans 3 -->
+      <div class="cell vid-cell span3" data-f="film"
+           data-yt="https://youtu.be/nN0CLB5q_rU" data-title="Short Film 6">
         <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
         <div class="vid-label">
           <div class="vid-label-left">
             <div class="vid-tag">Short Film · Award Winner</div>
-            <div class="vid-name">Whispers of Light</div>
+            <div class="vid-name">Short Film 6</div>
           </div>
           <button class="vid-expand" title="Expand">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </button>
         </div>
       </div>
 
-      <!-- ⑦ STAT CARD -->
-      <div class="cell" data-f="branding" style="background:linear-gradient(145deg,#0f0e1a,#1a100f)">
+      <!-- ══════════════════════════════════ -->
+      <!--  AD VIDEOS  (16:9)               -->
+      <!-- ══════════════════════════════════ -->
+
+      <!-- AD-1 · spans 2 -->
+      <div class="cell vid-cell span2" data-f="ad"
+           data-yt="https://youtu.be/kF8rkDUH3YQ" data-title="Ad Video 1">
+        <div class="vid-wrap" data-vid="kF8rkDUH3YQ"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Ad Video · Featured</div>
+            <div class="vid-name">Ad Video 1</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STAT CARD -->
+      <div class="cell" data-f="all" style="background:linear-gradient(145deg,#0f0e1a,#1a100f)">
         <div class="info-cell mid">
           <div class="cell-eyebrow">Global Recognition</div>
           <div class="stat-big">25<em>+</em></div>
@@ -1080,68 +1126,232 @@
         </div>
       </div>
 
-      <!-- ⑧ VIDEO — campaign -->
-      <div class="cell vid-cell" data-f="campaign" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
-        data-title="Urban Pulse Campaign">
-        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+      <!-- AD-2 -->
+      <div class="cell vid-cell" data-f="ad"
+           data-yt="https://youtu.be/IimI14BFdWk" data-title="Ad Video 2">
+        <div class="vid-wrap" data-vid="IimI14BFdWk"></div>
         <div class="vid-label">
           <div class="vid-label-left">
-            <div class="vid-tag">Campaign</div>
-            <div class="vid-name">Urban Pulse Campaign</div>
+            <div class="vid-tag">Ad Video</div>
+            <div class="vid-name">Ad Video 2</div>
           </div>
           <button class="vid-expand" title="Expand">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </button>
         </div>
       </div>
 
-      <!-- ⑨ VIDEO — commercial -->
-      <div class="cell vid-cell" data-f="commercial" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
-        data-title="Horizon Brand Film">
-        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+      <!-- AD-3 -->
+      <div class="cell vid-cell" data-f="ad"
+           data-yt="https://youtu.be/5RbWsDi2xAc" data-title="Ad Video 3">
+        <div class="vid-wrap" data-vid="5RbWsDi2xAc"></div>
         <div class="vid-label">
           <div class="vid-label-left">
-            <div class="vid-tag">Commercial</div>
-            <div class="vid-name">Horizon Brand Film</div>
+            <div class="vid-tag">Ad Video</div>
+            <div class="vid-name">Ad Video 3</div>
           </div>
           <button class="vid-expand" title="Expand">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </button>
         </div>
       </div>
 
-      <!-- ⑩ BRAND ACCENT CARD -->
-      <div class="cell" data-f="branding" style="background:var(--brand)">
+      <!-- AD-4 -->
+      <div class="cell vid-cell" data-f="ad"
+           data-yt="https://youtu.be/-WsBCzBuIC0" data-title="Ad Video 4">
+        <div class="vid-wrap" data-vid="-WsBCzBuIC0"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Ad Video</div>
+            <div class="vid-name">Ad Video 4</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- AD-5 · spans 2 -->
+      <div class="cell vid-cell span2" data-f="ad"
+           data-yt="https://youtu.be/LWSyqxL3TXM" data-title="Ad Video 5">
+        <div class="vid-wrap" data-vid="LWSyqxL3TXM"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Ad Video</div>
+            <div class="vid-name">Ad Video 5</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- BRAND ACCENT -->
+      <div class="cell" data-f="all" style="background:var(--brand)">
         <div class="info-cell" style="justify-content:center">
           <div class="cell-eyebrow" style="color:#000">PixelPic Studio</div>
-          <div class="cell-headline" style="color:#000;font-size:clamp(1.6rem,2.5vw,2.4rem)">Where Story<br>Meets
-            Screen.</div>
+          <div class="cell-headline" style="color:#000;font-size:clamp(1.6rem,2.5vw,2.4rem)">Where Story<br>Meets Screen.</div>
         </div>
       </div>
 
-      <!-- ⑪ VIDEO — spans 2, cinematic -->
-      <div class="cell vid-cell span2" data-f="cinematic" data-yt="https://youtu.be/nN0CLB5q_rU?si=9dpCZtaMa4g80sJV"
-        data-title="Golden Hour">
-        <div class="vid-wrap" data-vid="nN0CLB5q_rU"></div>
+      <!-- AD-6 -->
+      <div class="cell vid-cell" data-f="ad"
+           data-yt="https://youtu.be/kOxsCCAOG_s" data-title="Ad Video 6">
+        <div class="vid-wrap" data-vid="kOxsCCAOG_s"></div>
         <div class="vid-label">
           <div class="vid-label-left">
-            <div class="vid-tag">Cinematic</div>
-            <div class="vid-name">Golden Hour</div>
+            <div class="vid-tag">Ad Video</div>
+            <div class="vid-name">Ad Video 6</div>
           </div>
           <button class="vid-expand" title="Expand">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- AD-7 -->
+      <div class="cell vid-cell" data-f="ad"
+           data-yt="https://youtu.be/x7tVHJ_BlWo" data-title="Ad Video 7">
+        <div class="vid-wrap" data-vid="x7tVHJ_BlWo"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Ad Video</div>
+            <div class="vid-name">Ad Video 7</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  SHORTS  (9:16 portrait)          -->
+      <!-- ══════════════════════════════════ -->
+
+      <!-- S-1 -->
+      <div class="cell vid-cell portrait" data-f="shorts"
+           data-yt="https://youtube.com/shorts/o8N0oHGWCt8" data-title="Short 1">
+        <div class="vid-wrap" data-vid="o8N0oHGWCt8"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Shorts</div>
+            <div class="vid-name">Short 1</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- S-2 -->
+      <div class="cell vid-cell portrait" data-f="shorts"
+           data-yt="https://youtube.com/shorts/shUb8ybkQt0" data-title="Short 2">
+        <div class="vid-wrap" data-vid="shUb8ybkQt0"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Shorts</div>
+            <div class="vid-name">Short 2</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- S-3 -->
+      <div class="cell vid-cell portrait" data-f="shorts"
+           data-yt="https://youtube.com/shorts/Z8-eEp9BKqo" data-title="Short 3">
+        <div class="vid-wrap" data-vid="Z8-eEp9BKqo"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Shorts</div>
+            <div class="vid-name">Short 3</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- S-4 -->
+      <div class="cell vid-cell portrait" data-f="shorts"
+           data-yt="https://youtube.com/shorts/3RflE2g8Hxg" data-title="Short 4">
+        <div class="vid-wrap" data-vid="3RflE2g8Hxg"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Shorts</div>
+            <div class="vid-name">Short 4</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- S-5 -->
+      <div class="cell vid-cell portrait" data-f="shorts"
+           data-yt="https://youtube.com/shorts/1RqbGSyAc7A" data-title="Short 5">
+        <div class="vid-wrap" data-vid="1RqbGSyAc7A"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Shorts</div>
+            <div class="vid-name">Short 5</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- S-6 -->
+      <div class="cell vid-cell portrait" data-f="shorts"
+           data-yt="https://youtube.com/shorts/Srypht-3hyU" data-title="Short 6">
+        <div class="vid-wrap" data-vid="Srypht-3hyU"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Shorts</div>
+            <div class="vid-name">Short 6</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- S-7 -->
+      <div class="cell vid-cell portrait" data-f="shorts"
+           data-yt="https://youtube.com/shorts/Hy6LPJP1jj0" data-title="Short 7">
+        <div class="vid-wrap" data-vid="Hy6LPJP1jj0"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Shorts</div>
+            <div class="vid-name">Short 7</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- S-8 -->
+      <div class="cell vid-cell portrait" data-f="shorts"
+           data-yt="https://youtube.com/shorts/X8awQBYuBfw" data-title="Short 8">
+        <div class="vid-wrap" data-vid="X8awQBYuBfw"></div>
+        <div class="vid-label">
+          <div class="vid-label-left">
+            <div class="vid-tag">Shorts</div>
+            <div class="vid-name">Short 8</div>
+          </div>
+          <button class="vid-expand" title="Expand">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </button>
         </div>
       </div>
 
     </div><!-- /ig -->
   </div><!-- /work-section -->
+
+
 
   <!-- CTA -->
   <div class="cta-band">
