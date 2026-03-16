@@ -3561,15 +3561,204 @@
         <!-- Cards -->
         <div class="ds-grid" id="dsGrid">
 
+          <!-- ── VISUAL MOCKUP CSS ── -->
+          <style>
+            .ds-visual {
+              width: 100%;
+              height: 180px;
+              border-radius: 16px;
+              overflow: hidden;
+              margin-bottom: 32px;
+              position: relative;
+              background: rgba(255,255,255,0.03);
+              border: 1px solid rgba(255,255,255,0.06);
+            }
+
+            /* ── Card 1: Layered Graphics Comp ── */
+            .dv-graphics {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 20px;
+              gap: 12px;
+              background: linear-gradient(135deg, #0d1526 0%, #0a0f1e 100%);
+            }
+
+            .dv-layer {
+              border-radius: 10px;
+              position: absolute;
+              transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
+            }
+            .dv-l1 {
+              width: 120px; height: 90px;
+              background: linear-gradient(135deg, rgba(255,153,51,0.18) 0%, rgba(255,153,51,0.04) 100%);
+              border: 1px solid rgba(255,153,51,0.25);
+              left: 30px; top: 50%; transform: translateY(-50%) rotate(-6deg);
+            }
+            .dv-l2 {
+              width: 130px; height: 96px;
+              background: linear-gradient(135deg, rgba(59,130,246,0.14) 0%, rgba(59,130,246,0.04) 100%);
+              border: 1px solid rgba(59,130,246,0.22);
+              left: 50%; top: 50%; transform: translate(-50%,-50%) rotate(0deg);
+            }
+            .dv-l3 {
+              width: 110px; height: 82px;
+              background: linear-gradient(135deg, rgba(168,85,247,0.14) 0%, rgba(168,85,247,0.04) 100%);
+              border: 1px solid rgba(168,85,247,0.22);
+              right: 28px; top: 50%; transform: translateY(-50%) rotate(7deg);
+            }
+            .ds-card:hover .dv-l1 { transform: translateY(-50%) rotate(-10deg) scale(1.04); }
+            .ds-card:hover .dv-l2 { transform: translate(-50%,-50%) scale(1.06); }
+            .ds-card:hover .dv-l3 { transform: translateY(-50%) rotate(11deg) scale(1.04); }
+
+            /* colours bars inside layers */
+            .dv-bar { height: 6px; border-radius: 4px; margin: 8px 10px; }
+            .dv-bar.orange { background: rgba(255,153,51,0.55); width: 60%; }
+            .dv-bar.blue   { background: rgba(59,130,246,0.55); width: 75%; }
+            .dv-bar.purple { background: rgba(168,85,247,0.55); width: 50%; }
+            .dv-bar.dim    { background: rgba(255,255,255,0.1); }
+
+            /* ── Card 2: Cinematic Poster Frame ── */
+            .dv-poster {
+              background: linear-gradient(160deg, #08101e 0%, #0c0810 100%);
+              display: flex;
+              align-items: stretch;
+            }
+
+            .dv-poster-img {
+              width: 52%;
+              background: linear-gradient(180deg, #1a0a00 0%, #0d0204 100%);
+              position: relative;
+              overflow: hidden;
+            }
+            .dv-poster-img::before {
+              content: '';
+              position: absolute;
+              inset: 0;
+              background:
+                radial-gradient(ellipse 60% 50% at 50% 30%, rgba(255,100,0,0.22) 0%, transparent 70%),
+                linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.7) 100%);
+            }
+            /* silhouette figure */
+            .dv-figure {
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 28px;
+              height: 68px;
+              background: rgba(0,0,0,0.8);
+              border-radius: 14px 14px 0 0;
+              opacity: 0.7;
+            }
+            .dv-figure::before {
+              content: '';
+              position: absolute;
+              top: -16px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 20px;
+              height: 20px;
+              background: rgba(0,0,0,0.75);
+              border-radius: 50%;
+            }
+
+            .dv-poster-text {
+              flex: 1;
+              padding: 14px 12px;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              gap: 5px;
+            }
+            .dv-poster-label {
+              font-size: 7px;
+              font-weight: 800;
+              letter-spacing: 3px;
+              text-transform: uppercase;
+              color: rgba(255,153,51,0.7);
+            }
+            .dv-poster-title-line {
+              height: 9px;
+              border-radius: 4px;
+              background: rgba(255,255,255,0.8);
+              margin-bottom: 3px;
+            }
+            .dv-poster-title-line.sub { height: 6px; background: rgba(255,255,255,0.35); width: 70%; }
+            .dv-star-row { display: flex; gap: 3px; margin-top: 4px; }
+            .dv-star { width: 8px; height: 8px; background: rgba(255,153,51,0.6); border-radius: 1px; }
+
+            /* ── Card 3: Logo Construction Grid ── */
+            .dv-logo {
+              background: linear-gradient(135deg, #080e1c 0%, #0b0819 100%);
+              display: grid;
+              place-items: center;
+              position: relative;
+              overflow: hidden;
+            }
+            .dv-logo-grid-svg {
+              position: absolute;
+              inset: 0;
+              width: 100%; height: 100%;
+              opacity: 0.12;
+            }
+            .dv-logo-mark {
+              position: relative;
+              z-index: 1;
+              width: 90px;
+              height: 90px;
+            }
+            .dv-logo-mark svg {
+              width: 100%; height: 100%;
+              filter: drop-shadow(0 0 14px rgba(255,153,51,0.4));
+              transition: transform 0.5s cubic-bezier(0.23,1,0.32,1), filter 0.5s ease;
+            }
+            .ds-card:hover .dv-logo-mark svg {
+              transform: scale(1.08) rotate(5deg);
+              filter: drop-shadow(0 0 22px rgba(255,153,51,0.65));
+            }
+            /* ring pulse */
+            .dv-ring {
+              position: absolute;
+              border-radius: 50%;
+              border: 1px solid rgba(255,153,51,0.15);
+              animation: dsRingPulse 3s ease-in-out infinite;
+            }
+            .dv-ring-1 { width: 110px; height: 110px; animation-delay: 0s; }
+            .dv-ring-2 { width: 150px; height: 150px; animation-delay: .8s; }
+            .dv-ring-3 { width: 190px; height: 190px; animation-delay: 1.6s; }
+            @keyframes dsRingPulse {
+              0%,100% { opacity: 0.15; transform: scale(1); }
+              50%      { opacity: 0.35; transform: scale(1.04); }
+            }
+          </style>
+
           <!-- Card 1: Graphics Design -->
           <div class="ds-card" style="transition-delay:.08s">
             <span class="ds-num">01</span>
+
+            <!-- Visual: layered design canvases -->
+            <div class="ds-visual dv-graphics">
+              <div class="dv-layer dv-l1">
+                <div class="dv-bar orange"></div>
+                <div class="dv-bar dim" style="width:40%"></div>
+                <div class="dv-bar dim" style="width:55%"></div>
+              </div>
+              <div class="dv-layer dv-l2">
+                <div class="dv-bar blue"></div>
+                <div class="dv-bar dim" style="width:50%"></div>
+                <div class="dv-bar dim" style="width:35%"></div>
+              </div>
+              <div class="dv-layer dv-l3">
+                <div class="dv-bar purple"></div>
+                <div class="dv-bar dim" style="width:45%"></div>
+                <div class="dv-bar dim" style="width:60%"></div>
+              </div>
+            </div>
+
             <div class="ds-icon-wrap">
-              <!-- Layers / Graphics icon -->
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/>
-                <path d="M2 12l10 5 10-5"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke="var(--brand)">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
               </svg>
             </div>
             <div class="ds-card-tag">Visual Design</div>
@@ -3586,17 +3775,34 @@
           <!-- Card 2: Poster Design -->
           <div class="ds-card" style="transition-delay:.18s">
             <span class="ds-num">02</span>
+
+            <!-- Visual: cinematic poster mockup -->
+            <div class="ds-visual dv-poster">
+              <div class="dv-poster-img">
+                <div class="dv-figure"></div>
+              </div>
+              <div class="dv-poster-text">
+                <div class="dv-poster-label">Film Poster</div>
+                <div class="dv-poster-title-line" style="width:85%"></div>
+                <div class="dv-poster-title-line" style="width:65%"></div>
+                <div class="dv-poster-title-line sub"></div>
+                <div class="dv-poster-title-line sub" style="width:50%"></div>
+                <div class="dv-star-row">
+                  <div class="dv-star"></div><div class="dv-star"></div>
+                  <div class="dv-star"></div><div class="dv-star"></div>
+                  <div class="dv-star" style="opacity:.35"></div>
+                </div>
+              </div>
+            </div>
+
             <div class="ds-icon-wrap">
-              <!-- Frame / Poster icon -->
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke="var(--brand)">
                 <rect x="3" y="3" width="18" height="18" rx="3"/>
-                <path d="M3 9h18"/>
-                <circle cx="7.5" cy="6" r="0.5" fill="currentColor"/>
-                <circle cx="10.5" cy="6" r="0.5" fill="currentColor"/>
-                <path d="M7 13l3 3 4-5"/>
+                <path d="M3 9h18"/><circle cx="7.5" cy="6" r="0.5" fill="var(--brand)"/>
+                <circle cx="10.5" cy="6" r="0.5" fill="var(--brand)"/><path d="M7 13l3 3 4-5"/>
               </svg>
             </div>
-            <div class="ds-card-tag">Print & Digital</div>
+            <div class="ds-card-tag">Print &amp; Digital</div>
             <h3 class="ds-card-title">Poster Design</h3>
             <p class="ds-card-body">Every great film needs a great poster. We design bold, print-ready posters with cinematic composition, hierarchy, and that magnetic first impression your audience deserves.</p>
             <div class="ds-pills">
@@ -3610,12 +3816,36 @@
           <!-- Card 3: Logo Design -->
           <div class="ds-card" style="transition-delay:.28s">
             <span class="ds-num">03</span>
+
+            <!-- Visual: logo construction grid -->
+            <div class="ds-visual dv-logo">
+              <!-- grid lines background -->
+              <svg class="dv-logo-grid-svg" viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="90" x2="260" y2="90" stroke="rgba(255,153,51,1)" stroke-width="0.5"/>
+                <line x1="130" y1="0" x2="130" y2="180" stroke="rgba(255,153,51,1)" stroke-width="0.5"/>
+                <circle cx="130" cy="90" r="55" stroke="rgba(255,153,51,1)" stroke-width="0.5" fill="none"/>
+                <circle cx="130" cy="90" r="35" stroke="rgba(255,153,51,1)" stroke-width="0.5" fill="none" stroke-dasharray="3 4"/>
+                <line x1="91" y1="51" x2="169" y2="129" stroke="rgba(255,153,51,0.7)" stroke-width="0.5"/>
+                <line x1="169" y1="51" x2="91" y2="129" stroke="rgba(255,153,51,0.7)" stroke-width="0.5"/>
+              </svg>
+              <!-- pulse rings -->
+              <div class="dv-ring dv-ring-1"></div>
+              <div class="dv-ring dv-ring-2"></div>
+              <div class="dv-ring dv-ring-3"></div>
+              <!-- the mark itself -->
+              <div class="dv-logo-mark">
+                <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="45,8 82,68 8,68" fill="none" stroke="rgba(255,153,51,0.9)" stroke-width="3" stroke-linejoin="round"/>
+                  <polygon points="45,22 68,62 22,62" fill="rgba(255,153,51,0.08)" stroke="rgba(255,153,51,0.4)" stroke-width="1.5" stroke-linejoin="round"/>
+                  <circle cx="45" cy="45" r="8" fill="rgba(255,153,51,0.2)" stroke="rgba(255,153,51,0.8)" stroke-width="1.5"/>
+                </svg>
+              </div>
+            </div>
+
             <div class="ds-icon-wrap">
-              <!-- Signature / Logo icon -->
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke="var(--brand)">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                <path d="M8 12h8"/>
-                <path d="M12 8l4 4-4 4"/>
+                <path d="M8 12h8"/><path d="M12 8l4 4-4 4"/>
               </svg>
             </div>
             <div class="ds-card-tag">Brand Identity</div>
