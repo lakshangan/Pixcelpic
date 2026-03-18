@@ -2629,7 +2629,7 @@
       </div>
 
       <div class="nav-cta">
-        <a class="contact-btn" href="#contact">Get in Touch</a>
+        <a class="contact-btn" href="https://forms.gle/QzvrfUHzzYa6fDuX6" target="_blank" rel="noopener noreferrer">Get in Touch</a>
       </div>
 
       <div class="menu-pod">
@@ -2651,7 +2651,7 @@
         <a href="#about" data-d-close>About Us</a>
         <a href="our-work.html" data-d-close>Portfolio
         </a>
-        <a href="#contact" data-d-close style="color: var(--brand);">Contact</a>
+        <a href="https://forms.gle/QzvrfUHzzYa6fDuX6" target="_blank" rel="noopener noreferrer" data-d-close style="color: var(--brand);">Contact</a>
       </nav>
 
       <div class="drawer-footer">
@@ -2692,7 +2692,7 @@
           </h1>
 
           <div class="hero-btns loading-fade delay-4">
-            <a href="#contact" class="btn-glow">Start Your Project</a>
+            <a href="https://forms.gle/QzvrfUHzzYa6fDuX6" target="_blank" rel="noopener noreferrer" class="btn-glow">Start Your Project</a>
             <a href="#portfolio" class="btn-glass">View Our Work</a>
           </div>
         </div>
@@ -2715,13 +2715,20 @@
         inset: 0;
         z-index: 0;
         pointer-events: none;
+        display: flex;
+        justify-content: center;
+        background: #000;
       }
 
       .hero-video-bg .bg-video {
         width: 100%;
         height: 100%;
+        max-width: 1920px;
         object-fit: cover;
+        object-position: right center;
         opacity: 0.8;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
       }
 
       /* show/hide per breakpoint */
@@ -4256,7 +4263,7 @@
               </ul>
             </div>
             <div class="price-footer">
-              <a href="#contact" class="btn-glass full-width">Get a Quote</a>
+              <a href="https://forms.gle/QzvrfUHzzYa6fDuX6" target="_blank" rel="noopener noreferrer" class="btn-glass full-width">Get a Quote</a>
             </div>
           </div>
 
@@ -4275,7 +4282,7 @@
               </ul>
             </div>
             <div class="price-footer">
-              <a href="#contact" class="btn-glow full-width">Premium Choice</a>
+              <a href="https://forms.gle/QzvrfUHzzYa6fDuX6" target="_blank" rel="noopener noreferrer" class="btn-glow full-width">Premium Choice</a>
             </div>
           </div>
 
@@ -4294,7 +4301,7 @@
               </ul>
             </div>
             <div class="price-footer">
-              <a href="#contact" class="btn-glass full-width">Inquire Now</a>
+              <a href="https://forms.gle/QzvrfUHzzYa6fDuX6" target="_blank" rel="noopener noreferrer" class="btn-glass full-width">Inquire Now</a>
             </div>
           </div>
         </div>
@@ -4499,7 +4506,7 @@
               <li><a href="#services" class="hf-link">Services</a></li>
               <li><a href="#about" class="hf-link">About Us</a></li>
               <li><a href="#portfolio" class="hf-link">Portfolio</a></li>
-              <li><a href="#contact" class="hf-link">Contact</a></li>
+              <li><a href="https://forms.gle/QzvrfUHzzYa6fDuX6" target="_blank" rel="noopener noreferrer" class="hf-link">Contact</a></li>
             </ul>
           </div>
 
@@ -4521,7 +4528,13 @@
               <li>
 
               </li>
-            </ul>
+                        </ul>
+            <a href="https://forms.gle/QzvrfUHzzYa6fDuX6" target="_blank" rel="noopener noreferrer" 
+              style="display:inline-block; margin-top:24px; padding:14px 32px; background:var(--brand); color:#000; font-weight:800; border-radius:100px; text-decoration:none; text-transform:uppercase; font-size:14px; letter-spacing:1px; box-shadow: 0 10px 20px rgba(249, 115, 22, 0.25); transition:all 0.3s cubic-bezier(0.23, 1, 0.32, 1);" 
+              onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 15px 30px rgba(249, 115, 22, 0.4)';" 
+              onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(249, 115, 22, 0.25)';">
+              Start Your Project
+            </a>
           </div>
 
         </div><!-- /.hf-grid -->
