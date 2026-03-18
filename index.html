@@ -2857,37 +2857,51 @@
         }
 
         .hero-creative {
-          padding: 160px 24px 80px;
+          padding: 140px 20px 80px;
           min-height: 100svh;
-          text-align: center;
-          align-items: flex-end;
-          /* pins content to bottom so it sits above the fade */
+          text-align: left;
+          align-items: center;
         }
 
         .hero-layout-left {
-          justify-content: center;
+          justify-content: flex-start;
+        }
+
+        /* Fix eyebrow: plain clean text, no border/pill on mobile */
+        .hero-eyebrow {
+          font-size: 10px;
+          letter-spacing: 2.5px;
+          display: block;
+          white-space: normal;
+          word-break: break-word;
+          border: none !important;
+          background: none !important;
+          padding: 0 !important;
+          border-radius: 0 !important;
+          max-width: 100%;
+          line-height: 1.5;
+          margin-bottom: 16px;
         }
 
         .hero-headline {
           font-size: clamp(34px, 10vw, 52px);
           letter-spacing: -1.2px;
-          margin-inline: auto;
           line-height: 1.1;
         }
 
         .hero-btns {
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
           max-width: 100%;
           width: 100%;
-          margin-top: 40px;
+          margin-top: 36px;
           gap: 16px;
         }
 
         .btn-glow,
         .btn-glass {
           width: 100%;
-          max-width: 280px;
+          max-width: 300px;
           justify-content: center;
           padding: 16px 24px;
         }
@@ -3606,307 +3620,309 @@
     </section>
     <!-- ===================== ABOUT SECTION ===================== -->
     <!-- ===================== REDESIGNED ABOUT SECTION ===================== -->
-    <section id="about" class="section about-cinematic">
-      <div class="container">
-        <div class="about-grid">
-          <!-- Text Content -->
-          <div class="about-info reveal">
-            <div class="about-header">
-              <span class="eyebrow-accent">About Us</span>
-              <h2 class="title-xl"> We Create Visual Stories
-                <br><span class="text-glow">That People Feel
-                </span>
-              </h2>
+    <section id="about" class="about-cinematic-bg">
+      <!-- Background Image -->
+      <div class="about-bg-image"></div>
+      <!-- Left shade overlay for text readability -->
+      <div class="about-left-shade"></div>
+      <!-- Bottom dark fade so section blends into next section -->
+      <div class="about-bottom-fade"></div>
+
+      <div class="about-content-wrap container">
+        <div class="about-inner reveal">
+          <!-- Eyebrow -->
+          <span class="ab-eyebrow">About Us</span>
+
+          <!-- Headline -->
+          <h2 class="ab-title">
+            We Create<br>
+            <span class="ab-title-highlight">Visual Stories</span><br>
+            That People Feel
+          </h2>
+
+          <!-- Description -->
+          <p class="ab-desc">
+            PixelPic Studio blends technical precision with bold creativity to craft powerful
+            visual experiences. We don't just edit videos — we shape stories that connect,
+            engage, and stay remembered.
+          </p>
+
+          <!-- Value Cards -->
+          <div class="ab-values">
+            <div class="ab-value-card">
+              <div class="ab-value-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <h4 class="ab-value-title">Elite Precision</h4>
+              <p class="ab-value-desc">Frame-perfect storytelling with meticulous attention to every detail.</p>
             </div>
-
-            <div class="about-body">
-              <p class="lead-text">PixelPic Studio blends technical precision with bold creativity to craft powerful
-                visual experiences.
-                We don’t just edit videos — we shape stories that connect, engage, and stay remembered.</p>
-
-              <div class="values-grid">
-                <div class="value-item">
-                  <div class="value-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                  </div>
-                  <h4>Elite Precision</h4>
-                  <p>Frame-perfect storytelling with meticulous attention to every detail.
-
-                  </p>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 8l4 4-4 4M8 12h7" />
-                    </svg>
-                  </div>
-                  <h4>Global Vision</h4>
-                  <p>World-class production standards designed for brands that think beyond boundaries.</p>
-                </div>
+            <div class="ab-value-card">
+              <div class="ab-value-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8l4 4-4 4M8 12h7" />
+                </svg>
               </div>
-
-              <div class="about-stats-modern">
-                <div class="stat-box">
-                  <span class="num">05+</span>
-                  <span class="label">Years of Mastery</span>
-                </div>
-                <div class="stat-box">
-                  <span class="num">250+</span>
-                  <span class="label">Films Delivered</span>
-                </div>
-              </div>
+              <h4 class="ab-value-title">Global Vision</h4>
+              <p class="ab-value-desc">World-class production standards designed for brands that think beyond
+                boundaries.</p>
             </div>
           </div>
 
-          <!-- Visual Gallery -->
-          <div class="about-gallery reveal">
-            <div class="gallery-wrapper">
-              <div class="gallery-main">
-                <img src="Cinematic_Editing_Studio.png" alt="Studio Main" class="main-img">
-                <div class="studio-badge">
-                  <span class="badge-text">Madurai HQ</span>
-                </div>
-              </div>
-              <div class="gallery-side">
-                <img src="Editing_Workspace.png" alt="Workspace" class="side-img top">
-                <img src="Creative Team Unity Assets Aug 30 2025.png" alt="Team" class="side-img bottom">
-              </div>
+          <!-- Stats -->
+          <div class="ab-stats">
+            <div class="ab-stat">
+              <span class="ab-stat-num">05+</span>
+              <span class="ab-stat-label">Years of Mastery</span>
+            </div>
+            <div class="ab-stat-divider"></div>
+            <div class="ab-stat">
+              <span class="ab-stat-num">250+</span>
+              <span class="ab-stat-label">Films Delivered</span>
             </div>
           </div>
         </div>
       </div>
 
       <style>
-        .about-cinematic {
-          background: #020617;
-          padding: 180px 0;
+        /* ===== ABOUT — Full-bleed background, left shade, left-aligned text ===== */
+        .about-cinematic-bg {
           position: relative;
-          overflow: hidden;
-        }
-
-        .about-cinematic::after {
-          content: '';
-          position: absolute;
-          top: -10%;
-          right: -5%;
-          width: 500px;
-          height: 500px;
-          background: radial-gradient(circle, var(--brand) 0%, transparent 70%);
-          opacity: 0.05;
-          filter: blur(80px);
-          pointer-events: none;
-        }
-
-        .reveal {
-          opacity: 0;
-          transform: translateY(40px);
-          transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .reveal.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .about-grid {
-          display: grid;
-          grid-template-columns: 1.1fr 1fr;
-          gap: 100px;
+          width: 100%;
+          min-height: 100vh;
+          display: flex;
           align-items: center;
+          overflow: hidden;
+          padding: 140px 0;
         }
 
-        .about-header {
-          margin-bottom: 40px;
+        /* The background image stretched to cover the whole section */
+        .about-bg-image {
+          position: absolute;
+          inset: 0;
+          background: url('Cinematic_Editing_Studio.png') center center / cover no-repeat;
+          transform: scale(1.04);
+          transition: transform 8s ease;
+          z-index: 0;
         }
 
-        .eyebrow-accent {
-          display: block;
+        .about-cinematic-bg:hover .about-bg-image {
+          transform: scale(1);
+        }
+
+        /* Dark gradient overlay — heavy on left, fades to semi-transparent on right */
+        .about-left-shade {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to right,
+              rgba(2, 6, 23, 0.97) 0%,
+              rgba(2, 6, 23, 0.92) 30%,
+              rgba(2, 6, 23, 0.75) 55%,
+              rgba(2, 6, 23, 0.30) 75%,
+              rgba(2, 6, 23, 0.05) 100%);
+          z-index: 1;
+        }
+
+        /* Bottom fade so it blends naturally into the next section */
+        .about-bottom-fade {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 180px;
+          background: linear-gradient(to bottom, transparent, #020617);
+          z-index: 2;
+        }
+
+        /* Content sits above all overlays */
+        .about-content-wrap {
+          position: relative;
+          z-index: 3;
+          width: 100%;
+        }
+
+        .about-inner {
+          max-width: 620px;
+          text-align: left;
+        }
+
+        /* Eyebrow */
+        .ab-eyebrow {
+          display: inline-block;
           color: var(--brand);
           text-transform: uppercase;
           letter-spacing: 5px;
           font-weight: 800;
-          font-size: 13px;
-          margin-bottom: 20px;
+          font-size: 12px;
+          margin-bottom: 24px;
+          position: relative;
+          padding-left: 38px;
         }
 
-        .title-xl {
-          font-size: clamp(42px, 5.5vw, 76px);
-          line-height: 1.1;
+        .ab-eyebrow::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 26px;
+          height: 2px;
+          background: var(--brand);
+          border-radius: 2px;
+        }
+
+        /* Headline */
+        .ab-title {
+          font-size: clamp(40px, 5.5vw, 74px);
           font-weight: 800;
+          line-height: 1.08;
           letter-spacing: -2px;
           color: #fff;
+          margin: 0 0 28px;
         }
 
-        .text-glow {
-          background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
+        .ab-title-highlight {
+          background: linear-gradient(135deg, var(--brand) 0%, #f97316 100%);
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
-          text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
-        .lead-text {
-          font-size: 20px;
-          color: rgba(255, 255, 255, 0.7);
-          line-height: 1.6;
-          margin-bottom: 50px;
-          max-width: 90%;
+        /* Description */
+        .ab-desc {
+          font-size: 17px;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.75;
+          margin-bottom: 48px;
+          max-width: 540px;
         }
 
-        .values-grid {
+        /* Value Cards */
+        .ab-values {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 30px;
-          margin-bottom: 60px;
+          gap: 20px;
+          margin-bottom: 52px;
         }
 
-        .value-item {
-          padding: 30px;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 20px;
-          transition: all 0.4s ease;
-        }
-
-        .value-item:hover {
+        .ab-value-card {
+          padding: 24px 26px;
           background: rgba(255, 255, 255, 0.04);
-          border-color: var(--brand);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 18px;
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .ab-value-card:hover {
+          background: rgba(255, 153, 51, 0.08);
+          border-color: rgba(255, 153, 51, 0.35);
           transform: translateY(-5px);
+          box-shadow: 0 16px 40px rgba(255, 153, 51, 0.12);
         }
 
-        .value-icon {
+        .ab-value-icon {
           color: var(--brand);
-          margin-bottom: 20px;
-        }
-
-        .value-item h4 {
-          font-size: 18px;
-          color: #fff;
-          margin-bottom: 12px;
-        }
-
-        .value-item p {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.5);
-          line-height: 1.5;
-        }
-
-        .about-stats-modern {
+          margin-bottom: 16px;
+          width: 42px;
+          height: 42px;
           display: flex;
-          gap: 40px;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255, 153, 51, 0.12);
+          border-radius: 12px;
         }
 
-        .stat-box {
+        .ab-value-title {
+          font-size: 16px;
+          font-weight: 700;
+          color: #fff;
+          margin: 0 0 10px;
+        }
+
+        .ab-value-desc {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.5);
+          line-height: 1.55;
+          margin: 0;
+        }
+
+        /* Stats */
+        .ab-stats {
+          display: flex;
+          align-items: center;
+          gap: 36px;
+        }
+
+        .ab-stat {
           display: flex;
           flex-direction: column;
         }
 
-        .stat-box .num {
-          font-size: 44px;
+        .ab-stat-num {
+          font-size: 48px;
           font-weight: 800;
           color: #fff;
           line-height: 1;
+          letter-spacing: -1px;
         }
 
-        .stat-box .label {
-          font-size: 13px;
+        .ab-stat-label {
+          font-size: 11px;
           color: var(--brand);
           text-transform: uppercase;
-          letter-spacing: 2px;
+          letter-spacing: 2.5px;
           font-weight: 700;
-          margin-top: 5px;
+          margin-top: 6px;
         }
 
-        /* Gallery Styles */
-        .gallery-wrapper {
-          display: grid;
-          grid-template-columns: 1.5fr 1fr;
-          gap: 20px;
+        .ab-stat-divider {
+          width: 1px;
+          height: 52px;
+          background: rgba(255, 255, 255, 0.12);
+          border-radius: 1px;
         }
 
-        .gallery-main {
-          position: relative;
-          height: 600px;
-          border-radius: 30px;
-          overflow: hidden;
+        /* Reveal animation */
+        .about-inner.reveal {
+          opacity: 0;
+          transform: translateY(40px);
+          transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .gallery-main img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.6s ease;
+        .about-inner.reveal.in,
+        .about-inner.reveal.visible {
+          opacity: 1;
+          transform: translateY(0);
         }
 
-        .gallery-main:hover img {
-          transform: scale(1.05);
-        }
-
-        .studio-badge {
-          position: absolute;
-          bottom: 25px;
-          left: 25px;
-          background: rgba(255, 159, 67, 0.9);
-          padding: 12px 24px;
-          border-radius: 50px;
-          font-weight: 700;
-          font-size: 13px;
-          color: #000;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-side {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .side-img {
-          width: 100%;
-          height: calc(300px - 10px);
-          object-fit: cover;
-          border-radius: 24px;
-          transition: all 0.5s ease;
-        }
-
-        .side-img:hover {
-          transform: scale(0.98);
-        }
-
-        @media (max-width: 1100px) {
-          .about-grid {
-            grid-template-columns: 1fr;
-            gap: 80px;
-          }
-
-          .gallery-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-          }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-          .about-cinematic {
-            padding: 100px 0;
+          .about-cinematic-bg {
+            padding: 100px 0 120px;
+            min-height: auto;
           }
 
-          .values-grid {
+          .about-left-shade {
+            background: linear-gradient(to right,
+                rgba(2, 6, 23, 0.97) 0%,
+                rgba(2, 6, 23, 0.88) 60%,
+                rgba(2, 6, 23, 0.75) 100%);
+          }
+
+          .ab-title {
+            font-size: clamp(34px, 10vw, 52px);
+          }
+
+          .ab-values {
             grid-template-columns: 1fr;
           }
 
-          .gallery-wrapper {
-            grid-template-columns: 1fr;
-          }
-
-          .gallery-main {
-            height: 400px;
-          }
-
-          .side-img {
-            height: 250px;
+          .ab-stat-num {
+            font-size: 38px;
           }
         }
       </style>
@@ -4720,189 +4736,7 @@
     </section>
 
     <!-- ===================== TESTIMONIALS ===================== -->
-    <section id="reviews" class="section testimonials-section">
-      <div class="container">
-        <div class="center-content reveal">
-          <div class="eyebrow-container center">
-            <span class="eyebrow-line"></span>
-            <span class="eyebrow-text">Global Feedback</span>
-            <span class="eyebrow-line"></span>
-          </div>
-          <h2 class="title section-title center">What Our Clients Say</h2>
-          <p class="lead center" style="margin: 0 auto 60px;">Trusted by visionaries, builders, and creative minds
-            across
-            the industry.</p>
-        </div>
 
-        <div class="testimonials-grid">
-          <!-- Review 1 -->
-          <div class="testimonial-card reveal">
-            <div class="testi-header">
-              <div class="stars">★★★★★</div>
-              <div class="testi-date">Oct 2025</div>
-            </div>
-            <p class="testi-text">"Pixel Pic transformed our brand with their amazing ad films. Their attention to
-              detail
-              in color grading is simply unmatched. Highly recommended for any serious production!"</p>
-            <div class="testi-footer">
-              <div class="testi-avatar" style="background: linear-gradient(45deg, #FF9933, #fb923c);">A</div>
-              <div class="testi-info">
-                <span class="testi-name">Client A</span>
-                <span class="testi-role">Creative Director, Apex Media</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review 2 -->
-          <div class="testimonial-card reveal featured-card">
-            <div class="testi-header">
-              <div class="stars">★★★★★</div>
-              <div class="testi-date">Nov 2025</div>
-            </div>
-            <p class="testi-text">"Professional, creative, and on time. They have a deep understanding of visual
-              storytelling. The best video production team we've worked with in Madurai. Every project exceeds
-              expectations."</p>
-            <div class="testi-footer">
-              <div class="testi-avatar" style="background: linear-gradient(45deg, #3b82f6, #60a5fa);">B</div>
-              <div class="testi-info">
-                <span class="testi-name">Client B</span>
-                <span class="testi-role">CEO, TechVision Global</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review 3 -->
-          <div class="testimonial-card reveal">
-            <div class="testi-header">
-              <div class="stars">★★★★★</div>
-              <div class="testi-date">Dec 2025</div>
-            </div>
-            <p class="testi-text">"Our social media engagement skyrocketed after working with them for our recent
-              campaign
-              launch. Their reels are high-energy and perfectly optimized for the algorithm."</p>
-            <div class="testi-footer">
-              <div class="testi-avatar" style="background: linear-gradient(45deg, #10b981, #34d399);">C</div>
-              <div class="testi-info">
-                <span class="testi-name">Client C</span>
-                <span class="testi-role">Marketing Lead, Zen Brands</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <style>
-        .testimonials-section {
-          background: var(--bg);
-          overflow: hidden;
-        }
-
-        .testimonials-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          margin-top: 50px;
-        }
-
-        @media (max-width: 1024px) {
-          .testimonials-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (max-width: 768px) {
-          .testimonials-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-
-        .testimonial-card {
-          background: var(--card);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: var(--radius-lg);
-          padding: 40px;
-          display: flex;
-          flex-direction: column;
-          transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-          backdrop-filter: blur(10px);
-        }
-
-        .testimonial-card:hover {
-          transform: translateY(-10px);
-          background: var(--card-hover);
-          border-color: rgba(255, 115, 22, 0.3);
-          box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
-        }
-
-        .featured-card {
-          background: rgba(249, 115, 22, 0.03);
-          border-color: rgba(249, 115, 22, 0.1);
-        }
-
-        .testi-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 24px;
-        }
-
-        .stars {
-          color: var(--brand);
-          font-size: 14px;
-          letter-spacing: 2px;
-        }
-
-        .testi-date {
-          font-size: 12px;
-          color: var(--muted);
-          font-weight: 600;
-          text-transform: uppercase;
-        }
-
-        .testi-text {
-          font-size: 17px;
-          line-height: 1.7;
-          color: rgba(255, 255, 255, 0.9);
-          margin-bottom: 30px;
-          font-style: italic;
-        }
-
-        .testi-footer {
-          margin-top: auto;
-          display: flex;
-          align-items: center;
-          gap: 16px;
-        }
-
-        .testi-avatar {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          display: grid;
-          place-items: center;
-          font-weight: 800;
-          color: #fff;
-          font-size: 18px;
-        }
-
-        .testi-info {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .testi-name {
-          font-weight: 700;
-          color: #fff;
-          font-size: 16px;
-        }
-
-        .testi-role {
-          font-size: 13px;
-          color: var(--muted);
-          font-weight: 500;
-        }
-      </style>
-    </section>
 
 
     <!-- ===================== CONTACT ===================== -->
@@ -4952,7 +4786,6 @@
             <div class="info-group">
               <h4 class="info-label">Start a Conversation</h4>
               <a href="mailto:mediapixelpic@gmail.com" class="info-link mail-link">studiopixelpic@gmail.com</a>
-              <a href="https://wa.me/yournumber" class="info-link">Connect via WhatsApp</a>
             </div>
 
 
