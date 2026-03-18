@@ -3197,7 +3197,9 @@
 
           .img-small,
           .img-large {
-            max-width: 100%;
+            max-width: 65%;
+            margin-inline: auto;
+            display: block;
           }
         }
 
@@ -3584,7 +3586,7 @@
 
         @media (max-width: 640px) {
           .ds-section {
-            padding: 90px 0;
+            padding: 40px 0;
           }
 
           .ds-grid {
@@ -3958,7 +3960,7 @@
         <div class="portfolio-stage-grid" id="portfolioGrid">
           <!-- Item 1: The Hero Feature (Short Film) -->
           <a class="stage-card feature-hero reveal" href="#" data-cat="film"
-            data-video="https://www.youtube.com/embed/DYDxNLfQvjM?autoplay=1&rel=0">
+            data-video="https://www.youtube.com/embed/_GvN5glSs28?autoplay=1&rel=0">
             <div class="stage-img">
               <video class="card-video-loop" autoplay muted loop playsinline>
                 <source src="bg.mp4" type="video/mp4">
@@ -3987,7 +3989,7 @@
 
           <!-- Item 2: Vertical Highlight (Shorts) -->
           <a class="stage-card vertical-tile reveal" href="#" data-cat="shorts"
-            data-video="https://www.youtube.com/embed/o8N0oHGWCt8?autoplay=1&rel=0">
+            data-video="https://www.youtube.com/embed/kOxsCCAOG_s?autoplay=1&rel=0">
             <div class="stage-img">
               <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1600&auto=format&fit=crop"
                 alt="Urban Motion" loading="lazy" />
@@ -4009,7 +4011,7 @@
 
           <!-- Item 3: Standard Card (Ad Video) -->
           <a class="stage-card standard-tile reveal" href="#" data-cat="ad"
-            data-video="https://www.youtube.com/embed/kF8rkDUH3YQ?autoplay=1&rel=0">
+            data-video="https://www.youtube.com/embed/x7tVHJ_BlWo?autoplay=1&rel=0">
             <div class="stage-img">
               <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1600&auto=format&fit=crop"
                 alt="Brand Identity" loading="lazy" />
@@ -4031,7 +4033,7 @@
 
           <!-- Item 4: Wide Card (Short Film) -->
           <a class="stage-card wide-tile reveal" href="#" data-cat="film"
-            data-video="https://www.youtube.com/embed/n1NuN4Byxh4?autoplay=1&rel=0">
+            data-video="https://www.youtube.com/embed/Hy6LPJP1jj0?autoplay=1&rel=0">
             <div class="stage-img">
               <video class="card-video-loop" autoplay muted loop playsinline>
                 <source src="bg.mp4" type="video/mp4">
@@ -4569,7 +4571,6 @@
 
           <!-- Business Pack -->
           <div class="price-card featured reveal">
-            <div class="popular-tag">Most Popular</div>
             <div class="price-header">
               <h4>Business Pack</h4>
               <div class="tagline">The Growth Engine</div>
@@ -4742,370 +4743,560 @@
     <!-- ===================== CONTACT ===================== -->
     <!-- ===================== CONTACT ===================== -->
     <!-- ===================== CREATIVE FOOTER ===================== -->
-    <footer id="contact" class="creative-footer">
-      <!-- Huge Background Text -->
-      <div class="footer-marquee">
-        <div class="marquee-inner">
-          <span>PIXEL PIC STUDIO — CINEMATIC EXCELLENCE — </span>
-          <span>PIXEL PIC STUDIO — CINEMATIC EXCELLENCE — </span>
-        </div>
-      </div>
+    <footer id="contact" class="hf-footer">
+      <!-- Background gradient -->
+      <div class="hf-bg-gradient"></div>
 
-      <div class="container">
-        <div class="footer-grid-creative">
+      <!-- Main Footer Content -->
+      <div class="hf-inner">
+        <div class="hf-grid">
+
           <!-- Brand Section -->
-          <div class="footer-brand-box reveal">
-            <div class="footer-logo-wrap">
-              <img src="PixelPix_Studio.png" alt="PixelPic Logo" class="f-logo" />
+          <div class="hf-brand">
+            <div class="hf-logo-wrap">
+              <img src="PixelPix_Studio.png" alt="PixelPic Studio" class="hf-logo" />
             </div>
-            <p class="f-description">We architect visual emotions and engineer cinematic stories. Our studio is a
-              sanctuary for precision, creativity, and the art of the moving image.</p>
-
-            <div class="f-social-grid">
-              <a href="https://www.instagram.com/pixelpic.media/" class="f-social-link">
-                <span class="s-icon">IG</span>
-                <span class="s-name">Instagram</span>
+            <p class="hf-brand-desc">
+              PixelPic Studio blends technical precision with bold creativity to craft powerful visual
+              experiences. We don't just edit videos — we shape stories that connect, engage, and stay
+              remembered.
+            </p>
+            <div class="hf-socials">
+              <a href="https://www.instagram.com/pixelpic.media/" target="_blank" rel="noopener noreferrer"
+                class="hf-social-pill" aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="5" />
+                  <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+                </svg>
+                <span>Instagram</span>
               </a>
-              <a href="https://www.youtube.com/@pixelpicmedia" class="f-social-link">
-                <span class="s-icon">YT</span>
-                <span class="s-name">youtube</span>
+              <a href="https://www.youtube.com/@pixelpicmedia" target="_blank" rel="noopener noreferrer"
+                class="hf-social-pill" aria-label="YouTube">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+                  <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none" />
+                </svg>
+                <span>YouTube</span>
               </a>
-              <a href=" https://www.behance.net/pixelpicmedia5" class="f-social-link">
-                <span class="s-icon">BE</span>
-                <span class="s-name">Behance</span>
+              <a href="https://www.facebook.com/people/Pixel-Pic-Media/61550982812476/" target="_blank"
+                rel="noopener noreferrer" class="hf-social-pill" aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+                <span>Facebook</span>
               </a>
-              <a href="https://www.facebook.com/people/Pixel-Pic-Media/61550982812476/" class="f-social-link">
-                <span class="s-icon">FB</span>
-                <span class="s-name">Facebook</span>
+              <a href="https://www.behance.net/pixelpicmedia5" target="_blank" rel="noopener noreferrer"
+                class="hf-social-pill" aria-label="Behance">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 12h7.5a3 3 0 1 0 0-6H3v12h8a3.5 3.5 0 1 0 0-7H3" />
+                  <path d="M15 7h6M15 12h6" />
+                </svg>
+                <span>Behance</span>
               </a>
             </div>
           </div>
 
-          <!-- Quick Info Section -->
-          <div class="footer-info-box reveal">
-            <div class="info-group">
-              <h4 class="info-label">Start a Conversation</h4>
-              <a href="mailto:mediapixelpic@gmail.com" class="info-link mail-link">studiopixelpic@gmail.com</a>
-            </div>
-
-
-
+          <!-- Quick Links -->
+          <div class="hf-links-col">
+            <h4 class="hf-col-title">Navigate</h4>
+            <ul class="hf-link-list">
+              <li><a href="#home" class="hf-link">Home</a></li>
+              <li><a href="#services" class="hf-link">Services</a></li>
+              <li><a href="#about" class="hf-link">About Us</a></li>
+              <li><a href="#portfolio" class="hf-link">Portfolio</a></li>
+              <li><a href="#contact" class="hf-link">Contact</a></li>
+            </ul>
           </div>
+
+          <!-- Services -->
+          <div class="hf-links-col">
+            <h4 class="hf-col-title">Services</h4>
+            <ul class="hf-link-list">
+              <li><a href="#services" class="hf-link">Video Editing</a></li>
+              <li><a href="#services" class="hf-link">Color Grading</a></li>
+              <li><a href="#services" class="hf-link">VFX &amp; Motion</a></li>
+              <li><a href="#services" class="hf-link">Sound Design</a></li>
+              <li><a href="#services" class="hf-link">3D Animation</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="hf-links-col">
+            <h4 class="hf-col-title">Contact Us</h4>
+            <ul class="hf-contact-list">
+              <li>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <a href="mailto:mediapixelpic@gmail.com" class="hf-contact-link">mediapixelpic@gmail.com</a>
+              </li>
+              <li>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 7.29 7.29l.96-.96a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <a href="tel:+918637373116" class="hf-contact-link">+91 86373 73116</a>
+              </li>
+              <li>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span style="color: rgba(255,255,255,0.45); font-size:13px;">Madurai, Tamil Nadu, India</span>
+              </li>
+            </ul>
+          </div>
+
+        </div><!-- /.hf-grid -->
+
+        <hr class="hf-divider">
+
+        <!-- Bottom bar -->
+        <div class="hf-bottom-bar">
+          <div class="hf-bottom-socials">
+            <a href="https://www.instagram.com/pixelpic.media/" target="_blank" rel="noopener noreferrer"
+              class="hf-icon-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/@pixelpicmedia" target="_blank" rel="noopener noreferrer"
+              class="hf-icon-link" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/people/Pixel-Pic-Media/61550982812476/" target="_blank"
+              rel="noopener noreferrer" class="hf-icon-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="https://www.behance.net/pixelpicmedia5" target="_blank" rel="noopener noreferrer"
+              class="hf-icon-link" aria-label="Behance">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h7.5a3 3 0 1 0 0-6H3v12h8a3.5 3.5 0 1 0 0-7H3" />
+                <path d="M15 7h6M15 12h6" />
+              </svg>
+            </a>
+          </div>
+          <div class="hf-status">
+            <span class="hf-pulse-dot"></span>
+            <span>Available for projects</span>
+          </div>
+          <p class="hf-copy">&copy; 2026 Pixel Pic Studio. All rights reserved.</p>
         </div>
+      </div><!-- /.hf-inner -->
 
-        <!-- Footer Bottom -->
-        <div class="footer-legal-bar">
-          <div class="legal-left">
-            <span class="copyright">© 2026 PIXEL PIC STUDIO</span>
-            <span class="status-indicator">
-              <span class="pulse-dot"></span>
-              Available for projects
-            </span>
-          </div>
-          <div class="legal-right">
-            <a href="#" class="legal-link">Privacy</a>
-            <a href="#" class="legal-link">Terms</a>
-          </div>
-        </div>
+      <!-- SVG Text Hover Effect (TextHoverEffect ported to vanilla JS) -->
+      <div class="hf-text-hover-wrap" id="hfTextWrap">
+        <svg id="hfSvg" width="100%" height="100%" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg"
+          class="hf-svg-text">
+          <defs>
+            <linearGradient id="hfTextGradient" gradientUnits="userSpaceOnUse" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF9933" />
+              <stop offset="25%" stop-color="#ea580c" />
+              <stop offset="50%" stop-color="#fbbf24" />
+              <stop offset="75%" stop-color="#FF9933" />
+              <stop offset="100%" stop-color="#ef4444" />
+            </linearGradient>
+            <radialGradient id="hfRevealMask" gradientUnits="userSpaceOnUse" cx="50%" cy="50%" r="20%">
+              <stop offset="0%" stop-color="white" />
+              <stop offset="100%" stop-color="black" />
+            </radialGradient>
+            <mask id="hfTextMask">
+              <rect x="0" y="0" width="100%" height="100%" fill="url(#hfRevealMask)" />
+            </mask>
+          </defs>
+
+          <!-- Outline (shows on hover) -->
+          <text id="hfTextOutline" x="50%" y="55%" text-anchor="middle" dominant-baseline="middle"
+            stroke="rgba(255,255,255,0.12)" stroke-width="0.3" fill="none"
+            style="font-family:Poppins,sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;text-transform:uppercase;opacity:0;transition:opacity 0.5s;">
+            PIXEL PIC MEDIA
+          </text>
+
+          <!-- Animated draw-on stroke -->
+          <text id="hfTextDraw" x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" stroke="#FF9933"
+            stroke-width="0.35" fill="none"
+            style="font-family:Poppins,sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;text-transform:uppercase;stroke-dasharray:3000;stroke-dashoffset:3000;opacity:0.7;">
+            PIXEL PIC MEDIA
+          </text>
+
+          <!-- Mouse-reveal gradient text -->
+          <text id="hfTextColour" x="50%" y="55%" text-anchor="middle" dominant-baseline="middle"
+            stroke="url(#hfTextGradient)" stroke-width="0.35" fill="none" mask="url(#hfTextMask)"
+            style="font-family:Poppins,sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;text-transform:uppercase;">
+            PIXEL PIC MEDIA
+          </text>
+        </svg>
       </div>
 
       <style>
-        .creative-footer {
-          background: #020617;
-          padding: 160px 0 60px 0;
+        .hf-footer {
           position: relative;
-          overflow: hidden;
+          background: #06091a;
           border-top: 1px solid rgba(255, 255, 255, 0.05);
+          overflow: hidden;
+          border-radius: 32px 32px 0 0;
         }
 
-        /* Marquee Effect */
-        .footer-marquee {
+        .hf-bg-gradient {
           position: absolute;
-          top: 40px;
-          left: 0;
-          width: 100%;
-          overflow: hidden;
-          white-space: nowrap;
-          opacity: 0.03;
+          inset: 0;
+          z-index: 0;
+          background: radial-gradient(125% 125% at 50% 10%, rgba(6, 9, 26, 0.5) 50%, rgba(255, 153, 51, 0.1) 100%);
           pointer-events: none;
         }
 
-        .marquee-inner {
-          display: inline-block;
-          animation: marquee 20s linear infinite;
-        }
-
-        .marquee-inner span {
-          font-size: 10vw;
-          font-weight: 900;
-          color: transparent;
-          -webkit-text-stroke: 1px #fff;
-          padding-right: 50px;
-        }
-
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .footer-grid-creative {
-          display: grid;
-          grid-template-columns: 1.2fr 0.8fr;
-          gap: 120px;
+        .hf-inner {
           position: relative;
           z-index: 1;
-          margin-bottom: 100px;
+          max-width: 1300px;
+          margin: 0 auto;
+          padding: 80px 24px 40px;
         }
 
-        .f-logo {
-          height: 50px;
-          margin-bottom: 30px;
-        }
-
-        .f-description {
-          font-size: 20px;
-          line-height: 1.6;
-          color: var(--muted);
-          max-width: 500px;
-          margin-bottom: 40px;
-        }
-
-        .f-social-grid {
-          display: flex;
-          gap: 20px;
-          flex-wrap: wrap;
-        }
-
-        .f-social-link {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          padding: 12px 20px;
-          border-radius: 100px;
-          transition: all 0.4s ease;
-        }
-
-        .s-icon {
-          font-size: 10px;
-          font-weight: 800;
-          background: var(--brand);
-          color: #000;
-          width: 24px;
-          height: 24px;
+        .hf-grid {
           display: grid;
-          place-items: center;
-          border-radius: 50%;
+          grid-template-columns: 1.6fr 0.7fr 0.7fr 1fr;
+          gap: 56px;
+          padding-bottom: 56px;
         }
 
-        .s-name {
-          font-size: 13px;
-          font-weight: 600;
+        .hf-logo {
+          height: 40px;
+          margin-bottom: 24px;
+          display: block;
+        }
+
+        .hf-brand-desc {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.45);
+          line-height: 1.8;
+          margin-bottom: 28px;
+          max-width: 340px;
+        }
+
+        .hf-socials {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .hf-social-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 15px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 100px;
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 11px;
+          font-weight: 700;
           text-transform: uppercase;
-          letter-spacing: 1px;
-          color: #fff;
+          letter-spacing: 0.8px;
+          text-decoration: none;
+          transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .f-social-link:hover {
+        .hf-social-pill:hover {
           background: var(--brand);
           border-color: var(--brand);
-          transform: translateY(-5px);
-        }
-
-        .f-social-link:hover .s-icon {
-          background: #fff;
-        }
-
-        .f-social-link:hover .s-name {
           color: #000;
+          transform: translateY(-4px);
+          box-shadow: 0 12px 28px rgba(255, 153, 51, 0.3);
         }
 
-        .info-label {
-          font-size: 11px;
+        .hf-social-pill svg {
+          flex-shrink: 0;
+        }
+
+        .hf-col-title {
+          font-size: 10px;
+          font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 3px;
           color: var(--brand);
-          font-weight: 800;
-          margin-bottom: 20px;
+          margin-bottom: 22px;
+          margin-top: 0;
         }
 
-        .info-link {
-          display: block;
-          font-size: 24px;
-          font-weight: 600;
+        .hf-link-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .hf-link {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.5);
+          text-decoration: none;
+          position: relative;
+          transition: color 0.3s;
+          display: inline-block;
+        }
+
+        .hf-link::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -2px;
+          width: 0;
+          height: 1px;
+          background: var(--brand);
+          transition: width 0.3s ease;
+        }
+
+        .hf-link:hover {
           color: #fff;
-          margin-bottom: 10px;
-          transition: color 0.3s ease;
         }
 
-        .mail-link {
-          background: linear-gradient(to right, #fff, #fff);
-          background-size: 0% 1px;
-          background-repeat: no-repeat;
-          background-position: left bottom;
-          transition: background-size 0.5s ease;
-          width: fit-content;
+        .hf-link:hover::after {
+          width: 100%;
         }
 
-        .mail-link:hover {
-          background-size: 100% 1px;
+        .hf-contact-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+        }
+
+        .hf-contact-list li {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .hf-contact-link {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.5);
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+
+        .hf-contact-link:hover {
           color: var(--brand);
         }
 
-        .info-text {
-          font-size: 18px;
-          color: var(--muted);
-          line-height: 1.6;
-        }
-
-        .footer-newsletter {
-          margin-top: 60px;
-          background: rgba(255, 255, 255, 0.02);
-          padding: 30px;
-          border-radius: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .newsletter-input {
-          display: flex;
-          background: rgba(0, 0, 0, 0.3);
-          border-radius: 12px;
-          padding: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .newsletter-input input {
-          background: transparent;
+        .hf-divider {
           border: none;
-          color: #fff;
-          padding: 10px 15px;
-          width: 100%;
-          outline: none;
+          border-top: 1px solid rgba(255, 255, 255, 0.07);
+          margin: 0 0 28px;
         }
 
-        .newsletter-input button {
-          background: var(--brand);
-          color: #000;
-          border: none;
-          width: 40px;
-          height: 40px;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: transform 0.3s ease;
-        }
-
-        .newsletter-input button:hover {
-          transform: scale(1.05) translateX(3px);
-        }
-
-        .footer-legal-bar {
-          padding-top: 40px;
-          border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .hf-bottom-bar {
           display: flex;
+          align-items: center;
           justify-content: space-between;
-          align-items: center;
+          flex-wrap: wrap;
+          gap: 16px;
         }
 
-        .legal-left {
+        .hf-bottom-socials {
+          display: flex;
+          gap: 18px;
+        }
+
+        .hf-icon-link {
+          color: rgba(255, 255, 255, 0.35);
           display: flex;
           align-items: center;
-          gap: 30px;
+          text-decoration: none;
+          transition: color 0.3s, transform 0.3s;
         }
 
-        .copyright {
-          font-size: 12px;
-          font-weight: 700;
-          color: var(--muted);
+        .hf-icon-link:hover {
+          color: var(--brand);
+          transform: translateY(-3px);
         }
 
-        .status-indicator {
+        .hf-status {
           display: flex;
           align-items: center;
-          gap: 10px;
-          font-size: 12px;
+          gap: 8px;
+          font-size: 11px;
           font-weight: 600;
-          color: #fff;
-          background: rgba(255, 255, 255, 0.03);
-          padding: 6px 15px;
+          color: rgba(255, 255, 255, 0.55);
+          background: rgba(255, 255, 255, 0.04);
+          padding: 6px 14px;
           border-radius: 100px;
+          border: 1px solid rgba(255, 255, 255, 0.07);
+          letter-spacing: 0.5px;
         }
 
-        .pulse-dot {
-          width: 6px;
-          height: 6px;
+        .hf-pulse-dot {
+          width: 7px;
+          height: 7px;
           background: #22c55e;
           border-radius: 50%;
-          box-shadow: 0 0 10px #22c55e;
-          animation: dotPulse 2s infinite;
+          box-shadow: 0 0 8px #22c55e;
+          flex-shrink: 0;
+          animation: hfPulse 2s ease-in-out infinite;
         }
 
-        @keyframes dotPulse {
-          0% {
+        @keyframes hfPulse {
+
+          0%,
+          100% {
             transform: scale(1);
             opacity: 1;
           }
 
           50% {
-            transform: scale(1.5);
+            transform: scale(1.6);
             opacity: 0.5;
           }
+        }
 
-          100% {
-            transform: scale(1);
-            opacity: 1;
+        .hf-copy {
+          font-size: 11px;
+          color: rgba(255, 255, 255, 0.3);
+          margin: 0;
+        }
+
+        /* Text hover SVG area */
+        .hf-text-hover-wrap {
+          height: 200px;
+          margin-top: -40px;
+          margin-bottom: -50px;
+          position: relative;
+          z-index: 1;
+          overflow: hidden;
+        }
+
+        .hf-svg-text {
+          user-select: none;
+          cursor: crosshair;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+          .hf-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+          }
+
+          .hf-brand {
+            grid-column: 1 / -1;
+          }
+
+          .hf-brand-desc {
+            max-width: 100%;
           }
         }
 
-        .legal-right {
-          display: flex;
-          gap: 24px;
-        }
-
-        .legal-link {
-          font-size: 12px;
-          font-weight: 600;
-          color: var(--muted);
-          transition: color 0.3s;
-        }
-
-        .legal-link:hover {
-          color: #fff;
-        }
-
-        .scroll-top {
-          font-size: 12px;
-          font-weight: 800;
-          color: var(--brand);
-          text-transform: uppercase;
-        }
-
-        @media (max-width: 1024px) {
-          .footer-grid-creative {
+        @media (max-width: 640px) {
+          .hf-grid {
             grid-template-columns: 1fr;
-            gap: 60px;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .footer-legal-bar {
-            flex-direction: column;
-            gap: 30px;
-            text-align: center;
+            gap: 32px;
           }
 
-          .legal-left {
+          .hf-brand {
+            grid-column: auto;
+          }
+
+          .hf-inner {
+            padding: 56px 20px 28px;
+          }
+
+          .hf-bottom-bar {
             flex-direction: column;
-            gap: 15px;
+            align-items: flex-start;
+            gap: 14px;
+          }
+
+          .hf-text-hover-wrap {
+            height: 100px;
+            margin-top: -20px;
+            margin-bottom: -20px;
           }
         }
       </style>
+
+      <script>
+        (function () {
+          var svg = document.getElementById('hfSvg');
+          var outline = document.getElementById('hfTextOutline');
+          var draw = document.getElementById('hfTextDraw');
+          var revealMask = document.getElementById('hfRevealMask');
+
+          // Animate draw-on stroke over 4 seconds on load
+          var startTime = null;
+          var totalDash = 3000;
+          var dur = 4000;
+          function animateDraw(ts) {
+            if (!startTime) startTime = ts;
+            var p = Math.min((ts - startTime) / dur, 1);
+            var ease = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
+            if (draw) draw.style.strokeDashoffset = totalDash * (1 - ease);
+            if (p < 1) requestAnimationFrame(animateDraw);
+          }
+          requestAnimationFrame(animateDraw);
+
+          if (!svg) return;
+
+          var isHovered = false;
+          var targetCx = 50, targetCy = 50;
+          var currentCx = 50, currentCy = 50;
+          var raf = null;
+
+          function smoothUpdate() {
+            currentCx += (targetCx - currentCx) * 0.1;
+            currentCy += (targetCy - currentCy) * 0.1;
+            revealMask.setAttribute('cx', currentCx.toFixed(2) + '%');
+            revealMask.setAttribute('cy', currentCy.toFixed(2) + '%');
+            if (isHovered) raf = requestAnimationFrame(smoothUpdate);
+          }
+
+          svg.addEventListener('mouseenter', function () {
+            isHovered = true;
+            if (outline) outline.style.opacity = '0.5';
+            if (raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(smoothUpdate);
+          });
+
+          svg.addEventListener('mouseleave', function () {
+            isHovered = false;
+            if (outline) outline.style.opacity = '0';
+            targetCx = 50; targetCy = 50;
+          });
+
+          svg.addEventListener('mousemove', function (e) {
+            if (!isHovered) return;
+            var rect = svg.getBoundingClientRect();
+            targetCx = ((e.clientX - rect.left) / rect.width) * 100;
+            targetCy = ((e.clientY - rect.top) / rect.height) * 100;
+          });
+        })();
+      </script>
     </footer>
+
   </main>
 
   <!-- ============== VIDEO MODAL ============== -->
