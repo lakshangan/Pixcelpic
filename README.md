@@ -73,7 +73,7 @@ Then open `http://localhost:8000/index.html`.
 
 - The homepage title uses `PIXCEL Studio`, while other visible branding uses `PixelPic Studio` / `PixelPix_Studio`. Branding is inconsistent and should be standardized.
 - `index.html` references `bg.mp4`.
-- `our-work.html` references `Comp 1.mp4`.
+- `our-work.html` references `comp1.mp4`.
 - No local `.mp4` files are present in this folder, so those background video features will not work unless the assets are added.
 - The pages depend on external resources such as Google Fonts, YouTube embeds, and a Google Form, so full functionality requires internet access.
 
