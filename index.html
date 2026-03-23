@@ -2691,13 +2691,11 @@
     <header id="home" class="hero-creative">
       <div class="hero-video-bg">
         <!-- Desktop: horizontal bg.mp4 -->
-        <video autoplay loop muted playsinline class="bg-video desktop-video">
-          <source src="bg.mp4" type="video/mp4">
-        </video>
+        <video id="heroDesktopVideo" autoplay loop muted playsinline preload="metadata" class="bg-video desktop-video"
+          src="bg.mp4" aria-hidden="true"></video>
         <!-- Mobile: vertical comp1.mp4 -->
-        <video muted autoplay loop playsinline webkit-playsinline class="bg-video mobile-video">
-          <source src="comp1.mp4" type="video/mp4">
-        </video>
+        <video id="heroMobileVideo" muted autoplay loop playsinline webkit-playsinline preload="auto"
+          class="bg-video mobile-video" src="comp1.mp4" aria-hidden="true"></video>
         <div class="video-overlay"></div>
       </div>
       <div class="container hero-layout-left">
@@ -2944,6 +2942,7 @@
 
         .mobile-video {
           display: block;
+          object-position: center center;
         }
 
         /* portrait overlay: fade from bottom so text stays readable */
@@ -3012,6 +3011,56 @@
         }
       }
     </style>
+
+    <script>
+      (function () {
+        const desktopVideo = document.getElementById('heroDesktopVideo');
+        const mobileVideo = document.getElementById('heroMobileVideo');
+
+        if (!desktopVideo || !mobileVideo) return;
+
+        const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+        function primeVideo(video) {
+          video.muted = true;
+          video.defaultMuted = true;
+          video.playsInline = true;
+
+          const playAttempt = video.play();
+          if (playAttempt && typeof playAttempt.catch === 'function') {
+            playAttempt.catch(() => { });
+          }
+        }
+
+        function syncHeroVideo() {
+          const activeVideo = mobileQuery.matches ? mobileVideo : desktopVideo;
+          const inactiveVideo = mobileQuery.matches ? desktopVideo : mobileVideo;
+
+          inactiveVideo.pause();
+          primeVideo(activeVideo);
+        }
+
+        [desktopVideo, mobileVideo].forEach((video) => {
+          video.addEventListener('loadeddata', syncHeroVideo);
+          video.addEventListener('canplay', syncHeroVideo);
+        });
+
+        if (typeof mobileQuery.addEventListener === 'function') {
+          mobileQuery.addEventListener('change', syncHeroVideo);
+        } else if (typeof mobileQuery.addListener === 'function') {
+          mobileQuery.addListener(syncHeroVideo);
+        }
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') {
+            syncHeroVideo();
+          }
+        });
+
+        window.addEventListener('pageshow', syncHeroVideo);
+        window.addEventListener('load', syncHeroVideo);
+      })();
+    </script>
 
     <!-- ===================== CRAWLING TEXT (MARQUEE) ===================== -->
     <div class="marquee-strip">
@@ -3472,42 +3521,8 @@
             engage, and stay remembered.
           </p>
 
-          <!-- Value Cards -->
-          <div class="ab-values">
-            <div class="ab-value-card">
-              <div class="ab-value-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                </svg>
-              </div>
-              <h4 class="ab-value-title">Elite Precision</h4>
-              <p class="ab-value-desc">Frame-perfect storytelling with meticulous attention to every detail.</p>
-            </div>
-            <div class="ab-value-card">
-              <div class="ab-value-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 8l4 4-4 4M8 12h7" />
-                </svg>
-              </div>
-              <h4 class="ab-value-title">Global Vision</h4>
-              <p class="ab-value-desc">World-class production standards designed for brands that think beyond
-                boundaries.</p>
-            </div>
-          </div>
 
-          <!-- Stats -->
-          <div class="ab-stats">
-            <div class="ab-stat">
-              <span class="ab-stat-num">05+</span>
-              <span class="ab-stat-label">Years of Mastery</span>
-            </div>
-            <div class="ab-stat-divider"></div>
-            <div class="ab-stat">
-              <span class="ab-stat-num">250+</span>
-              <span class="ab-stat-label">Films Delivered</span>
-            </div>
-          </div>
+
         </div>
       </div>
 
