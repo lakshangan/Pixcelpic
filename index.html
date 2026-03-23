@@ -2695,7 +2695,7 @@
           src="bg.mp4" aria-hidden="true"></video>
         <!-- Mobile: vertical comp1.mp4 -->
         <video id="heroMobileVideo" muted autoplay loop playsinline webkit-playsinline preload="metadata"
-          class="bg-video mobile-video" aria-hidden="true">
+          class="bg-video mobile-video" aria-hidden="true" poster="poster.jpg">
           <source src="comp1.mp4" type="video/mp4">
         </video>
         <div class="video-overlay"></div>
@@ -3031,15 +3031,15 @@
           const playAttempt = video.play();
           if (playAttempt && typeof playAttempt.catch === 'function') {
             playAttempt.catch((err) => {
-              console.warn("Autoplay was blocked:", err);
-              // Fallback play on interaction
+              console.warn("Autoplay block:", err);
               const trigger = () => {
-                video.play();
-                document.removeEventListener('touchstart', trigger);
-                document.removeEventListener('mousedown', trigger);
+                video.play().then(() => {
+                  document.removeEventListener('touchstart', trigger);
+                  document.removeEventListener('click', trigger);
+                });
               };
-              document.addEventListener('touchstart', trigger, { once: true });
-              document.addEventListener('mousedown', trigger, { once: true });
+              document.addEventListener('touchstart', trigger, { once: false });
+              document.addEventListener('click', trigger, { once: false });
             });
           }
         }

@@ -1213,7 +1213,7 @@
   <section class="hero">
     <!-- VIDEO BG (mobile only) -->
     <div class="hero-video-bg" aria-hidden="true">
-      <video id="heroMobileVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata">
+      <video id="heroMobileVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="poster.jpg">
         <source src="comp1.mp4" type="video/mp4">
       </video>
     </div>
@@ -2012,15 +2012,26 @@
     const mobileVid = document.getElementById('heroMobileVideo');
     if (mobileVid) {
       const forcePlay = () => {
-        mobileVid.play().catch(() => {
-          // Fallback if autoplay is blocked: play on first user interaction
-          document.addEventListener('touchstart', () => mobileVid.play(), { once: true });
+        if (!mobileVid.paused) return; // already playing
+        mobileVid.play().catch(err => {
+          console.log("Autoplay block, waiting for interaction...");
+          const trigger = () => {
+            mobileVid.play().then(() => {
+              document.removeEventListener('touchstart', trigger);
+              document.removeEventListener('click', trigger);
+            });
+          };
+          document.addEventListener('touchstart', trigger, { once: false });
+          document.addEventListener('click', trigger, { once: false });
         });
       };
-      // Try to play immediately and on various load events
+      
+      // Try multiple times as mobile browsers can be finicky during initial load
       forcePlay();
-      mobileVid.addEventListener('loadedmetadata', forcePlay);
-      mobileVid.addEventListener('canplay', forcePlay);
+      window.addEventListener('load', forcePlay);
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') forcePlay();
+      });
     }
 
   </script>
