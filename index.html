@@ -132,7 +132,8 @@
     #editing-preloader {
       position: fixed;
       inset: 0;
-      background: #000; /* Deep black to focus on the workspace */
+      background: #000;
+      /* Deep black to focus on the workspace */
       z-index: 999999;
       display: flex;
       flex-direction: column;
@@ -154,7 +155,9 @@
     }
 
     @keyframes preloaderFadeIn {
-      to { opacity: 1; }
+      to {
+        opacity: 1;
+      }
     }
 
     .brand-text {
@@ -201,17 +204,36 @@
     }
 
     .clip.active {
-      background: var(--brand); /* Orange highlight */
+      background: var(--brand);
+      /* Orange highlight */
       opacity: 1;
       box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
     }
 
     /* Simulated timeline clip sizes */
-    .clip-1 { width: 30%; }
-    .clip-2 { width: 25%; margin-left: 5%; }
-    .clip-3 { width: 35%; margin-left: auto; }
-    .clip-4 { width: 45%; margin-left: 10%; }
-    .clip-5 { width: 30%; margin-left: 10%; }
+    .clip-1 {
+      width: 30%;
+    }
+
+    .clip-2 {
+      width: 25%;
+      margin-left: 5%;
+    }
+
+    .clip-3 {
+      width: 35%;
+      margin-left: auto;
+    }
+
+    .clip-4 {
+      width: 45%;
+      margin-left: 10%;
+    }
+
+    .clip-5 {
+      width: 30%;
+      margin-left: 10%;
+    }
 
     .timeline-playhead {
       position: absolute;
@@ -223,7 +245,7 @@
       z-index: 10;
       box-shadow: 0 0 10px #e2e8f0;
     }
-    
+
     .timeline-playhead::before {
       content: '';
       position: absolute;
@@ -2399,8 +2421,8 @@
   <!-- ================== EDITING WORKSPACE PRELOADER ================== -->
   <div id="editing-preloader">
     <div class="preloader-content">
-      <div class="brand-text">PIXCEL STUDIO</div>
-      
+      <div class="brand-text">PIXCEL MEDIA</div>
+
       <div class="timeline-container">
         <div class="timeline-playhead"></div>
         <div class="timeline-tracks">
@@ -2554,7 +2576,7 @@
   <nav class="nav" aria-label="Primary">
     <div class="nav-wrap">
       <a href="#home" class="brand">
-        <img src="PixelPix_Studio.png" alt="PixelPic Studio" />
+        <img src="PixelPix_Studio.png" alt="PixelPic Media" />
       </a>
 
       <div class="nav-links" role="menubar">
@@ -5468,7 +5490,7 @@
         "Rendering Final Output...",
         "Playback Ready."
       ];
-      
+
       const statusText = document.querySelector('.status-text');
       const percentageText = document.querySelector('.percentage');
       const playhead = document.querySelector('.timeline-playhead');
@@ -5479,7 +5501,7 @@
       const interval = 30; // 30ms updates
       const steps = duration / interval;
       const stepValue = 100 / steps;
-      
+
       let textIndex = 0;
 
       if (!statusText || document.body.classList.contains('loaded')) return;
@@ -5487,7 +5509,7 @@
       const loaderInterval = setInterval(() => {
         progress += stepValue;
         if (progress >= 100) progress = 100;
-        
+
         playhead.style.left = progress + '%';
         percentageText.textContent = Math.floor(progress) + '%';
 
