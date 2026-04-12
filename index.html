@@ -8,6 +8,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap"
     rel="stylesheet">
+  <!-- Interactive Lottie Support -->
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
   <meta name="color-scheme" content="dark light" />
   <style>
     * {
@@ -126,214 +128,127 @@
       }
     }
 
-    /* ===================== CINEMATIC PRELOADER v2 ===================== */
-    #preloader {
+    /* ===================== EDITING WORKSPACE PRELOADER ===================== */
+    #editing-preloader {
       position: fixed;
       inset: 0;
-      background: #000;
-      /* Solid background to eliminate any void at start */
-      z-index: 100000;
+      background: #000; /* Deep black to focus on the workspace */
+      z-index: 999999;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      transition: opacity 1s ease;
+      transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.8s ease;
+      font-family: 'Sora', sans-serif;
     }
 
-    .preloader-inner {
-      text-align: center;
-      position: relative;
-      z-index: 100010;
-      /* Above shutters */
-    }
-
-    .preload-brand-img {
-      height: clamp(60px, 8vw, 100px);
-      width: auto;
-      margin-bottom: 30px;
-      opacity: 0;
-      /* Elegant blur-to-focus reveal (1.5s) */
-      filter: blur(25px);
-      transform: scale(0.92);
-      animation: logoFadeIn 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes logoFadeIn {
-      0% {
-        opacity: 0;
-        filter: blur(25px);
-        transform: scale(0.92);
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0);
-        transform: scale(1);
-      }
-    }
-
-    body.loaded .preload-brand-img {
-      opacity: 0;
-      filter: blur(40px);
-      transform: scale(0.9);
-      transition-duration: 1.2s;
-    }
-
-    .preload-welcome {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(14px, 1.5vw, 18px);
-      color: rgba(255, 255, 255, 0.4);
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      opacity: 0;
-      filter: blur(10px);
-      transform: translateY(12px);
-      /* Trigger exactly as logo comes into focus */
-      animation: cinematicWelcome 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.8s;
-    }
-
-    @keyframes cinematicReveal {
-      0% {
-        opacity: 0;
-        filter: blur(10px);
-        transform: scale(0.95);
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0);
-        transform: scale(1);
-      }
-    }
-
-    @keyframes cinematicWelcome {
-      0% {
-        opacity: 0;
-        filter: blur(5px);
-        transform: translateY(10px);
-      }
-
-      100% {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateY(0);
-      }
-    }
-
-    /* Ambient Pulsing Glow */
-    .preload-glow {
-      position: absolute;
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(255, 153, 51, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
-      filter: blur(80px);
-      border-radius: 50%;
-      animation: preloadPulse 6s ease-in-out infinite;
-    }
-
-    @keyframes preloadPulse {
-
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 0.4;
-      }
-
-      50% {
-        transform: scale(1.15);
-        opacity: 0.7;
-      }
-    }
-
-    body.loaded #preloader {
-      transform: scale(1.1);
-      opacity: 0;
-      filter: blur(50px);
-      transition: all 1.8s cubic-bezier(0.85, 0, 0.15, 1);
-      pointer-events: none;
-    }
-
-    /* Cinematic Shutter Reveal */
-    /* Snappy Cinematic Shutter Reveal */
-    .shutter-top,
-    .shutter-bottom {
-      position: fixed;
-      left: 0;
+    .preloader-content {
       width: 100%;
-      height: 50%;
-      background: #000;
-      z-index: 100005;
-      /* Between preloader content and Hero */
-      transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
-    }
-
-    .shutter-top {
-      top: 0;
-    }
-
-    .shutter-bottom {
-      bottom: 0;
-    }
-
-    body.loaded .shutter-top {
-      transform: translateY(-100%);
-    }
-
-    body.loaded .shutter-bottom {
-      transform: translateY(100%);
-    }
-
-    /* Hero Reveal Effect */
-    .hero-creative {
+      max-width: 600px;
+      padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
       opacity: 0;
-      filter: blur(20px);
-      transform: scale(1.05);
-      transition: all 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+      animation: preloaderFadeIn 0.4s ease forwards;
     }
 
-    body.loaded .hero-creative {
+    @keyframes preloaderFadeIn {
+      to { opacity: 1; }
+    }
+
+    .brand-text {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 6px;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    .timeline-container {
+      position: relative;
+      width: 100%;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 20px 10px;
+      overflow: hidden;
+      box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .timeline-tracks {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .track-row {
+      height: 16px;
+      background: #1a1a1a;
+      border-radius: 4px;
+      display: flex;
+      gap: 4px;
+      position: relative;
+    }
+
+    .clip {
+      height: 100%;
+      border-radius: 2px;
+      background: #333;
+      opacity: 0.4;
+      transition: all 0.2s ease;
+    }
+
+    .clip.active {
+      background: var(--brand); /* Orange highlight */
       opacity: 1;
-      filter: blur(0);
-      transform: scale(1);
+      box-shadow: 0 0 10px rgba(255, 153, 51, 0.5);
     }
 
-    /* Light Sweep Transition */
-    .light-sweep {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(110deg, transparent 40%, rgba(255, 153, 51, 0.15) 50%, transparent 60%);
-      z-index: 100002;
+    /* Simulated timeline clip sizes */
+    .clip-1 { width: 30%; }
+    .clip-2 { width: 25%; margin-left: 5%; }
+    .clip-3 { width: 35%; margin-left: auto; }
+    .clip-4 { width: 45%; margin-left: 10%; }
+    .clip-5 { width: 30%; margin-left: 10%; }
+
+    .timeline-playhead {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background: #e2e8f0;
+      z-index: 10;
+      box-shadow: 0 0 10px #e2e8f0;
+    }
+    
+    .timeline-playhead::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: -5px;
+      width: 12px;
+      height: 12px;
+      background: var(--brand);
+      border-radius: 50%;
+    }
+
+    .loading-status {
+      display: flex;
+      justify-content: space-between;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: 'Manrope', monospace;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    body.loaded #editing-preloader {
+      transform: translateY(-100%);
       pointer-events: none;
       opacity: 0;
-      transform: translateX(-100%) skewX(-25deg);
-    }
-
-    body.loaded .light-sweep {
-      animation: sweep 2s cubic-bezier(0.23, 1, 0.32, 1) forwards 0.3s;
-    }
-
-    @keyframes sweep {
-      0% {
-        transform: translateX(-100%) skewX(-25deg);
-        opacity: 0;
-      }
-
-      20% {
-        opacity: 0;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateX(200%) skewX(-25deg);
-        opacity: 0;
-      }
     }
 
     /* Global Reveal Animations */
@@ -2481,25 +2396,30 @@
 </head>
 
 <body class="loading">
-  <!-- Immediate Check to Bypass Preloader on Return -->
-  <script>
-    if (sessionStorage.getItem('pixcelPreloaderFinished')) {
-      document.body.classList.remove('loading');
-      document.body.classList.add('loaded');
-      document.write('<style>#preloader, .shutter-top, .shutter-bottom, .light-sweep { display: none !important; }</style>');
-    }
-  </script>
+  <!-- ================== EDITING WORKSPACE PRELOADER ================== -->
+  <div id="editing-preloader">
+    <div class="preloader-content">
+      <div class="brand-text">PIXCEL STUDIO</div>
+      
+      <div class="timeline-container">
+        <div class="timeline-playhead"></div>
+        <div class="timeline-tracks">
+          <div class="track-row">
+            <div class="clip clip-1"></div>
+            <div class="clip clip-2"></div>
+            <div class="clip clip-3"></div>
+          </div>
+          <div class="track-row">
+            <div class="clip clip-4"></div>
+            <div class="clip clip-5"></div>
+          </div>
+        </div>
+      </div>
 
-  <!-- ================== CINEMATIC PRELOADER ================== -->
-  <div class="shutter-top"></div>
-  <div class="shutter-bottom"></div>
-  <div class="light-sweep"></div>
-
-  <div id="preloader">
-    <div class="preload-glow"></div>
-    <div class="preloader-inner">
-      <img src="PixelPix_Studio.png" alt="PixelPix Studio" class="preload-brand-img" />
-      <p class="preload-welcome">Experience Excellence.</p>
+      <div class="loading-status">
+        <span class="status-text">Ingesting Media...</span>
+        <span class="percentage">0%</span>
+      </div>
     </div>
   </div>
 
@@ -5253,35 +5173,6 @@
     }, { rootMargin: '-60% 0px -35% 0px', threshold: .01 });
     sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
 
-    // Cinematic Preloader Engine (Accelerated)
-    // Unified Cinematic Preloader Logic
-    function dismissPreloader() {
-      const preloader = $('#preloader');
-      if (!preloader || document.body.classList.contains('loaded')) return;
-
-      // Perfectly synced Dismissal (2.4 seconds)
-      setTimeout(() => {
-        document.body.classList.add('loaded');
-        document.body.classList.remove('loading');
-
-        // Save session state
-        sessionStorage.setItem('pixcelPreloaderFinished', 'true');
-
-        // Final cleanup for performance
-        setTimeout(() => {
-          preloader.style.display = 'none';
-          document.querySelector('.shutter-top').style.display = 'none';
-          document.querySelector('.shutter-bottom').style.display = 'none';
-        }, 1500);
-      }, 2400);
-    }
-
-    // Trigger dismiss sequence
-    document.addEventListener('DOMContentLoaded', dismissPreloader);
-    window.addEventListener('load', dismissPreloader);
-
-    // Safety Fallback
-    setTimeout(dismissPreloader, 7000);
 
 
 
@@ -5566,6 +5457,68 @@
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
       });
+    });
+    // ===================== EDITING PRELOADER LOGIC =====================
+    document.addEventListener("DOMContentLoaded", () => {
+      const texts = [
+        "Ingesting Raw Media...",
+        "Syncing Audio & Video...",
+        "Trimming Sequences...",
+        "Applying Color Grade...",
+        "Rendering Final Output...",
+        "Playback Ready."
+      ];
+      
+      const statusText = document.querySelector('.status-text');
+      const percentageText = document.querySelector('.percentage');
+      const playhead = document.querySelector('.timeline-playhead');
+      const clips = document.querySelectorAll('.clip');
+
+      let progress = 0;
+      const duration = 3500; // 3.5 seconds cinematic load
+      const interval = 30; // 30ms updates
+      const steps = duration / interval;
+      const stepValue = 100 / steps;
+      
+      let textIndex = 0;
+
+      if (!statusText || document.body.classList.contains('loaded')) return;
+
+      const loaderInterval = setInterval(() => {
+        progress += stepValue;
+        if (progress >= 100) progress = 100;
+        
+        playhead.style.left = progress + '%';
+        percentageText.textContent = Math.floor(progress) + '%';
+
+        let newIndex = Math.floor((progress / 100) * texts.length);
+        if (newIndex >= texts.length) newIndex = texts.length - 1;
+        if (newIndex !== textIndex) {
+          textIndex = newIndex;
+          statusText.textContent = texts[textIndex];
+        }
+
+        clips.forEach(clip => {
+          const rect = clip.getBoundingClientRect();
+          const playheadRect = playhead.getBoundingClientRect();
+          if (playheadRect.left >= rect.left && playheadRect.left <= rect.right) {
+            clip.classList.add('active');
+          } else {
+            clip.classList.remove('active');
+          }
+        });
+
+        if (progress === 100) {
+          clearInterval(loaderInterval);
+          setTimeout(() => {
+            document.body.classList.remove('loading');
+            document.body.classList.add('loaded');
+            setTimeout(() => {
+              document.getElementById('editing-preloader').style.display = 'none';
+            }, 1200); // Wait for transition
+          }, 300);
+        }
+      }, interval);
     });
   </script>
 </body>
