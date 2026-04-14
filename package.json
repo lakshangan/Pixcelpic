@@ -1,0 +1,20 @@
+{
+  "name": "pixcelpic",
+  "version": "1.0.0",
+  "description": "PIXEL PIC MEDIA — Pro Interactive",
+  "scripts": {
+    "build": "echo 'Static HTML site - no build required'",
+    "lint": "echo 'No linter configured for vanilla HTML project'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lakshangan/Pixcelpic.git"
+  },
+  "keywords": ["media", "production", "video", "editing"],
+  "author": "PixelPic Studio",
+  "license": "MIT"
+}
