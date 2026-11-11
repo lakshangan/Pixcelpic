@@ -6,6 +6,12 @@
 (function () {
   'use strict';
 
+  // Auth Guard
+  if (sessionStorage.getItem('pixelpic_admin_auth') !== 'true' && localStorage.getItem('pixelpic_admin_auth') !== 'true') {
+    window.location.replace('/admin/login.html');
+    return;
+  }
+
   let allVideos = [];
   let activeFilter = {
     search: '',
@@ -146,6 +152,7 @@
       if (targetView === 'overview') elements.pageTitle.textContent = 'Dashboard Overview';
       else if (targetView === 'portfolio') elements.pageTitle.textContent = 'Portfolio Video Management';
       else if (targetView === 'backup') elements.pageTitle.textContent = 'Data Backup & Export';
+      else if (targetView === 'security') elements.pageTitle.textContent = 'Security & Passcode Settings';
     }
 
     if (elements.sidebar) elements.sidebar.classList.remove('open');
@@ -744,6 +751,72 @@
           await window.PortfolioStore.resetToDefaults();
           showToast('Reset to original studio portfolio.', 'info');
           await loadData();
+        }
+      });
+    }
+
+    // Logout
+    const logoutBtn = document.getElementById('sidebarLogoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem('pixelpic_admin_auth');
+        localStorage.removeItem('pixelpic_admin_auth');
+        showToast('Logged out. Redirecting to login...', 'info');
+        setTimeout(() => {
+          window.location.replace('/admin/login.html');
+        }, 300);
+      });
+    }
+
+    // Change Passcode Form
+    const changePasscodeForm = document.getElementById('changePasscodeForm');
+    const btnResetPasscodeDefault = document.getElementById('btnResetPasscodeDefault');
+    const DEFAULT_HASH = '202634f4e59165f48f28222d599c5a95198a44511ff43794689ceba7c7966fd3'; // SHA-256 for 'pixelpic2026'
+
+    async function hashText(str) {
+      const buffer = new TextEncoder().encode(str);
+      const digest = await crypto.subtle.digest('SHA-256', buffer);
+      return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    if (changePasscodeForm) {
+      changePasscodeForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const currentPass = document.getElementById('currentPasscodeInput').value.trim();
+        const newPass = document.getElementById('newPasscodeInput').value.trim();
+        const confirmPass = document.getElementById('confirmPasscodeInput').value.trim();
+
+        if (newPass !== confirmPass) {
+          showToast('New passwords do not match!', 'error');
+          return;
+        }
+
+        if (newPass.length < 6) {
+          showToast('Password must be at least 6 characters.', 'error');
+          return;
+        }
+
+        const currentHash = await hashText(currentPass);
+        const storedHash = localStorage.getItem('pixelpic_admin_hash') || DEFAULT_HASH;
+
+        if (currentHash !== storedHash) {
+          showToast('Current password is incorrect!', 'error');
+          return;
+        }
+
+        const newHash = await hashText(newPass);
+        localStorage.setItem('pixelpic_admin_hash', newHash);
+        showToast('Admin password updated successfully!', 'success');
+        changePasscodeForm.reset();
+      });
+    }
+
+    if (btnResetPasscodeDefault) {
+      btnResetPasscodeDefault.addEventListener('click', () => {
+        if (confirm('Reset admin password to default (pixelpic2026)?')) {
+          localStorage.removeItem('pixelpic_admin_hash');
+          showToast('Password reset to default (pixelpic2026).', 'info');
+          if (changePasscodeForm) changePasscodeForm.reset();
         }
       });
     }

@@ -62,7 +62,9 @@ There are **zero external databases**, **zero cloud storage subscriptions**, and
 python3 -m http.server 8000
 ```
 - **Live Portfolio:** `http://localhost:8000/our-work.html`
-- **Admin CMS:** `http://localhost:8000/admin/`
+- **Admin CMS:** `http://localhost:8000/admin/` (or `http://localhost:8000/admin/login.html`)
+  - **Default Password:** `pixelpic2026`
+  - Passcode can be updated anytime inside **Security & Passcode** tab in the dashboard.
 
 ### 2. How to Add a Google Drive Video
 1. Open the Admin CMS at `/admin/`.
