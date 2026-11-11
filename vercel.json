@@ -1,0 +1,39 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "/admin/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://drive.google.com; img-src 'self' data: https: blob:; media-src 'self' data: https: blob:; connect-src 'self' https:;"
+        }
+      ]
+    },
+    {
+      "source": "/(css|js|data|admin/css|admin/js)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}

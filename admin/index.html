@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelPic Studio — Video Management CMS</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="css/admin.css">
+
+  <!-- Zero-Backend Portfolio Store -->
+  <script src="../js/portfolio-store.js"></script>
+</head>
+<body>
+
+  <div class="admin-layout">
+
+    <!-- ==================== SIDEBAR ==================== -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" title="PixelPic Studio Home">
+          <img src="../PixelPix_Studio.png" alt="PixelPic Studio" class="sidebar-brand-logo">
+        </a>
+        <span class="cms-badge">LOCAL CMS</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main Menu</div>
+        <a href="#overview" class="nav-item active" data-view="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+          </svg>
+          <span>Overview</span>
+        </a>
+
+        <a href="#portfolio" class="nav-item" data-view="portfolio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+          <span>Portfolio Videos</span>
+        </a>
+
+        <div class="nav-section-label">Data & Backup</div>
+        <a href="#backup" class="nav-item" data-view="backup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Export / Import JSON</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-profile-chip">
+          <div class="profile-avatar">P</div>
+          <div class="profile-info">
+            <div class="profile-email">Zero-Backend Mode</div>
+            <div class="profile-role">100% Browser Storage</div>
+          </div>
+        </div>
+
+        <div class="sidebar-links-row">
+          <a href="../our-work.html" target="_blank" class="btn-sidebar-link" title="Open Public Portfolio">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>Live Site ↗</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="admin-main">
+
+      <!-- TOPBAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div class="page-title-wrap">
+            <h1 id="pageTitle">Portfolio Video Management</h1>
+            <div class="page-subtitle">Add YouTube or Google Drive Videos & Upload Thumbnails Directly</div>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnDownloadJsonTop" title="Download updated videos.json file">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download videos.json</span>
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" id="btnOpenAddModal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>Add New Video</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-content">
+
+        <!-- ================================================================== -->
+        <!-- VIEW 1: OVERVIEW -->
+        <!-- ================================================================== -->
+        <section id="view-overview" class="view-section active">
+
+          <!-- BANNER -->
+          <div class="connection-banner">
+            <div class="banner-content">
+              <div class="banner-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="banner-title">Zero-Account Serverless Mode (No Database / No Cloud Setup Needed)</div>
+                <div class="banner-text">
+                  Paste any Google Drive or YouTube link. The browser auto-converts the Drive link into a playable iframe and saves everything directly.
+                </div>
+              </div>
+            </div>
+            <div>
+              <span class="badge badge-cat-ads" style="background:rgba(16,185,129,0.15); color:#10b981; border-color:rgba(16,185,129,0.3);">
+                ● Browser Active
+              </span>
+            </div>
+          </div>
+
+          <!-- METRICS CARDS -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-label">Total Videos</span>
+                <div class="stat-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+                </div>
+              </div>
+              <div class="stat-number" id="statTotal">0</div>
+              <div class="stat-desc">Portfolio videos configured</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-label">Commercial Ads</span>
+                <div class="stat-icon" style="color: #fbbf24;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                </div>
+              </div>
+              <div class="stat-number" id="statAds">0</div>
+              <div class="stat-desc">16:9 commercial ads</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-label">Short Films</span>
+                <div class="stat-icon" style="color: #c084fc;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+              </div>
+              <div class="stat-number" id="statFilms">0</div>
+              <div class="stat-desc">16:9 cinematic films</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-label">Vertical Shorts</span>
+                <div class="stat-icon" style="color: #f472b6;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+              </div>
+              <div class="stat-number" id="statShorts">0</div>
+              <div class="stat-desc">9:16 vertical shorts</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-label">Published</span>
+                <div class="stat-icon" style="color: #10b981;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+              </div>
+              <div class="stat-number" id="statPublished">0</div>
+              <div class="stat-desc">Live on website right now</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-label">Drafts</span>
+                <div class="stat-icon" style="color: #f59e0b;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+              </div>
+              <div class="stat-number" id="statDrafts">0</div>
+              <div class="stat-desc">Hidden from visitors</div>
+            </div>
+          </div>
+
+          <!-- RECENT WORK & ACTIONS -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+            <div class="table-panel">
+              <div class="toolbar">
+                <div style="font-weight: 700; font-size: 15px;">Recent Portfolio Videos</div>
+                <a href="#portfolio" onclick="document.querySelector('[data-view=portfolio]').click();" style="font-size: 12px; color: var(--brand); font-weight: 600;">View All →</a>
+              </div>
+              <div id="recentVideosContainer">
+                <div style="padding: 24px; text-align: center; color: var(--text-dim); font-size: 13px;">Loading portfolio items...</div>
+              </div>
+            </div>
+
+            <div class="table-panel" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Quick Actions</div>
+                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 20px;">
+                  Add Google Drive video links, upload custom thumbnails directly from your computer, or reorder videos with instant browser sync.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                  <button type="button" class="btn btn-primary" id="btnQuickAddOverview" style="width: 100%;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <span>Add New Video</span>
+                  </button>
+                  <a href="../our-work.html" target="_blank" class="btn btn-secondary" style="width: 100%;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <span>View Public Website</span>
+                  </a>
+                  <button type="button" class="btn btn-secondary" id="btnDownloadJsonOverview" style="width: 100%;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Download videos.json</span>
+                  </button>
+                </div>
+              </div>
+
+              <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted);">
+                <strong>PixelPic Studio</strong><br>
+                Self-contained browser-native CMS. No cloud database fees or account management required.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- VIEW 2: PORTFOLIO MANAGEMENT -->
+        <!-- ================================================================== -->
+        <section id="view-portfolio" class="view-section">
+          <div class="table-panel">
+
+            <!-- TOOLBAR -->
+            <div class="toolbar">
+              <div class="toolbar-search-wrap">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="tableSearchInput" class="search-input" placeholder="Search by video title or description...">
+              </div>
+
+              <div class="toolbar-filters">
+                <select id="tableCategoryFilter" class="select-filter">
+                  <option value="all">All Categories</option>
+                  <option value="Ads">Ads Only</option>
+                  <option value="Films">Films Only</option>
+                  <option value="Shorts">Shorts Only</option>
+                </select>
+
+                <select id="tableStatusFilter" class="select-filter">
+                  <option value="all">All Status</option>
+                  <option value="published">Published</option>
+                  <option value="draft">Drafts</option>
+                </select>
+
+                <select id="tablePlatformFilter" class="select-filter">
+                  <option value="all">All Platforms</option>
+                  <option value="google_drive">Google Drive</option>
+                  <option value="youtube">YouTube</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- TABLE -->
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th style="width: 70px;">Order</th>
+                    <th>Video & Thumbnail</th>
+                    <th style="width: 140px;">Category</th>
+                    <th style="width: 150px;">Platform</th>
+                    <th style="width: 120px;">Status</th>
+                    <th style="width: 130px; text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="portfolioTableBody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+
+              <!-- EMPTY STATE -->
+              <div id="tableEmptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                  </svg>
+                </div>
+                <div class="empty-title">No portfolio videos found</div>
+                <div class="empty-desc">No videos match your active filter. Click "Add New Video" to add one!</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- VIEW 3: EXPORT / IMPORT JSON -->
+        <!-- ================================================================== -->
+        <section id="view-backup" class="view-section">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+
+            <!-- DOWNLOAD / EXPORT -->
+            <div class="table-panel" style="padding: 24px;">
+              <div style="font-weight: 700; font-size: 16px; margin-bottom: 6px;">Download `videos.json` for Website</div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
+                When you make edits in this browser, they save instantly to your local browser storage. To make changes permanent for all visitors on the web, click below to download your updated <code>videos.json</code> file and place it in the <code>data/</code> folder.
+              </p>
+
+              <button type="button" id="btnDownloadJsonBackup" class="btn btn-primary" style="margin-bottom: 16px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download videos.json</span>
+              </button>
+
+              <div style="font-size: 12px; color: var(--text-dim); line-height: 1.5;">
+                Tip: Zero accounts or databases required. Any host (Vercel, Netlify, GitHub Pages) can serve this JSON file statically.
+              </div>
+            </div>
+
+            <!-- IMPORT / RESTORE -->
+            <div class="table-panel" style="padding: 24px;">
+              <div style="font-weight: 700; font-size: 16px; margin-bottom: 6px;">Import or Restore Portfolio</div>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
+                Upload an existing <code>videos.json</code> file or reset your browser storage back to the studio's default 21 portfolio videos.
+              </p>
+
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                <div>
+                  <label class="form-label" style="margin-bottom: 8px;">Upload JSON File</label>
+                  <input type="file" id="importJsonFileInput" accept=".json" class="form-input" style="padding: 8px;">
+                </div>
+
+                <div style="padding-top: 14px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;">
+                  <div>
+                    <div style="font-weight: 700; font-size: 13px; color: var(--text-primary);">Reset to Defaults</div>
+                    <div style="font-size: 11.5px; color: var(--text-muted);">Restores original 21 studio videos</div>
+                  </div>
+                  <button type="button" id="btnResetDefaults" class="btn btn-secondary btn-sm" style="color: var(--warning);">
+                    Reset Data
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- ADD / EDIT VIDEO MODAL -->
+  <!-- ====================================================================== -->
+  <div id="videoModalBackdrop" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="videoModalTitle">Add New Portfolio Video</h3>
+        <button type="button" id="btnCloseVideoModal" class="btn-close-modal">✕</button>
+      </div>
+
+      <form id="videoForm">
+        <div class="modal-body">
+
+          <!-- TITLE & CATEGORY -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="videoTitleInput">Video Title <span class="req">*</span></label>
+              <input type="text" id="videoTitleInput" class="form-input" placeholder="e.g. Brand Commercial 2026" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="videoCategorySelect">Category <span class="req">*</span></label>
+              <select id="videoCategorySelect" class="form-select" required>
+                <option value="Films">Films (Short Films 16:9)</option>
+                <option value="Ads">Ads (Commercial Ad Videos 16:9)</option>
+                <option value="Shorts">Shorts (Vertical 9:16)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- PLATFORM SELECTOR TABS -->
+          <div class="form-group">
+            <label class="form-label">Video Hosting Platform <span class="req">*</span></label>
+            <div class="platform-toggle-group">
+              <button type="button" class="platform-toggle-btn" data-platform="google_drive">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+                <span>Google Drive Link</span>
+              </button>
+              <button type="button" class="platform-toggle-btn active" data-platform="youtube">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                <span>YouTube / Shorts</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- VIDEO URL INPUT -->
+          <div class="form-group">
+            <label class="form-label" for="videoUrlInput">Video Link <span class="req">*</span></label>
+            <input type="url" id="videoUrlInput" class="form-input" placeholder="Paste YouTube link or Google Drive link..." required>
+            <div id="urlFeedback" style="min-height: 18px; margin-top: 4px;"></div>
+          </div>
+
+          <!-- GOOGLE DRIVE INFO NOTICE -->
+          <div id="driveNotice" class="info-callout" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <div>
+              <strong>Google Drive Sharing Notice:</strong><br>
+              Make sure your Google Drive video is shared with <em>Anyone with the link</em>. Google Drive preview playback depends on Google's availability and sharing restrictions.
+            </div>
+          </div>
+
+          <!-- LIVE PREVIEW BOX -->
+          <div class="form-group">
+            <label class="form-label">Live Video Player Preview</label>
+            <div class="preview-box">
+              <div class="preview-box-header">
+                <span>Player Preview</span>
+                <span style="font-size: 10px; color: var(--brand);">Interactive</span>
+              </div>
+              <div id="modalPreviewContainer">
+                <div class="preview-empty-state">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                  <span>Enter a valid video URL above to see real-time preview</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BROWSER IMAGE UPLOAD & CUSTOM THUMBNAIL -->
+          <div class="form-group" style="padding: 16px; background: rgba(255, 255, 255, 0.02); border: 1px dashed var(--border-hover); border-radius: var(--radius-sm);">
+            <label class="form-label">
+              <span>Thumbnail Image (Browser Upload)</span>
+              <span style="font-size: 11px; color: var(--text-dim); font-weight: 500;">(Auto-compressed by browser)</span>
+            </label>
+
+            <div style="display: flex; gap: 14px; align-items: center; margin-top: 8px;">
+              <div id="thumbPreviewWrap" style="width: 72px; height: 44px; border-radius: 6px; background: #000; overflow: hidden; border: 1px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                <img id="thumbPreviewImg" src="poster.jpg" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                <span id="thumbEmptySpan" style="font-size: 10px; color: var(--text-dim);">No image</span>
+              </div>
+
+              <div style="flex: 1;">
+                <input type="file" id="imageFileInput" accept="image/*" class="form-input" style="padding: 6px 10px; font-size: 12px;">
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                  Select any JPG/PNG from your computer. The browser compresses it to base64 automatically!
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional Custom URL -->
+            <div style="margin-top: 10px;">
+              <input type="url" id="videoThumbnailInput" class="form-input" placeholder="Or paste an image URL directly...">
+            </div>
+          </div>
+
+          <!-- GRID LAYOUT SPAN -->
+          <div class="form-row">
+            <div class="form-group" id="layoutSpanGroup">
+              <label class="form-label" for="videoLayoutSpanSelect">Grid Width Span</label>
+              <select id="videoLayoutSpanSelect" class="form-select">
+                <option value="normal">Normal (1 Column)</option>
+                <option value="span2">Wide (Span 2 Columns)</option>
+                <option value="span3">Full Width (Span 3 Columns)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="videoOrderInput">Display Order</label>
+              <input type="number" id="videoOrderInput" class="form-input" min="1" value="1">
+            </div>
+          </div>
+
+          <!-- PUBLISHED TOGGLE -->
+          <div class="toggle-wrap">
+            <div>
+              <div style="font-size: 13.5px; font-weight: 700; color: var(--text-primary);">Publish to Website</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Visible on portfolio page</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="videoPublishedToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div class="form-group">
+            <label class="form-label" for="videoDescriptionInput">Description (Optional)</label>
+            <textarea id="videoDescriptionInput" class="form-textarea" placeholder="Brief visual description..."></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="btnCancelVideoModal" class="btn btn-secondary">Cancel</button>
+          <button type="submit" id="btnSubmitVideo" class="btn btn-primary">Save to Portfolio</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- DELETE CONFIRMATION MODAL -->
+  <!-- ====================================================================== -->
+  <div id="deleteModalBackdrop" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: var(--danger);">Confirm Video Deletion</h3>
+        <button type="button" id="btnCloseDelete" class="btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
+          Are you sure you want to delete this video from the portfolio?
+        </p>
+        <div style="padding: 12px 16px; background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-sm); margin-top: 8px;">
+          <strong id="deleteVideoTitleDisplay" style="color: var(--text-primary); font-size: 14px;">Video Title</strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btnCancelDelete" class="btn btn-secondary">Cancel</button>
+        <button type="button" id="btnConfirmDelete" class="btn btn-danger">Yes, Delete Video</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- LIVE VIDEO PREVIEW MODAL -->
+  <!-- ====================================================================== -->
+  <div id="previewModalBackdrop" class="modal-backdrop">
+    <div class="modal-card" style="max-width: 800px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="previewModalTitle">Video Preview</h3>
+        <button type="button" id="btnClosePreviewModal" class="btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body" style="padding: 0;">
+        <div class="preview-ratio-16-9" style="background:#000;">
+          <iframe id="previewModalFrame" src="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+        </div>
+        <div style="padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border);">
+          <div id="previewModalMeta" style="font-size: 13px; color: var(--text-muted);"></div>
+          <a id="previewModalOriginalLink" href="#" target="_blank" class="btn btn-secondary btn-sm">Open Original ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Admin Controller -->
+  <script src="js/admin.js"></script>
+</body>
+</html>

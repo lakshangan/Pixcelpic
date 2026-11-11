@@ -12,6 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&family=Outfit:wght@300;400;700;900&display=swap"
     rel="stylesheet">
+
+  <!-- Zero-Backend Portfolio Store & Dynamic Video Loader -->
+  <script src="js/portfolio-store.js"></script>
+  <script src="js/portfolio.js" defer></script>
+
   <style>
     :root {
       --bg: #000000;
@@ -1939,7 +1944,7 @@
             <span class="hf-pulse-dot"></span>
             <span>Available for projects</span>
           </div>
-          <p class="hf-copy">&copy; 2026 Pixel Pic Studio. All rights reserved.</p>
+          <p class="hf-copy">&copy; 2026 Pixel Pic Studio. All rights reserved. <a href="admin/index.html" style="color: rgba(255,255,255,0.2); margin-left: 8px; text-decoration: none;" title="Studio Admin CMS">CMS</a></p>
         </div>
       </div><!-- /.hf-inner -->
 
@@ -2414,109 +2419,19 @@
       });
     }
 
-    /* ═══ 1. STAGGERED INJECTION & 4. USER GESTURE PROXY ═══ */
-    // IntersectionObserver detects scroll gesture, unlocking media capabilities
-    // and prevents the "Bot-like flood" by staggering the requests.
-    const videoContainers = document.querySelectorAll('.vid-wrap[data-vid]');
-    let loadQueue = [];
-    let isQueueProcessing = false;
-
-    function processQueue() {
-      if (loadQueue.length === 0) {
-        isQueueProcessing = false;
-        return;
-      }
-      isQueueProcessing = true;
-
-      // Shift the first wrap from the queue
-      const wrap = loadQueue.shift();
-      const vidId = wrap.dataset.vid;
-
-      // 3. NO-COOKIE DOMAIN + 2. MANDATORY PLAYLIST + AUTOPLAY/MUTE
-      const url = `https://www.youtube-nocookie.com/embed/${vidId}?autoplay=1&mute=1&loop=1&playlist=${vidId}&controls=1&modestbranding=1&rel=0`;
-
-      const ifr = document.createElement('iframe');
-      ifr.src = url;
-      ifr.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-      ifr.setAttribute('allowfullscreen', 'true');
-
-      // Fade in the iframe after it's injected
-      ifr.onload = () => ifr.style.display = 'block';
-      wrap.appendChild(ifr);
-
-      // Stagger the next injection by 300ms to prevent race conditions
-      setTimeout(processQueue, 300);
+    /* Video loading, scroll reveal, filtering, and modal expand are dynamically managed by js/portfolio.js */
+    function closeM() {
+      const modal = document.getElementById('modal');
+      const mFrame = document.getElementById('mFrame');
+      if (modal) modal.classList.remove('on');
+      if (mFrame) mFrame.src = '';
+      document.body.style.overflow = '';
     }
-
-    const vidObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          loadQueue.push(entry.target);
-          obs.unobserve(entry.target);
-          if (!isQueueProcessing) processQueue();
-        }
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px 200px 0px" });
-
-    videoContainers.forEach(wrap => vidObserver.observe(wrap));
-
-    /* SCROLL REVEAL (Animation for Cards) */
-    const cells = [...document.querySelectorAll('.cell')];
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const i = cells.indexOf(e.target);
-          setTimeout(() => e.target.classList.add('vis'), (i % 5) * 70);
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
-    cells.forEach(c => io.observe(c));
-
-    /* FILTERS */
-    document.querySelectorAll('.fb').forEach(btn => {
-      btn.onclick = () => {
-        document.querySelectorAll('.fb').forEach(b => b.classList.remove('on'));
-        btn.classList.add('on');
-        const f = btn.dataset.f;
-        cells.forEach(c => {
-          if (f === 'all' || c.dataset.f === f) {
-            c.classList.remove('hide');
-            requestAnimationFrame(() => c.classList.add('vis'));
-          } else {
-            c.classList.remove('vis'); c.classList.add('hide');
-          }
-        });
-      };
-    });
-
-    /* EXPAND MODAL — clicking the expand button opens video fullscreen WITH sound */
-    const modal = document.getElementById('modal');
-    const mFrame = document.getElementById('mFrame');
-    const mTitle = document.getElementById('mTitle');
-    const mYt = document.getElementById('mYt');
-
-    document.querySelectorAll('.vid-expand').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        const cell = btn.closest('.cell');
-        const wrap = cell.querySelector('.vid-wrap');
-        if (!wrap) return;
-
-        // Modal always gets sound (mute=0) and uses standard youtube.com for user-triggered expanding
-        const vidId = wrap.dataset.vid;
-        mFrame.src = `https://www.youtube.com/embed/${vidId}?autoplay=1&mute=0&rel=0&modestbranding=1`;
-        mTitle.textContent = cell.dataset.title || '';
-        mYt.href = cell.dataset.yt || '#';
-        modal.classList.add('on');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    document.getElementById('mClose').onclick = closeM;
-    modal.addEventListener('click', e => { if (e.target === modal) closeM(); });
+    const mCloseBtn = document.getElementById('mClose');
+    if (mCloseBtn) mCloseBtn.onclick = closeM;
+    const modalEl = document.getElementById('modal');
+    if (modalEl) modalEl.addEventListener('click', e => { if (e.target === modalEl) closeM(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); });
-    function closeM() { modal.classList.remove('on'); mFrame.src = ''; document.body.style.overflow = ''; }
 
     (function () {
       const svg = document.getElementById('hfSvg');

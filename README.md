@@ -1,90 +1,75 @@
-# PixelPic Studio Website
+# PixelPic Studio – Dynamic Portfolio & Zero-Backend Admin CMS
 
-This folder contains a static marketing website and portfolio for a creative media studio. The site is built with plain HTML, inline CSS, and inline JavaScript, with no build step or framework.
+This repository contains the marketing website, dynamic video portfolio, and a **100% serverless, zero-account, browser-native Admin CMS** for **PixelPic Studio**.
 
-## Project Overview
+There are **zero external databases**, **zero cloud storage subscriptions**, and **zero accounts to manage**. Everything runs directly in the browser and loads statically on any hosting (Vercel, Netlify, GitHub Pages, or local).
 
-The project currently consists of two hand-authored pages:
-
-- `index.html`: Main landing page with hero section, services, about, featured work, pricing, and footer/contact links
-- `our-work.html`: Portfolio page with filtered video work, lazy-loaded YouTube embeds, and fullscreen modal playback
-
-The visual direction is cinematic and motion-heavy. Most interactivity is implemented directly in the page scripts using DOM APIs, `IntersectionObserver`, scroll listeners, and modal/menu handlers.
+---
 
 ## Key Features
 
-- Floating glass-style navigation with mobile drawer
-- Animated preloader and reveal effects on the homepage
-- Services section with staged content blocks and imagery
-- Featured work embeds using YouTube iframes
-- Portfolio filtering by content category
-- Fullscreen video modal on the portfolio page
-- Custom cursor effects on desktop
-- Responsive layouts for desktop, tablet, and mobile
+1. **Zero External Accounts / Zero Backend Database:**
+   - No Supabase, No Firebase, No AWS, No server maintenance.
+   - Operates completely in the client's browser using `localStorage` and a clean static [`data/videos.json`](data/videos.json) file.
 
-## Tech Stack
+2. **Google Drive Video Driver ("Fix Drive & Play in Front"):**
+   - Paste any Google Drive sharing link (`drive.google.com/file/d/FILE_ID/view?usp=sharing`).
+   - The CMS automatically extracts the Google Drive file ID and fixes it into the preview embed link: `https://drive.google.com/file/d/FILE_ID/preview`.
+   - Plays immediately in the front portfolio and inside the admin interactive preview!
+   - Also supports YouTube (standard, Shorts, and youtu.be links).
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Google Fonts
-- YouTube embeds for video content
-- External Google Form and social media links for contact/distribution
+3. **Browser-Native Image Upload & Compression:**
+   - Upload custom thumbnails directly from your computer via standard file picker.
+   - The browser automatically reads and compresses the image via HTML5 Canvas into a lightweight base64 Data URL, so it saves directly without any external image CDN.
+
+4. **1-Click Download of `videos.json`:**
+   - When you edit, add, delete, or reorder videos in `/admin/`, changes save immediately to your browser.
+   - Click **Download videos.json** to save the updated JSON file and drop it into `data/videos.json` for permanent deployment across all visitors.
+
+5. **Original Cinematic Website Untouched:**
+   - Floating glass navigation, custom cursor, smooth scroll reveal, 16:9 and 9:16 portrait ratios, and fullscreen modal playback.
+   - Instant local autoplay on mobile and desktop hero background videos remains intact.
+
+---
 
 ## File Structure
 
 ```text
 .
-├── index.html
-├── our-work.html
-├── PixelPix_Studio.png
-├── Film Icon.svg
-├── Edit Icon (1).svg
-├── Editing Software PNG/
-│   ├── Thinking.png
-│   ├── Script Write.png
-│   ├── Shoot.png
-│   ├── Edit.png
-│   ├── Deliver.png
-│   └── Publish.png
-├── *.png
-└── venv/
+├── admin/
+│   ├── index.html            # Standalone Browser Admin CMS
+│   ├── css/
+│   │   └── admin.css         # Studio CMS theme stylesheet
+│   └── js/
+│       └── admin.js          # CMS controller (Drive fixer, image compression, CRUD)
+├── data/
+│   └── videos.json           # All 21 portfolio videos in human-readable JSON
+├── js/
+│   ├── portfolio-store.js    # Zero-backend store, Drive parser, & image compressor
+│   └── portfolio.js          # Dynamic portfolio loader for our-work.html
+├── index.html                # Main landing page (hero video untouched)
+├── our-work.html             # Portfolio page (dynamically connected to PortfolioStore)
+├── vercel.json               # Vercel static clean URL configuration
+└── README.md                 # This overview
 ```
 
-Notes:
+---
 
-- `venv/` is a local Python virtual environment and is not part of the website runtime.
-- The folder also contains several standalone PNG assets that look like design/branding resources rather than page-entry files.
+## How to Use
 
-## How To Run Locally
-
-Because this is a static site, you can preview it in either of these ways:
-
-1. Open `index.html` directly in a browser.
-2. Or serve the folder locally for cleaner asset loading:
-
+### 1. Preview Locally
 ```bash
 python3 -m http.server 8000
 ```
+- **Live Portfolio:** `http://localhost:8000/our-work.html`
+- **Admin CMS:** `http://localhost:8000/admin/`
 
-Then open `http://localhost:8000/index.html`.
-
-## Important Observations
-
-- The homepage title uses `PIXCEL Studio`, while other visible branding uses `PixelPic Studio` / `PixelPix_Studio`. Branding is inconsistent and should be standardized.
-- `index.html` references `bg.mp4`.
-- `our-work.html` references `comp1.mp4`.
-- No local `.mp4` files are present in this folder, so those background video features will not work unless the assets are added.
-- The pages depend on external resources such as Google Fonts, YouTube embeds, and a Google Form, so full functionality requires internet access.
-
-## Maintenance Notes
-
-- Styling and behavior are embedded directly in each HTML file, so shared changes must be updated in both pages manually.
-- If this site grows further, the next sensible cleanup would be to extract shared CSS/JS into separate files and remove unused assets from the root folder.
-
-## Recommended Next Steps
-
-- Standardize studio naming across titles, alt text, and visible copy
-- Add the missing local video assets or replace them with hosted sources
-- Move shared CSS and JavaScript into reusable files
-- Add a `.gitignore` so `venv/` and temporary assets are not committed
+### 2. How to Add a Google Drive Video
+1. Open the Admin CMS at `/admin/`.
+2. Click **Add New Video**.
+3. Select **Google Drive Link**.
+4. Paste the sharing link (make sure Google Drive permission is set to *"Anyone with the link"*).
+5. The CMS automatically converts it and shows a live player preview.
+6. (Optional) Click **Choose file** under Thumbnail Image to upload an image from your computer.
+7. Click **Save to Portfolio**. It updates `our-work.html` immediately in your browser!
+8. To make the changes permanent for all public visitors on the web, click **Download videos.json** and place the file in the `data/` folder.

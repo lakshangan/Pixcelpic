@@ -1,1 +1,15 @@
+# System & Environment
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
+.env.*.local
+
+# Python venv
+venv/
+.venv/
+__pycache__/
+
+# Backups
 *-orig.mp4
