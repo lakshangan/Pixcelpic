@@ -48,8 +48,11 @@
     btnOpenAddModal: document.getElementById('btnOpenAddModal'),
     btnQuickAddOverview: document.getElementById('btnQuickAddOverview'),
     btnDownloadJsonTop: document.getElementById('btnDownloadJsonTop'),
+    btnCopyJsonTop: document.getElementById('btnCopyJsonTop'),
     btnDownloadJsonOverview: document.getElementById('btnDownloadJsonOverview'),
+    btnCopyJsonOverview: document.getElementById('btnCopyJsonOverview'),
     btnDownloadJsonBackup: document.getElementById('btnDownloadJsonBackup'),
+    btnCopyJsonBackup: document.getElementById('btnCopyJsonBackup'),
     importJsonFileInput: document.getElementById('importJsonFileInput'),
     btnResetDefaults: document.getElementById('btnResetDefaults'),
 
@@ -696,7 +699,7 @@
       });
     }
 
-    // Download JSON buttons
+    // Download & Copy JSON buttons
     const triggerDownload = async () => {
       await window.PortfolioStore.downloadVideosJson();
       showToast('videos.json downloaded! Place in data/ folder for deployment.', 'success', 5000);
@@ -704,6 +707,20 @@
     if (elements.btnDownloadJsonTop) elements.btnDownloadJsonTop.addEventListener('click', triggerDownload);
     if (elements.btnDownloadJsonOverview) elements.btnDownloadJsonOverview.addEventListener('click', triggerDownload);
     if (elements.btnDownloadJsonBackup) elements.btnDownloadJsonBackup.addEventListener('click', triggerDownload);
+
+    const triggerCopy = async () => {
+      try {
+        const videos = await window.PortfolioStore.getAllVideos();
+        const jsonStr = JSON.stringify(videos, null, 2);
+        await navigator.clipboard.writeText(jsonStr);
+        showToast('JSON copied to clipboard! Paste into data/videos.json anytime.', 'success', 3500);
+      } catch (e) {
+        showToast('Clipboard access denied. Please use Download button.', 'error');
+      }
+    };
+    if (elements.btnCopyJsonTop) elements.btnCopyJsonTop.addEventListener('click', triggerCopy);
+    if (elements.btnCopyJsonOverview) elements.btnCopyJsonOverview.addEventListener('click', triggerCopy);
+    if (elements.btnCopyJsonBackup) elements.btnCopyJsonBackup.addEventListener('click', triggerCopy);
 
     // Import JSON file
     if (elements.importJsonFileInput) {

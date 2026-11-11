@@ -91,6 +91,10 @@
         </div>
 
         <div class="topbar-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnCopyJsonTop" title="Copy updated JSON to clipboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span>Copy JSON</span>
+          </button>
           <button type="button" class="btn btn-secondary btn-sm" id="btnDownloadJsonTop" title="Download updated videos.json file">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             <span>Download videos.json</span>
@@ -231,6 +235,10 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     <span>Download videos.json</span>
                   </button>
+                  <button type="button" class="btn btn-secondary" id="btnCopyJsonOverview" style="width: 100%;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy JSON to Clipboard</span>
+                  </button>
                 </div>
               </div>
 
@@ -325,10 +333,16 @@
                 When you make edits in this browser, they save instantly to your local browser storage. To make changes permanent for all visitors on the web, click below to download your updated <code>videos.json</code> file and place it in the <code>data/</code> folder.
               </p>
 
-              <button type="button" id="btnDownloadJsonBackup" class="btn btn-primary" style="margin-bottom: 16px;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                <span>Download videos.json</span>
-              </button>
+              <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+                <button type="button" id="btnDownloadJsonBackup" class="btn btn-primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span>Download videos.json</span>
+                </button>
+                <button type="button" id="btnCopyJsonBackup" class="btn btn-secondary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Copy JSON</span>
+                </button>
+              </div>
 
               <div style="font-size: 12px; color: var(--text-dim); line-height: 1.5;">
                 Tip: Zero accounts or databases required. Any host (Vercel, Netlify, GitHub Pages) can serve this JSON file statically.
