@@ -194,13 +194,13 @@
       const isPortrait = v.category === 'Shorts';
       const thumb = v.thumbnail_url || (v.platform === 'youtube'
         ? `https://img.youtube.com/vi/${(v.embed_url || '').split('/').pop()}/hqdefault.jpg`
-        : 'poster.jpg');
+        : '/poster.jpg');
 
       return `
         <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid var(--border);">
           <div style="display: flex; align-items: center; gap: 12px;">
             <div class="thumb-wrap ${isPortrait ? 'portrait' : ''}" style="width: 50px; height: 32px;">
-              <img src="${escapeHtml(thumb)}" alt="${escapeHtml(v.title)}" onerror="this.src='poster.jpg'">
+              <img src="${escapeHtml(thumb)}" alt="${escapeHtml(v.title)}" onerror="this.src='/poster.jpg'">
             </div>
             <div>
               <div style="font-weight: 700; font-size: 13.5px; color: var(--text-primary);">${escapeHtml(v.title)}</div>
@@ -246,7 +246,7 @@
       const isPortrait = v.category === 'Shorts';
       const thumb = v.thumbnail_url || (v.platform === 'youtube'
         ? `https://img.youtube.com/vi/${(v.embed_url || '').split('/').pop()}/hqdefault.jpg`
-        : 'poster.jpg');
+        : '/poster.jpg');
 
       let categoryBadgeClass = 'badge-cat-films';
       if (v.category === 'Ads') categoryBadgeClass = 'badge-cat-ads';
@@ -273,7 +273,7 @@
           <td>
             <div class="video-info-cell">
               <div class="thumb-wrap ${isPortrait ? 'portrait' : ''}">
-                <img src="${escapeHtml(thumb)}" alt="${escapeHtml(v.title)}" onerror="this.src='poster.jpg'">
+                <img src="${escapeHtml(thumb)}" alt="${escapeHtml(v.title)}" onerror="this.src='/poster.jpg'">
                 <div class="thumb-play-icon">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                 </div>
@@ -443,7 +443,7 @@
 
     elements.previewBoxContainer.innerHTML = `
       <div class="${ratioClass}">
-        <iframe src="${escapeHtml(parsed.embedUrl)}" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+        <iframe src="${escapeHtml(parsed.embedUrl)}" allow="autoplay; encrypted-media; fullscreen"></iframe>
       </div>
     `;
 

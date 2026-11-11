@@ -183,10 +183,12 @@
 
     // 2. Fetch default data/videos.json
     try {
-      // Find proper relative path depending on if in /admin or root
-      const prefix = window.location.pathname.includes('/admin') ? '../' : '';
-      const response = await fetch(prefix + DEFAULT_JSON_PATH);
-      if (response.ok) {
+      let response = await fetch('/data/videos.json');
+      if (!response || !response.ok) {
+        const prefix = window.location.pathname.includes('/admin') ? '../' : '';
+        response = await fetch(prefix + DEFAULT_JSON_PATH);
+      }
+      if (response && response.ok) {
         const data = await response.json();
         // Seed localStorage so user can edit immediately
         saveVideos(data);

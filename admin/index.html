@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PixelPic Studio — Video Management CMS</title>
-  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,10 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Admin Stylesheet -->
-  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="/admin/css/admin.css">
 
   <!-- Zero-Backend Portfolio Store -->
-  <script src="../js/portfolio-store.js"></script>
+  <script src="/js/portfolio-store.js"></script>
 </head>
 <body>
 
@@ -24,8 +24,8 @@
     <!-- ==================== SIDEBAR ==================== -->
     <aside class="admin-sidebar" id="adminSidebar">
       <div class="sidebar-header">
-        <a href="../index.html" title="PixelPic Studio Home">
-          <img src="../PixelPix_Studio.png" alt="PixelPic Studio" class="sidebar-brand-logo">
+        <a href="/index.html" title="PixelPic Studio Home">
+          <img src="/PixelPix_Studio.png" alt="PixelPic Studio" class="sidebar-brand-logo">
         </a>
         <span class="cms-badge">LOCAL CMS</span>
       </div>
@@ -65,7 +65,7 @@
         </div>
 
         <div class="sidebar-links-row">
-          <a href="../our-work.html" target="_blank" class="btn-sidebar-link" title="Open Public Portfolio">
+          <a href="/our-work.html" target="_blank" class="btn-sidebar-link" title="Open Public Portfolio">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             <span>Live Site ↗</span>
           </a>
@@ -227,7 +227,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     <span>Add New Video</span>
                   </button>
-                  <a href="../our-work.html" target="_blank" class="btn btn-secondary" style="width: 100%;">
+                  <a href="/our-work.html" target="_blank" class="btn btn-secondary" style="width: 100%;">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                     <span>View Public Website</span>
                   </a>
@@ -470,7 +470,7 @@
 
             <div style="display: flex; gap: 14px; align-items: center; margin-top: 8px;">
               <div id="thumbPreviewWrap" style="width: 72px; height: 44px; border-radius: 6px; background: #000; overflow: hidden; border: 1px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
-                <img id="thumbPreviewImg" src="poster.jpg" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                <img id="thumbPreviewImg" src="/poster.jpg" alt="Preview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
                 <span id="thumbEmptySpan" style="font-size: 10px; color: var(--text-dim);">No image</span>
               </div>
 
@@ -568,7 +568,7 @@
       </div>
       <div class="modal-body" style="padding: 0;">
         <div class="preview-ratio-16-9" style="background:#000;">
-          <iframe id="previewModalFrame" src="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+          <iframe id="previewModalFrame" src="" allow="autoplay; encrypted-media; fullscreen"></iframe>
         </div>
         <div style="padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border);">
           <div id="previewModalMeta" style="font-size: 13px; color: var(--text-muted);"></div>
@@ -582,6 +582,6 @@
   <div id="toastContainer" class="toast-container"></div>
 
   <!-- Admin Controller -->
-  <script src="js/admin.js"></script>
+  <script src="/admin/js/admin.js"></script>
 </body>
 </html>
